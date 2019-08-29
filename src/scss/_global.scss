@@ -1,0 +1,308 @@
+:root {
+  /* -------------------------------------------------------------------
+      Assign the default/constant/env values to CSS variables
+  */
+  --safe-area-inset-top: 0px;
+  --safe-area-inset-right: 0px;
+  --safe-area-inset-bottom: 0px;
+  --safe-area-inset-left: 0px;
+
+  @supports (top: constant(safe-area-inset-top)) {
+    --safe-area-inset-top: constant(safe-area-inset-top);
+    --safe-area-inset-right: constant(safe-area-inset-right);
+    --safe-area-inset-bottom: constant(safe-area-inset-bottom);
+    --safe-area-inset-left: constant(safe-area-inset-left);
+  }
+
+  @supports (top: env(safe-area-inset-top)) {
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-right: env(safe-area-inset-right);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    --safe-area-inset-left: env(safe-area-inset-left);
+  }
+}
+
+
+body, input, textarea, select, button {
+  text-align: left;
+  font-synthesis: none;
+  -moz-font-feature-settings: 'kern';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  direction: ltr;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-halvar;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 44px;
+  letter-spacing: -0.03em;
+  line-height: 90%;
+  @include media-breakpoint-up(md) {
+    font-size: 70px;
+  }
+  @include media-breakpoint-up(xl) {
+    font-size: 80px;
+  }
+}
+
+h2 {
+  letter-spacing: -0.02em;
+  font-size: 25px;
+  line-height: 26px;
+  @include media-breakpoint-up(md) {
+    font-size: 30px;
+    line-height: 31px;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: 48px;
+    line-height: 50px;
+  }
+  @include media-breakpoint-up(xl) {
+    //margin-bottom: 42px;
+    font-size: 58px;
+    line-height: 61px;
+  }
+}
+
+h3 {
+  letter-spacing: -0.02em;
+}
+
+.blue {
+  color: $blue;
+}
+
+.gray {
+  color: rgba(17, 17, 17, 0.4)
+}
+
+.btn {
+  padding: $btn-padding-y-sm $btn-padding-x-sm;
+  border-radius: $border-radius-sm;
+  font-size: $btn-font-size-sm;
+  line-height: $btn-line-height-sm;
+
+  @include media-breakpoint-up(lg) {
+    padding: $btn-padding-y $btn-padding-x;
+    border-radius: $border-radius;
+    font-size: $btn-font-size;
+    line-height: $btn-line-height;
+  }
+}
+
+//.btn-theme {
+//  @extend %main-border-color;
+//  @extend %main-background-color;
+//
+//  @include hover {
+//    @extend %main-border-color;
+//    @extend %main-background-color;
+//    transform: scale(1.02);
+//  }
+//
+//  &:focus,
+//  &.focus {
+//    //transform: scale(0.98);
+//    box-shadow: none;
+//  }
+//
+//  //// Disabled comes first so active can properly restyle
+//  //&.disabled,
+//  //&:disabled {
+//  //  color: color-yiq($background);
+//  //  background-color: $background;
+//  //  border-color: $border;
+//  //  // Remove CSS gradients if they're enabled
+//  //  @if $enable-gradients {
+//  //    background-image: none;
+//  //  }
+//  //}
+//}
+
+.btn-blue {
+  background-color: $blue;
+  color: #fff;
+  @include hover {
+    background-color: $blue-hover;
+    color: #fff;
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: none;
+  }
+}
+
+.btn-green {
+  background-color: $green;
+  color: #fff;
+
+  @include hover {
+    background-color: $green;
+    color: #fff;
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: none;
+  }
+}
+
+.btn-block {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+html.noscroll {
+  overflow: hidden;
+
+  body {
+    overflow: hidden;
+  }
+}
+
+.selected {
+  @extend %main-text-color;
+}
+
+.modal {
+  display: none;
+  overflow: visible;
+
+  .fancybox-close-small {
+    @extend %main-background-color;
+    transform: translate(13px, -23px);
+    border-radius: 50%;
+    opacity: 1;
+  }
+}
+
+.navbar-brand {
+  display: inline-block;
+  color: $gold;
+}
+
+
+$input-padding-x: 20px;
+$input-padding-y: 17px;
+$input-border-width: 1px;
+
+.input-field {
+  //display: inline-flex;
+  position: relative;
+  //height: $input-height;
+  height: 60px;
+  //background-color: #fff;
+  overflow: hidden;
+  color: #1a1a1a;
+
+  font-size: 17px;
+  line-height: 26px;
+
+  &_focused {
+
+  }
+
+  &__label {
+    position: absolute;
+    top: $input-padding-y;
+    left: $input-padding-x + $input-border-width;
+    margin-bottom: 0;
+    overflow: hidden;
+    //transform: translateY(-50%);
+    transform-origin: left top;
+    transition: transform .15s ease, opacity .15s;
+    opacity: .5;
+    text-overflow: ellipsis;
+    text-transform: inherit;
+    white-space: nowrap;
+    cursor: text;
+    pointer-events: none;
+    will-change: transform;
+
+    &_active {
+      transform: translateY(-65%) scale(0.7);
+      opacity: 1;
+    }
+  }
+
+  &__input {
+    //@extend .input-text;
+    align-self: flex-end;
+    width: 100%;
+    height: 100%;
+    padding: $input-padding-y $input-padding-x;
+    transition: all .3s ease;
+    border: $input-border-width solid #e7e7e7;
+    border-radius: 0;
+    box-shadow: none;
+    appearance: none;
+
+
+    &:focus {
+      outline: none;
+      @extend %main-border-color;
+
+      + label {
+        @extend %main-text-color;
+      }
+    }
+
+  }
+}
+
+
+.form-group {
+  width: 100%;
+  max-width: 353px;
+  margin-right: auto;
+  margin-left: auto;
+
+  &__row {
+    margin-bottom: 14px;
+  }
+
+  &__button {
+    margin-top: 32px;
+
+    + .form-group__note {
+      margin-top: 38px;
+      @include media-breakpoint-up(md) {
+        margin-top: 44px;
+      }
+    }
+  }
+
+  &__note {
+    margin-top: 42px;
+    margin-bottom: 0;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    line-height: 140%;
+
+    + .form-group__button {
+      margin-top: 44px;
+    }
+  }
+}
+
+
+.icon {
+  display: inline-block;
+}
+
+.icon-open-link {
+  margin-bottom: 2px;
+  //background: url("../img/icon-open-link.svg");
+}
+
+.icon-done {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: sub;
+}

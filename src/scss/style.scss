@@ -1,0 +1,133 @@
+
+
+%button-reset {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+$blue: #005eec;
+$blue-hover: #0052CE;
+
+$green: #6ac140;
+$gold: #D3BB7B;
+//$red: #DD4413;
+//$orange: #DD9F00;
+//$cyan: #00B4B4;
+
+$main-color: $blue;
+$main-color-hover: $blue-hover;
+
+
+//$enable-rounded: false;
+
+
+$yiq-text-dark: #111;
+$yiq-text-light: #fff;
+
+
+$body-bg: #f3f3f3;
+$body-color: #111;
+
+
+$link-color: inherit;
+$link-decoration: none;
+$link-hover-color: inherit;
+$link-hover-decoration: underline;
+
+$font-family-halvar: 'Halvar Breitschrift', sans-serif;
+$font-family-graphik: 'Graphik LCG', sans-serif;
+
+$font-family-sans-serif: $font-family-graphik;
+
+
+// Grid breakpoints
+
+$container-padding-x: 25px;
+
+$grid-breakpoints: (
+  xs: 0,
+  //sm: 320px,
+  md: 768px,
+  lg: 1170px,
+  xl: 1600px
+) !default;
+
+// Grid containers
+$grid-gutter-width: 0;
+
+$container-max-widths: (
+  sm: 270px,
+  md: 668px,
+  lg: 1040px,
+  xl: 1320px
+);
+
+$border-radius: 10px;
+$border-radius-sm: 10px;
+
+$btn-padding-y: 20px;
+$btn-padding-x: 35px;
+$btn-font-size: 24px;
+$btn-line-height: 29px;
+
+$btn-padding-y-sm: 20px;
+$btn-padding-x-sm: 29px;
+$btn-font-size-sm: 20px;
+$btn-line-height-sm: 24px;
+
+//$btn-padding-y-lg:            $input-btn-padding-y-lg !default;
+//$btn-padding-x-lg:            $input-btn-padding-x-lg !default;
+//$btn-font-size-lg:            $input-btn-font-size-lg !default;
+//$btn-line-height-lg:          $input-btn-line-height-lg !default;
+
+$btn-border-width: 0;
+
+
+$spinner-width: 24px;
+$spinner-height: 24px;
+$spinner-border-width: 2px;
+
+
+@import "fonts";
+@import "bootstrap";
+@import "global";
+//@import "buttons";
+@import "header";
+@import "footer";
+@import "sections";
+
+%main-text-color {
+  color: var(--theme-color);
+}
+
+%main-background-color {
+  background-color: var(--theme-color);
+  color: #fff;
+}
+
+%main-border-color {
+  border-color: var(--theme-color);
+}
+
+
+
+//
+//
+//
+//
+//body {
+//  //background: url("../img/rm/monolit-1920.png") center top no-repeat;
+//  background: url("../img/rm/index-1920.png") center top no-repeat;
+//  > * {
+//    opacity: 0.5;
+//  }
+//}
