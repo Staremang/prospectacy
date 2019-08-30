@@ -50,8 +50,8 @@ h1 {
 }
 
 h2 {
-  letter-spacing: -0.02em;
   font-size: 25px;
+  letter-spacing: -0.02em;
   line-height: 26px;
   @include media-breakpoint-up(md) {
     font-size: 30px;
@@ -80,48 +80,18 @@ h3 {
   color: rgba(17, 17, 17, 0.4)
 }
 
-.btn {
-  padding: $btn-padding-y-sm $btn-padding-x-sm;
-  border-radius: $border-radius-sm;
-  font-size: $btn-font-size-sm;
-  line-height: $btn-line-height-sm;
-
-  @include media-breakpoint-up(lg) {
-    padding: $btn-padding-y $btn-padding-x;
-    border-radius: $border-radius;
-    font-size: $btn-font-size;
-    line-height: $btn-line-height;
-  }
+.selected {
+  color: $main-color;
 }
 
-//.btn-theme {
-//  @extend %main-border-color;
-//  @extend %main-background-color;
-//
-//  @include hover {
-//    @extend %main-border-color;
-//    @extend %main-background-color;
-//    transform: scale(1.02);
-//  }
-//
-//  &:focus,
-//  &.focus {
-//    //transform: scale(0.98);
-//    box-shadow: none;
-//  }
-//
-//  //// Disabled comes first so active can properly restyle
-//  //&.disabled,
-//  //&:disabled {
-//  //  color: color-yiq($background);
-//  //  background-color: $background;
-//  //  border-color: $border;
-//  //  // Remove CSS gradients if they're enabled
-//  //  @if $enable-gradients {
-//  //    background-image: none;
-//  //  }
-//  //}
-//}
+
+.btn {
+  @include media-breakpoint-down(md) {
+    padding: $btn-padding-y-sm $btn-padding-x-sm;
+    font-size: $btn-font-size-sm;
+    line-height: $btn-line-height-sm;
+  }
+}
 
 .btn-blue {
   background-color: $blue;
@@ -165,10 +135,6 @@ html.noscroll {
   }
 }
 
-.selected {
-  @extend %main-text-color;
-}
-
 .modal {
   display: none;
   overflow: visible;
@@ -187,15 +153,77 @@ html.noscroll {
 }
 
 
-$input-padding-x: 20px;
-$input-padding-y: 17px;
-$input-border-width: 1px;
+.input-text {
+  display: block;
+  width: 100%;
+  padding: $input-padding-y-sm $input-padding-x-sm;
+  transition: $transition-base;
+  border: 0;
+  border-radius: 0;
+  //box-shadow: none;
+  outline: 0;
+  background: none;
+  box-shadow: inset 0 -2px 0 0 currentColor;
+  font-size: $input-font-size-sm;
+  font-weight: $input-font-weight;
+  //border-bottom: 2px solid currentColor;
+
+  line-height: $input-line-height-sm;
+  appearance: none;
+
+  &:hover {
+    box-shadow: inset 0 -2px 0 0 $main-color;
+  }
+
+  &:focus {
+    box-shadow: inset 0 -3px 0 0 $main-color;
+  }
+
+  &:invalid {
+    box-shadow: inset 0 -3px 0 0 $red;
+
+    ~ .invalid-tooltip,
+    ~ .invalid-feedback {
+      display: block;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    box-shadow: inset 0 -2px 0 0 currentColor;
+  }
+
+  &::placeholder {
+    opacity: 0.4;
+    color: inherit;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: $input-padding-y $input-padding-x;
+    font-size: $input-font-size;
+    line-height: $input-line-height;
+  }
+}
+
+.invalid-tooltip {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  width: 100%;
+  color: $red;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-align: right;
+}
 
 .input-field {
   //display: inline-flex;
   position: relative;
   //height: $input-height;
-  height: 60px;
+  height: 50px;
   //background-color: #fff;
   overflow: hidden;
   color: #1a1a1a;
@@ -209,14 +237,17 @@ $input-border-width: 1px;
 
   &__label {
     position: absolute;
-    top: $input-padding-y;
-    left: $input-padding-x + $input-border-width;
+    top: $input-padding-y-sm;
+    left: $input-padding-x-sm + $input-border-width;
     margin-bottom: 0;
     overflow: hidden;
     //transform: translateY(-50%);
     transform-origin: left top;
     transition: transform .15s ease, opacity .15s;
-    opacity: .5;
+    opacity: .4;
+    font-size: $input-font-size-sm;
+    font-weight: $input-font-weight;
+    line-height: $input-line-height-sm;
     text-overflow: ellipsis;
     text-transform: inherit;
     white-space: nowrap;
@@ -226,32 +257,18 @@ $input-border-width: 1px;
 
     &_active {
       transform: translateY(-65%) scale(0.7);
-      opacity: 1;
+      //opacity: 1;
+    }
+
+    @include media-breakpoint-up(lg) {
+      top: $input-padding-y;
+      left: $input-padding-x + $input-border-width;
+      font-size: $input-font-size;
+      line-height: $input-line-height;
     }
   }
 
   &__input {
-    //@extend .input-text;
-    align-self: flex-end;
-    width: 100%;
-    height: 100%;
-    padding: $input-padding-y $input-padding-x;
-    transition: all .3s ease;
-    border: $input-border-width solid #e7e7e7;
-    border-radius: 0;
-    box-shadow: none;
-    appearance: none;
-
-
-    &:focus {
-      outline: none;
-      @extend %main-border-color;
-
-      + label {
-        @extend %main-text-color;
-      }
-    }
-
   }
 }
 
@@ -305,4 +322,94 @@ $input-border-width: 1px;
   height: 20px;
   margin-right: 5px;
   vertical-align: sub;
+}
+
+
+.feedback-form {
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  line-height: 140%;
+
+  &__description {
+    margin-bottom: 50px;
+    color: rgba(#111, 0.5);
+  }
+
+  &__file {
+    margin-top: 58px;
+  }
+
+  &__field {
+    position: relative;
+    margin-bottom: 42px;
+  }
+
+  &__button {
+    margin-top: 45px;
+  }
+
+  &__note {
+    display: block;
+    margin-bottom: 0;
+    color: rgba(#111, 0.5);
+    font-size: inherit;
+
+    @include media-breakpoint-up(xl) {
+      margin-top: 44px;
+    }
+  }
+}
+
+
+.custom-file {
+  &__input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &:disabled {
+      ~ .custom-file__label {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  &__label {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    padding: 20px 20px;
+    border: 2px dashed currentColor;
+    border-radius: $border-radius;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover {
+      color: $main-color;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 20px;
+    height: 18px;
+    transform: translate(-50%, -50%);
+  }
+
+  &__title {
+    margin-bottom: 6px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__subtitle {
+    opacity: 0.5;
+    font-size: 14px;
+  }
 }

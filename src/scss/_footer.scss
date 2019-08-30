@@ -1,149 +1,67 @@
 .footer {
-  padding-top: 26px;
+  display: flex;
+  flex-direction: column;
+  @include container-padding();
+  padding-top: 24px;
   padding-bottom: calc(25px + var(--safe-area-inset-bottom));
-}
 
-.footer-navbar {
+
+  color: rgba(#111, 0.5);
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  line-height: 140%;
+
   @include media-breakpoint-up(md) {
-    display: flex;
-    justify-content: space-between;
-  }
-  @include media-breakpoint-up(xl) {
+    flex-direction: row;
     align-items: center;
-    //height: auto;
-    margin-bottom: 74px;
-    //height: 80px;
+    height: 77px;
+    @include container-padding(md);
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    height: 93px;
+    padding: 0 70px;
+    font-size: 16px;
   }
 
   &__logo {
-    margin-bottom: 30px;
+    margin-bottom: 27px;
     @include media-breakpoint-up(md) {
+      margin-right: 17px;
       margin-bottom: 0;
     }
-  }
-
-  &__list {
-
-    column-gap: $grid-gutter-width;
-    column-count: 2;
-    orphans: 1;
-    widows: 1;
-
-
-    //display: flex;
-    //flex-direction: column;
-    //flex-wrap: wrap;
-    //height: 91px + 11px;
-    margin-bottom: 50px - 11px;
-    padding: 0;
-    list-style: none;
-    @include media-breakpoint-up(md) {
-      margin-bottom: 0;
-    }
-    @include media-breakpoint-up(xl) {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      width: 650px;
-      height: auto;
-    }
-  }
-
-  &__item {
-    margin-bottom: 11px;
-    @include media-breakpoint-up(xl) {
-      margin-bottom: 0;
-    }
-  }
-
-  &__link {
-    color: inherit;
-    font-size: 15px;
-    line-height: 22px;
-  }
-
-  &__contacts {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    @include media-breakpoint-up(md) {
-      align-items: flex-end;
-    }
-    @include media-breakpoint-up(xl) {
-      flex-direction: row;
-      align-items: center;
-    }
-  }
-
-  &__phone {
-    display: inline-block;
-    margin-bottom: 13px;
-    color: inherit;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 27px;
-    @include media-breakpoint-up(xl) {
-      margin-right: 33px;
-      margin-bottom: 0;
-    }
-  }
-
-  &__button {
-    display: block;
-    width: 100%;
-
-    @include media-breakpoint-up(md) {
-      width: auto;
-    }
-  }
-}
-
-.footer-bottom {
-  //justify-content: space-between;
-  margin-top: 60px;
-
-  @include media-breakpoint-up(md) {
-    display: flex;
-    align-items: flex-end;
   }
 
   &__copyright {
-    opacity: .6;
+    margin-bottom: 20px;
+
+    > small {
+      font-size: inherit;
+    }
 
     @include media-breakpoint-up(md) {
-      margin-right: 28px;
-    }
-    @include media-breakpoint-up(xl) {
-      margin-right: 40px;
+      margin-right: 29px;
+      margin-bottom: 0;
     }
   }
 
-  &__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    @include media-breakpoint-up(xl) {
-      display: flex;
-    }
-  }
-
-  &__item {
-    margin-top: 10px;
-    @include media-breakpoint-up(xl) {
-      margin-right: 40px;
-      margin-top: 0;
+  &__nav {
+    margin-bottom: 20px;
+    @include media-breakpoint-up(md) {
+      margin-bottom: 0;
     }
   }
 
   &__dev {
-    margin-top: 42px;
-    @include media-breakpoint-up(md) {
-      margin-top: 0;
-      margin-left: auto;
+    margin-bottom: 0;
+    > a {
+      color: #111;
+    }
 
+    @include media-breakpoint-up(md) {
+      margin-left: auto;
     }
   }
 }
