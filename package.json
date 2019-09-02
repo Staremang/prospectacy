@@ -8,8 +8,11 @@
   },
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
+    "aos": "^2.3.4",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
+    "simplebar": "^4.2.0",
+    "sticky-js": "^1.2.0",
     "ymaps": "^0.2.0"
   },
   "devDependencies": {

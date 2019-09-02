@@ -190,8 +190,8 @@ html.noscroll {
 
   &:disabled {
     opacity: 0.3;
-    cursor: not-allowed;
     box-shadow: inset 0 -2px 0 0 currentColor;
+    cursor: not-allowed;
   }
 
   &::placeholder {
@@ -411,5 +411,101 @@ html.noscroll {
   &__subtitle {
     opacity: 0.5;
     font-size: 14px;
+  }
+}
+
+
+.modal-page {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  //transition: all .3s ease;
+  //opacity: 0;
+  animation: fadeOut 1s ease;
+  background: #fff;
+  animation-fill-mode: both;
+
+  &.active {
+    animation: fadeIn 1s ease;
+  }
+
+  &__inner {
+    @include make-container();
+    @include make-container-max-widths();
+    height: 100%;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+
+.loader {
+  &.load {
+    z-index: 1;
+    .loader__logo {
+      opacity: 0.05;
+      transform: translateY(-100%);
+    }
+  }
+  &__logo {
+    transition: transform 1.2s cubic-bezier(0.39, 0.58, 0.57, 1), opacity .6s;
   }
 }
