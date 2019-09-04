@@ -49,6 +49,7 @@
     }
   </style>
   <title>Prospectacy</title>
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <link href="assets/css/app.css" rel="stylesheet"></head>
 <body>
 
@@ -555,9 +556,18 @@
     
     <div class="gallery">
       <div class="gallery__wrapper">
-        <div class="gallery__item"></div>
-        <div class="gallery__item"></div>
-        <div class="gallery__item"></div>
+        <div class="gallery__item">
+          <img src="images/photo-1.jpg" alt="Одын">
+        </div>
+        <div class="gallery__item">
+          <img src="images/photo-2.jpg" alt="Два">
+        </div>
+        <div class="gallery__item">
+          <img src="images/photo-1.jpg" alt="Одын">
+        </div>
+        <div class="gallery__item">
+          <img src="images/photo-2.jpg" alt="Два">
+        </div>
       </div>
     </div>
   </section>
@@ -570,7 +580,36 @@
       </h2>
     </div>
     <div class="s-contacts__container">
-      <div class="s-contacts__map"></div>
+      <div class="s-contacts__map" id="map"></div>
+      <script>
+        ymaps.ready(init);
+
+        function init() {
+          // Создание карты.
+          const myMap = new ymaps.Map('map', {
+            center: [55.76, 37.64],
+            zoom: 14,
+            controls: ['zoomControl'],
+          });
+
+          const myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+            hintContent: '',
+          }, {
+            // // Опции.
+            // // Необходимо указать данный тип макета.
+            // iconLayout: 'default#image',
+            // // Своё изображение иконки метки.
+            // iconImageHref: 'images/myIcon.gif',
+            // // Размеры метки.
+            // iconImageSize: [30, 42],
+            // // Смещение левого верхнего угла иконки относительно
+            // // её "ножки" (точки привязки).
+            // iconImageOffset: [-5, -38],
+          });
+
+          myMap.geoObjects.add(myPlacemark);
+        }
+      </script>
       <div class="s-contacts__slider">
         <div class="s-contacts__address active">
           <div class="contacts-address">
@@ -642,7 +681,7 @@
             </div>
           </div>
           <div class="feedback-form__button">
-<!--            <button class="btn btn-blue btn-block" type="submit">Оставить заявку</button>-->
+            <!--            <button class="btn btn-blue btn-block" type="submit">Оставить заявку</button>-->
             <button class="btn btn-green btn-block" type="submit">
               <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0606 3.06077L9.99999 16.1214L0.939331 7.06077L3.06065 4.93945L9.99999 11.8788L20.9393 0.939453L23.0606 3.06077Z" fill="white"/>

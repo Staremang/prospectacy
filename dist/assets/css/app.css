@@ -7010,21 +7010,20 @@ html.noscroll {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
-    width: 306px;
     height: 190px;
     margin-right: 30px;
     background: gray; }
+    .gallery__item > img {
+      display: block;
+      height: 100%; }
     @media (min-width: 768px) {
       .gallery__item {
-        width: 515px;
         height: 320px; } }
     @media (min-width: 1170px) {
       .gallery__item {
-        width: 928px;
         height: 557px; } }
     @media (min-width: 1600px) {
       .gallery__item {
-        width: 1018px;
         height: 647px; } }
 
 @media (min-width: 1600px) {

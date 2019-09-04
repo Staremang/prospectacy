@@ -2,9 +2,9 @@ import Sticky from 'sticky-js';
 import AOS from 'aos';
 import $ from 'jquery';
 import 'simplebar';
-import ymaps from 'ymaps';
+// import ymaps from 'ymaps';
 
-// import './js/Input';
+import './js/Input';
 // import './js/Modal';
 
 import 'aos/dist/aos.css';
@@ -46,7 +46,6 @@ $(() => {
   );
 
   let $openModal = null;
-
 
   $('[data-modal]').on('click', (event) => {
     event.preventDefault();
