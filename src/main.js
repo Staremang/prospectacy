@@ -7,16 +7,16 @@ import ymaps from 'ymaps';
 // import './js/Input';
 // import './js/Modal';
 
+import 'aos/dist/aos.css';
+import 'simplebar/dist/simplebar.css';
+import './scss/style.scss';
+
 AOS.init({
   duration: 800,
   easing: 'ease-out',
   once: true,
   anchorPlacement: 'top-center',
 });
-
-import 'aos/dist/aos.css';
-import 'simplebar/dist/simplebar.css';
-import './scss/style.scss';
 
 window.addEventListener('load', () => {
   document.getElementById('logo-mask').style.width = '100%';
@@ -51,6 +51,7 @@ $(() => {
   $('[data-modal]').on('click', (event) => {
     event.preventDefault();
 
+
     if ($openModal) {
       $openModal.removeClass('active');
       setTimeout(() => {
@@ -58,9 +59,12 @@ $(() => {
       }, 1000);
     }
 
-    const $target = $(event.currentTarget.getAttribute('href'));
+    let target = event.currentTarget.dataset.src || event.currentTarget.getAttribute('href');
+
+    const $target = $(target);
 
     $target.show();
+    $('.wrapper').addClass('slide-up');
     $target.addClass('active');
     $openModal = $target;
   });
@@ -69,6 +73,7 @@ $(() => {
     event.preventDefault();
 
     $openModal.removeClass('active');
+    $('.wrapper').removeClass('slide-up');
     setTimeout(() => {
       $openModal.hide();
       $openModal = null;
