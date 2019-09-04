@@ -349,7 +349,7 @@
               <img class="lawyer__img" src="images/konstantin.jpg" srcset="images/konstantin@2x.jpg 2x" alt="Константин Заутренников">
               <img class="lawyer__img lawyer__img_hover" src="images/konstantin-hover.jpg" srcset="images/konstantin-hover@2x.jpg 2x" alt="Константин Заутренников">
             </div>
-            <a href="#" class="lawyer__name stretched-link arrow-link">
+            <a href="#person-modal-1" data-modal class="lawyer__name stretched-link arrow-link">
               Константин<br> Заутренников
               <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor"/>
@@ -370,7 +370,7 @@
               <img class="lawyer__img" src="images/maria.jpg" srcset="images/maria@2x.jpg 2x" alt="Мария Лайнер">
               <img class="lawyer__img lawyer__img_hover" src="images/maria-hover.jpg" srcset="images/maria-hover@2x.jpg 2x" alt="Мария Лайнер">
             </div>
-            <a href="#" class="lawyer__name stretched-link arrow-link">
+            <a href="#person-modal-2" data-modal class="lawyer__name stretched-link arrow-link">
               Мария<br> Лайнер
               <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor"/>
@@ -390,7 +390,7 @@
               <img class="lawyer__img" src="images/sergey.jpg" srcset="images/sergey@2x.jpg 2x" alt="Сергей Омельниченко">
               <img class="lawyer__img lawyer__img_hover" src="images/sergey-hover.jpg" srcset="images/sergey-hover@2x.jpg 2x" alt="Сергей Омельниченко">
             </div>
-            <a href="#" class="lawyer__name stretched-link arrow-link">
+            <a href="#person-modal-3" data-modal class="lawyer__name stretched-link arrow-link">
               Сергей<br> Омельниченко
               <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor"/>
@@ -555,19 +555,11 @@
     </div>
     
     <div class="gallery">
-      <div class="gallery__wrapper">
-        <div class="gallery__item">
-          <img src="images/photo-1.jpg" alt="Одын">
-        </div>
-        <div class="gallery__item">
-          <img src="images/photo-2.jpg" alt="Два">
-        </div>
-        <div class="gallery__item">
-          <img src="images/photo-1.jpg" alt="Одын">
-        </div>
-        <div class="gallery__item">
-          <img src="images/photo-2.jpg" alt="Два">
-        </div>
+      <div class="gallery__wrapper owl-carousel owl-theme">
+        <img class="gallery__img" src="images/photo-1.jpg" alt="Одын">
+        <img class="gallery__img" src="images/photo-2.jpg" alt="Два">
+        <img class="gallery__img" src="images/photo-1.jpg" alt="Одын">
+        <img class="gallery__img" src="images/photo-2.jpg" alt="Два">
       </div>
     </div>
   </section>
@@ -610,7 +602,7 @@
           myMap.geoObjects.add(myPlacemark);
         }
       </script>
-      <div class="s-contacts__slider">
+      <div class="s-contacts__slider owl-carousel owl-theme">
         <div class="s-contacts__address active">
           <div class="contacts-address">
             <div class="contacts-address__title">Контакты в Москве</div>
@@ -654,11 +646,10 @@
           <p class="feedback-form__description">Перезвоним в течение 15 минут.<br> Консультация ни к чему не обязывает
           </p>
           <div class="feedback-form__field">
-            <!--            <div class="input-field">-->
-            <!--              <label for="feedback-name" class="input-field__label">Ваше имя</label>-->
-            <!--              <input id="feedback-name" type="text" name="text" class="input-field__input" required>-->
-            <!--            </div>-->
-            <input class="input-text" type="text" placeholder="Ваше имя" disabled>
+            <div class="input-field">
+              <label for="feedback-name" class="input-field__label">Ваше имя</label>
+              <input id="feedback-name" type="text" name="text" class="input-field__input input-text" required>
+            </div>
             <div class="invalid-tooltip">Заполните это поле</div>
           </div>
           <div class="feedback-form__field">
@@ -747,8 +738,8 @@
 </div>
 
 
-<div id="company-history" class="modal-page modal-page_dark">
-  <div class="modal-page__background" style="background-image: url('images/history-modal-bg.jpg')"></div>
+<div id="company-history" class="modal-page modal-page_dark" style="background-image: url('images/history-modal-bg.jpg')">
+  <!--  <div class="modal-page__background" style="background-image: url('images/history-modal-bg.jpg')"></div>-->
   <div class="modal-page__inner">
     <div class="company-modal">
       <div class="company-modal__col-left">
@@ -788,6 +779,66 @@
         <button class="company-modal__button circle-button" data-modal data-src="#feedback-modal">
           <span>Оставить заявку</span>
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="feedback-modal" class="modal-page modal-page_dark">
+  <div class="feedback-modal">
+    <button type="button" class="feedback-modal__button" data-modal-close></button>
+    <div class="feedback-modal__wrapper">
+      <div class="feedback-modal__inner">
+        <div class="feedback-modal__col-info">
+          <h2 class="feedback-modal__title">Бесплатная консультация юриста</h2>
+          <p class="feedback-modal__description">Оставьте свои контакты и получите:</p>
+          <ul class="feedback-modal__list">
+            <li class="feedback-modal__item">Разбор всей документации, которая у вас имеется на данный момент</li>
+            <li class="feedback-modal__item">Оценку возможности подачи в суд или мирного решения. Решим вместе, что
+              делать
+              дальше.
+            </li>
+          </ul>
+        </div>
+        <div class="feedback-modal__col-form">
+          <form action="/" method="post" class="feedback-form">
+            <p class="feedback-form__description">
+              Перезвоним в течение 15 минут.<br> Консультация ни к чему не обязывает
+            </p>
+            <div class="feedback-form__field">
+              <div class="input-field">
+                <label for="modal-feedback-name" class="input-field__label">Ваше имя</label>
+                <input id="modal-feedback-name" type="text" name="text" class="input-field__input input-text" required>
+              </div>
+              <!--        <div class="invalid-tooltip">Заполните это поле</div>-->
+            </div>
+            <div class="feedback-form__field">
+              <div class="input-field">
+                <label for="modal-feedback-tel" class="input-field__label">Номер телефона</label>
+                <input id="modal-feedback-tel" type="text" name="tel" class="input-field__input input-text" required>
+              </div>
+              <div class="invalid-tooltip">Заполните это поле</div>
+            </div>
+            <div class="feedback-form__file">
+              <div class="custom-file">
+                <input type="file" class="custom-file__input" id="modal-feedback-file">
+                <label class="custom-file__label" for="modal-feedback-file">
+                  <svg class="custom-file__icon" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.06 18C3.53865 17.9966 3.02332 17.8917 2.54453 17.6916C2.06574 17.4915 1.63323 17.2002 1.27262 16.835C0.522943 16.0911 0.102226 15.0928 0.100034 14.0526C0.0945407 13.0811 0.479657 12.1458 1.17362 11.4452L1.33862 11.2809L11.2385 1.40612C11.6839 0.960198 12.2173 0.605867 12.807 0.364281C13.3966 0.122694 14.0304 -0.00119461 14.6705 8.68191e-06C15.3599 0.00276543 16.0417 0.139792 16.6755 0.402958C17.3092 0.666125 17.882 1.05007 18.3599 1.53201C19.3468 2.51737 19.8992 3.83681 19.8999 5.21053C19.909 6.48838 19.4039 7.71928 18.4919 8.64154L10.1825 16.9395L9.55995 17.5562L8.32796 16.3229L17.2599 7.41466C17.8387 6.82218 18.1547 6.03303 18.1399 5.21693C18.1373 4.30328 17.7671 3.42668 17.1081 2.77383C16.7933 2.45304 16.4154 2.19674 15.9967 2.02009C15.578 1.84344 15.1271 1.75003 14.6705 1.74538C14.2606 1.74275 13.8543 1.8206 13.4763 1.97424C13.0982 2.12789 12.7561 2.35415 12.4705 2.63941L2.57061 12.5164L2.40561 12.6807C2.04634 13.0515 1.85057 13.5438 1.86002 14.0526C1.86392 14.6326 2.10067 15.1883 2.52001 15.6017C2.71909 15.8043 2.95781 15.9664 3.22223 16.0785C3.48665 16.1906 3.77145 16.2505 4.06 16.2546C4.31661 16.2567 4.57098 16.2082 4.8077 16.1121C5.04442 16.016 5.25857 15.8743 5.43719 15.6956L12.4353 8.70982L13.0227 8.12518C13.0935 8.0558 13.1494 7.9735 13.1871 7.88303C13.2249 7.79257 13.2438 7.69575 13.2427 7.59816C13.2416 7.36404 13.146 7.13965 12.9765 6.97298C12.8954 6.88989 12.7979 6.82346 12.6898 6.77764C12.5818 6.73182 12.4653 6.70755 12.3473 6.70626C12.2494 6.70559 12.1523 6.72414 12.0619 6.76081C11.9716 6.79748 11.8898 6.85151 11.8215 6.91964L5.35799 13.357L4.1216 12.1238L10.5741 5.68422C10.8025 5.45554 11.0761 5.27383 11.3785 5.14992C11.6808 5.02601 12.0059 4.96245 12.3341 4.96302C12.6829 4.96476 13.0277 5.03441 13.3481 5.16782C13.6686 5.30123 13.9582 5.4957 14.1997 5.73969C14.6985 6.23831 14.9778 6.90555 14.9785 7.60029C14.9815 8.25626 14.7211 8.88762 14.2525 9.3606L13.6673 9.94524L6.66917 16.931C6.33026 17.2689 5.92492 17.5374 5.47713 17.7206C5.02935 17.9039 4.54821 17.9981 4.0622 17.9979L4.06 18Z" fill="currentColor"/>
+                  </svg>
+                  <span class="custom-file__title">Прикрепить документы дела</span>
+                  <span class="custom-file__subtitle">так мы быстрее оценим перспективы</span>
+                </label>
+              </div>
+            </div>
+            <div class="feedback-form__button">
+              <button class="btn btn-blue btn-block" type="submit">Оставить заявку</button>
+            </div>
+            <small class="feedback-form__note">
+              Отправляя свои контакты, вы соглашаетесь с политикой конфиденциальности.
+            </small>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -838,61 +889,141 @@
   </div>
 </div>
 
-<div id="feedback-modal" class="modal-page modal-page_dark">
-  <div class="feedback-modal">
-    <button type="button" class="feedback-modal__button" data-modal-close></button>
-    <div class="feedback-modal__wrapper">
-      <div class="feedback-modal__inner">
-        <div class="feedback-modal__col-info">
-          <h2 class="feedback-modal__title">Бесплатная консультация юриста</h2>
-          <p class="feedback-modal__description">Оставьте свои контакты и получите:</p>
-          <ul class="feedback-modal__list">
-            <li class="feedback-modal__item">Разбор всей документации, которая у вас имеется на данный момент</li>
-            <li class="feedback-modal__item">Оценку возможности подачи в суд или мирного решения. Решим вместе, что
-              делать
-              дальше.
-            </li>
-          </ul>
-        </div>
-        <div class="feedback-modal__col-form">
-          <form action="/" method="post" class="feedback-form">
-            <p class="feedback-form__description">
-              Перезвоним в течение 15 минут.<br> Консультация ни к чему не обязывает
-            </p>
-            <div class="feedback-form__field">
-              <div class="input-field">
-                <label for="feedback-name" class="input-field__label">Ваше имя</label>
-                <input id="feedback-name" type="text" name="text" class="input-field__input input-text" required>
-              </div>
-              <!--        <div class="invalid-tooltip">Заполните это поле</div>-->
-            </div>
-            <div class="feedback-form__field">
-              <div class="input-field">
-                <label for="modal-feedback-tel" class="input-field__label">Номер телефона</label>
-                <input id="modal-feedback-tel" type="text" name="tel" class="input-field__input input-text" required>
-              </div>
-              <div class="invalid-tooltip">Заполните это поле</div>
-            </div>
-            <div class="feedback-form__file">
-              <div class="custom-file">
-                <input type="file" class="custom-file__input" id="modal-feedback-file">
-                <label class="custom-file__label" for="modal-feedback-file">
-                  <svg class="custom-file__icon" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.06 18C3.53865 17.9966 3.02332 17.8917 2.54453 17.6916C2.06574 17.4915 1.63323 17.2002 1.27262 16.835C0.522943 16.0911 0.102226 15.0928 0.100034 14.0526C0.0945407 13.0811 0.479657 12.1458 1.17362 11.4452L1.33862 11.2809L11.2385 1.40612C11.6839 0.960198 12.2173 0.605867 12.807 0.364281C13.3966 0.122694 14.0304 -0.00119461 14.6705 8.68191e-06C15.3599 0.00276543 16.0417 0.139792 16.6755 0.402958C17.3092 0.666125 17.882 1.05007 18.3599 1.53201C19.3468 2.51737 19.8992 3.83681 19.8999 5.21053C19.909 6.48838 19.4039 7.71928 18.4919 8.64154L10.1825 16.9395L9.55995 17.5562L8.32796 16.3229L17.2599 7.41466C17.8387 6.82218 18.1547 6.03303 18.1399 5.21693C18.1373 4.30328 17.7671 3.42668 17.1081 2.77383C16.7933 2.45304 16.4154 2.19674 15.9967 2.02009C15.578 1.84344 15.1271 1.75003 14.6705 1.74538C14.2606 1.74275 13.8543 1.8206 13.4763 1.97424C13.0982 2.12789 12.7561 2.35415 12.4705 2.63941L2.57061 12.5164L2.40561 12.6807C2.04634 13.0515 1.85057 13.5438 1.86002 14.0526C1.86392 14.6326 2.10067 15.1883 2.52001 15.6017C2.71909 15.8043 2.95781 15.9664 3.22223 16.0785C3.48665 16.1906 3.77145 16.2505 4.06 16.2546C4.31661 16.2567 4.57098 16.2082 4.8077 16.1121C5.04442 16.016 5.25857 15.8743 5.43719 15.6956L12.4353 8.70982L13.0227 8.12518C13.0935 8.0558 13.1494 7.9735 13.1871 7.88303C13.2249 7.79257 13.2438 7.69575 13.2427 7.59816C13.2416 7.36404 13.146 7.13965 12.9765 6.97298C12.8954 6.88989 12.7979 6.82346 12.6898 6.77764C12.5818 6.73182 12.4653 6.70755 12.3473 6.70626C12.2494 6.70559 12.1523 6.72414 12.0619 6.76081C11.9716 6.79748 11.8898 6.85151 11.8215 6.91964L5.35799 13.357L4.1216 12.1238L10.5741 5.68422C10.8025 5.45554 11.0761 5.27383 11.3785 5.14992C11.6808 5.02601 12.0059 4.96245 12.3341 4.96302C12.6829 4.96476 13.0277 5.03441 13.3481 5.16782C13.6686 5.30123 13.9582 5.4957 14.1997 5.73969C14.6985 6.23831 14.9778 6.90555 14.9785 7.60029C14.9815 8.25626 14.7211 8.88762 14.2525 9.3606L13.6673 9.94524L6.66917 16.931C6.33026 17.2689 5.92492 17.5374 5.47713 17.7206C5.02935 17.9039 4.54821 17.9981 4.0622 17.9979L4.06 18Z" fill="currentColor"/>
-                  </svg>
-                  <span class="custom-file__title">Прикрепить документы дела</span>
-                  <span class="custom-file__subtitle">так мы быстрее оценим перспективы</span>
-                </label>
-              </div>
-            </div>
-            <div class="feedback-form__button">
-              <button class="btn btn-blue btn-block" type="submit">Оставить заявку</button>
-            </div>
-            <small class="feedback-form__note">
-              Отправляя свои контакты, вы соглашаетесь с политикой конфиденциальности.
-            </small>
-          </form>
-        </div>
+<div id="person-modal-1" class="modal-page">
+  <div class="person-modal">
+    <a href="#" class="person-modal__back back-link" data-modal-close>Назад</a>
+    <div class="person-modal__photo">
+      <div class="person-modal__img"></div>
+    </div>
+    <div class="person-modal__inner">
+      <div class="person-modal__contacts">
+        <button class="person-modal__button circle-button">
+          <span>Написать</span>
+        </button>
+        <a href="#" class="person-modal__social">Facebook</a>
+      </div>
+      <div class="person-modal__info">
+        <h2 class="person-modal__name">Константин Заутренников</h2>
+        <p class="person-modal__note">
+          Юр. стаж 12 лет, ведущий юрист компании
+        </p>
+        <p class="person-modal__description">
+          Харизматичный оратор и лидер. Подходит к делу творчески. Занимается боксом, любит литературу, отлично играет
+          на гитаре.
+        </p>
+        <div class="person-modal__subtitle">Образование:</div>
+        <ul class="person-modal__eductaion-list">
+          <li class="person-modal__eductaion-item">
+            Чувашский государственный педагогический университет им. И. Я. Яковлева по специальности «Преподаватель
+            истории и юриспруденции»
+          </li>
+          <li class="person-modal__eductaion-item">
+            Московский гуманитарно-экономический институт по специальности «Юриспруденция».
+          </li>
+        </ul>
+        <div class="person-modal__subtitle">Работал в проектах</div>
+        <ul class="person-modal__project-list">
+          <li class="person-modal__project-item">
+            <div class="person-modal__project-time">2019</div>
+            <div class="person-modal__project-name">Невыполнение договорных обязательств Lorem ipsum.</div>
+          </li>
+          <li class="person-modal__project-item">
+            <div class="person-modal__project-time">2019</div>
+            <div class="person-modal__project-name">О качестве бурения скважин и оплате работ</div>
+          </li>
+          <li class="person-modal__project-item">
+            <div class="person-modal__project-time">2018</div>
+            <div class="person-modal__project-name">Корпоративный спор</div>
+          </li>
+          <li class="person-modal__project-item">
+            <div class="person-modal__project-time">2017</div>
+            <div class="person-modal__project-name">Морской спор на три миллиарда рублей</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="person-modal-2" class="modal-page">
+  <div class="person-modal">
+    <a href="#" class="person-modal__back back-link" data-modal-close>Назад</a>
+    <div class="person-modal__photo">
+      <div class="person-modal__img"></div>
+    </div>
+    <div class="person-modal__inner">
+      <div class="person-modal__contacts">
+        <button class="person-modal__button circle-button">
+          <span>Написать</span>
+        </button>
+        <a href="#" class="person-modal__social">Facebook</a>
+      </div>
+      <div class="person-modal__info">
+        <h2 class="person-modal__name">Мария Лайнер</h2>
+        <p class="person-modal__note">
+          Юр. стаж 6 лет, ведущий юрист компании
+        </p>
+        <p class="person-modal__description">
+          Фактор спокойствия в компании. Подходит к задачам чётко и ответственно. Любовь к фитнесу и кулинарии помогают
+          креативно решать любые дела.
+        </p>
+        <div class="person-modal__subtitle">Образование:</div>
+        <ul class="person-modal__eductaion-list">
+          <li class="person-modal__eductaion-item">
+            Финансовый университет при Правительстве Российской Федерации, юридический факультет по специальности
+            «Юриспруденция».
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="person-modal-3" class="modal-page">
+  <div class="person-modal">
+    <a href="#" class="person-modal__back back-link" data-modal-close>Назад</a>
+    <div class="person-modal__photo">
+      <div class="person-modal__img"></div>
+    </div>
+    <div class="person-modal__inner">
+      <div class="person-modal__contacts">
+        <button class="person-modal__button circle-button">
+          <span>Написать</span>
+        </button>
+        <a href="#" class="person-modal__social">Facebook</a>
+      </div>
+      <div class="person-modal__info">
+        <h2 class="person-modal__name">Сергей Омельниченко</h2>
+        <p class="person-modal__note">
+          Юр. стаж 6 лет, ведущий юрист компании
+        </p>
+        <p class="person-modal__description">
+          Надёжность и интеллигентность. Общителен
+          с клиентами, щепетильно изучает каждое дело. Обожает сноуборд и горные лыжи.
+        </p>
+        <div class="person-modal__subtitle">Образование:</div>
+        <ul class="person-modal__eductaion-list">
+          <li class="person-modal__eductaion-item">
+            Санкт-Петербургский государственный университет экономики и финансов по специальности «Юриспруденция».
+          </li>
+        </ul>
+        <div class="person-modal__subtitle">Работал в проектах</div>
+        <ul class="person-modal__project-list">
+          <li class="person-modal__project-item">
+            <div class="person-modal__project-time">2019</div>
+            <div class="person-modal__project-name">Невыполнение договорных обязательств Lorem ipsum.</div>
+          </li>
+          <li class="person-modal__project-item">
+            <div class="person-modal__project-time">2019</div>
+            <div class="person-modal__project-name">О качестве бурения скважин и оплате работ</div>
+          </li>
+          <li class="person-modal__project-item">
+            <div class="person-modal__project-time">2018</div>
+            <div class="person-modal__project-name">Корпоративный спор</div>
+          </li>
+          <li class="person-modal__project-item">
+            <div class="person-modal__project-time">2017</div>
+            <div class="person-modal__project-name">Морской спор на три миллиарда рублей</div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

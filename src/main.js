@@ -2,12 +2,14 @@ import Sticky from 'sticky-js';
 import AOS from 'aos';
 import $ from 'jquery';
 import 'simplebar';
+import 'owl.carousel';
 // import ymaps from 'ymaps';
 
 import './js/Input';
 // import './js/Modal';
 
 import 'aos/dist/aos.css';
+import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'simplebar/dist/simplebar.css';
 import './scss/style.scss';
 
@@ -29,6 +31,22 @@ window.addEventListener('load', () => {
 });
 
 $(() => {
+  $('.gallery__wrapper').owlCarousel({
+    margin: 30,
+    loop: false,
+    nav: false,
+    autoWidth: true,
+    items: 1,
+  });
+
+  if (document.documentElement.clientWidth >= 768) {
+    $('.s-contacts__slider').owlCarousel({
+      loop: true,
+      nav: true,
+      items: 2,
+    });
+  }
+
   const $aboutBg = $('.s-about__bg-image');
   const $about = $('.s-about');
   $('.s-about__link').hover(
