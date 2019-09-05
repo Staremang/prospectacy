@@ -19,21 +19,22 @@ AOS.init({
   once: true,
   anchorPlacement: 'top-center',
 });
-
-window.addEventListener('load', () => {
-  document.getElementById('logo-mask').style.width = '100%';
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('load');
-    $('.header').addClass('animate');
-    $('.s-hero').addClass('animate');
-    $('.hero-benefits').addClass('animate');
-  }, 800);
-});
+//
+// window.addEventListener('load', () => {
+//   document.getElementById('logo-mask').style.width = '100%';
+//   setTimeout(() => {
+//     document.getElementById('loader').classList.add('load');
+//     $('.header').addClass('animate');
+//     $('.s-hero').addClass('animate');
+//     $('.hero-benefits').addClass('animate');
+//   }, 800);
+// });
 
 $(() => {
   $('.gallery__wrapper').owlCarousel({
     margin: 30,
     loop: false,
+    dots: false,
     nav: false,
     autoWidth: true,
     items: 1,
@@ -49,17 +50,19 @@ $(() => {
 
   const $aboutBg = $('.s-about__bg-image');
   const $about = $('.s-about');
-  $('.s-about__link').hover(
+  $('[data-bg-src]').hover(
     (event) => {
       const $this = $(event.currentTarget);
-      $($this.data('bg')).addClass('active');
+      $($this.data('bg-src')).addClass('active');
       // $aboutBg.addClass('active');
+      $this.addClass('active');
       $about.addClass('active');
     },
     (event) => {
       const $this = $(event.currentTarget);
       $aboutBg.removeClass('active');
       $about.removeClass('active');
+      $this.removeClass('active');
     },
   );
 

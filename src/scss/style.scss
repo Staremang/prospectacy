@@ -149,15 +149,33 @@ $spinner-border-width: 2px;
 //%main-border-color {
 //  border-color: var(--theme-color);
 //}
-//
-//
-//
-//
-//
-//
-//body {
-//  background: url("../img/rm/index-1920.png") center top no-repeat;
-//  > * {
-//    opacity: 0.5;
-//  }
-//}
+
+
+
+
+
+
+body {
+  //background: url("../img/rm/index-1920.png") center top no-repeat;
+  //background: url("../img/rm/index-1280.png") center top no-repeat;
+  > * {
+    opacity: 0.5;
+  }
+  @include media-breakpoint-up(md) {
+    background: url("../img/rm/index-768.png") center top no-repeat;
+  }
+  @include media-breakpoint-up(lg) {
+    background: url("../img/rm/index-1280.png") center top no-repeat;
+    .s-hero {
+      height: 782px;
+      max-height: none;
+    }
+  }
+  @include media-breakpoint-up(xl) {
+    background: url("../img/rm/index-1920.png") center top no-repeat;
+    .s-hero {
+      height: 980px;
+      max-height: none;
+    }
+  }
+}
