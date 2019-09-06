@@ -19,16 +19,16 @@ AOS.init({
   once: true,
   anchorPlacement: 'top-center',
 });
-//
-// window.addEventListener('load', () => {
-//   document.getElementById('logo-mask').style.width = '100%';
-//   setTimeout(() => {
-//     document.getElementById('loader').classList.add('load');
-//     $('.header').addClass('animate');
-//     $('.s-hero').addClass('animate');
-//     $('.hero-benefits').addClass('animate');
-//   }, 800);
-// });
+
+window.addEventListener('load', () => {
+  document.getElementById('logo-mask').style.width = '100%';
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('load');
+    $('.header').addClass('animate');
+    $('.s-hero').addClass('animate');
+    $('.hero-benefits').addClass('animate');
+  }, 800);
+});
 
 $(() => {
   $('.gallery__wrapper').owlCarousel({
@@ -41,11 +41,18 @@ $(() => {
   });
 
   if (document.documentElement.clientWidth >= 768) {
+    $('.s-contacts__slider').addClass('owl-carousel owl-theme');
     $('.s-contacts__slider').owlCarousel({
       loop: true,
       nav: true,
       items: 2,
     });
+
+    new Sticky('#js-about-sticky', {
+      marginTop: 150,
+      stickyClass: 'is-sticky',
+    });
+
   }
 
   const $aboutBg = $('.s-about__bg-image');
@@ -99,12 +106,6 @@ $(() => {
       $openModal = null;
     }, 1000);
   });
-
-  new Sticky('#js-about-sticky', {
-    marginTop: 150,
-    stickyClass: 'is-sticky',
-  });
-
   // new Input();
 
   $('.menu-button, .navbar__overlay ').on('click', () => {
