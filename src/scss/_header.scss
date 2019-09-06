@@ -32,6 +32,7 @@ $nav-main-height-sm: 50px;
   padding-top: $nav-main-height-sm;
   transition-property: visibility;
   transition-duration: .3s;
+  color: #111;
 
   //a,
   //a:hover {
@@ -302,9 +303,11 @@ $nav-main-height-sm: 50px;
   top: 0;
   right: 0;
   left: 0;
+  color: #fff;
 
-  background: #fdfdfd;
-  box-shadow: 0px 0px 34px rgba(0, 0, 0, 0.04);
+  //color: #111;
+  //background: #fdfdfd;
+  //box-shadow: 0px 0px 34px rgba(0, 0, 0, 0.04);
 
   @include media-breakpoint-up(lg) {
     display: none;

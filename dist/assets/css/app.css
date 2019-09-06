@@ -4930,7 +4930,7 @@ html.noscroll {
   overflow: auto;
   -webkit-animation: fadeOut 1s ease;
           animation: fadeOut 1s ease;
-  background-color: #fff;
+  background-color: #F3F3F3;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -5090,7 +5090,8 @@ html.noscroll {
   -webkit-transition-property: visibility;
   transition-property: visibility;
   -webkit-transition-duration: .3s;
-          transition-duration: .3s; }
+          transition-duration: .3s;
+  color: #111; }
   .navbar_active {
     visibility: visible; }
     .navbar_active .navbar__overlay {
@@ -5302,9 +5303,7 @@ html.noscroll {
   top: 0;
   right: 0;
   left: 0;
-  background: #fdfdfd;
-  -webkit-box-shadow: 0px 0px 34px rgba(0, 0, 0, 0.04);
-          box-shadow: 0px 0px 34px rgba(0, 0, 0, 0.04); }
+  color: #fff; }
   @media (min-width: 1170px) {
     .navbar-mobile {
       display: none; } }
@@ -5783,7 +5782,7 @@ html.noscroll {
   position: relative;
   z-index: 2;
   overflow: hidden;
-  background: #181818;
+  background: #1a191c;
   color: #fff; }
   @media (min-width: 1170px) {
     .s-hero {
@@ -6100,6 +6099,13 @@ html.noscroll {
       .hero-benefits__description {
         font-size: 18px; } }
 
+.video-bird {
+  position: absolute;
+  width: 1920px;
+  height: 980px;
+  -webkit-transform: translateX(391px);
+          transform: translateX(391px); }
+
 /**
  * О нас
  */
@@ -6408,9 +6414,9 @@ html.noscroll {
       .s-portfolio__next {
         width: 50%;
         max-width: 50%;
+        margin-top: -6px;
         margin-left: auto;
-        padding-left: 20px;
-        margin-top: -6px; } }
+        padding-left: 20px; } }
     @media (min-width: 1170px) {
       .s-portfolio__next {
         margin-top: 21px;
@@ -6548,6 +6554,11 @@ html.noscroll {
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: 100%; }
+  .portfolio-modal .portfolio-stats {
+    height: 230px; }
+  @media (min-width: 1170px) {
+    .portfolio-modal .portfolio-stats {
+      height: 380px; } }
   .portfolio-modal__col-left {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -6562,14 +6573,21 @@ html.noscroll {
     max-width: 50%;
     height: auto;
     max-height: 100%;
-    padding-top: 110px; }
+    padding-top: 110px;
+    padding-right: 40px; }
   .portfolio-modal__col-right {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 538px;
-            flex: 0 0 538px;
-    max-width: 538px;
+        -ms-flex: 0 0 270px;
+            flex: 0 0 270px;
+    max-width: 270px;
     margin-right: 50px;
     padding-top: 120px; }
+    @media (min-width: 1170px) {
+      .portfolio-modal__col-right {
+        -webkit-box-flex: 0;
+            -ms-flex: 0 0 538px;
+                flex: 0 0 538px;
+        max-width: 538px; } }
   .portfolio-modal__header {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
@@ -6606,13 +6624,83 @@ html.noscroll {
   .portfolio-modal__title {
     margin-bottom: 67px; }
 
+.lawyer-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 193px;
+  margin-top: 30px;
+  padding: 24px 29px 28px;
+  overflow: hidden;
+  border: 1px solid #cfcfcf; }
+  @media (min-width: 1170px) {
+    .lawyer-card {
+      height: 410px;
+      padding: 50px 40px 42px 61px; } }
+  .lawyer-card__title {
+    position: relative;
+    z-index: 1;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    line-height: 140%;
+    text-transform: uppercase; }
+    @media (min-width: 1170px) {
+      .lawyer-card__title {
+        font-size: 14px; } }
+  .lawyer-card__photo {
+    position: absolute;
+    bottom: 0;
+    left: 7px; }
+    @media (min-width: 1170px) {
+      .lawyer-card__photo {
+        left: 22px; } }
+  .lawyer-card__img {
+    max-width: 134px;
+    max-height: 141px; }
+    @media (min-width: 1170px) {
+      .lawyer-card__img {
+        max-width: 318px;
+        max-height: 333px; } }
+  .lawyer-card__info {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    margin-left: 107px; }
+    @media (min-width: 1170px) {
+      .lawyer-card__info {
+        margin-left: 297px; } }
+  .lawyer-card__name {
+    margin-bottom: 7px;
+    font-size: 15px;
+    line-height: 19px; }
+    @media (min-width: 1170px) {
+      .lawyer-card__name {
+        margin-bottom: 14px;
+        font-size: 18px;
+        line-height: 22px; } }
+  .lawyer-card__description {
+    opacity: .5;
+    font-size: 12px;
+    line-height: 16px; }
+    @media (min-width: 1170px) {
+      .lawyer-card__description {
+        font-size: 14px;
+        line-height: 18px; } }
+
 /**
  * Ведущие юристы
  */
 .s-lawyers {
+  position: relative;
   padding-top: 48px;
   padding-bottom: 50px;
-  overflow: hidden; }
+  overflow: hidden;
+  background: #f5f5f5; }
   @media (min-width: 768px) {
     .s-lawyers {
       padding-top: 50px;
@@ -6626,6 +6714,7 @@ html.noscroll {
       padding-top: 161px;
       padding-bottom: 233px; } }
   .s-lawyers__inner {
+    position: relative;
     width: 100%;
     padding-right: 0;
     padding-left: 0;
@@ -6676,6 +6765,29 @@ html.noscroll {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
             flex: 0 0 auto; }
+
+.video-scales {
+  position: absolute;
+  z-index: 0;
+  top: 111px;
+  left: 50%;
+  width: 398px;
+  height: 398px; }
+  @media (min-width: 768px) {
+    .video-scales {
+      top: -19px;
+      width: 477px;
+      height: 477px; } }
+  @media (min-width: 1170px) {
+    .video-scales {
+      top: 31px;
+      width: 848px;
+      height: 848px; } }
+  @media (min-width: 1600px) {
+    .video-scales {
+      top: 79px;
+      width: 980px;
+      height: 980px; } }
 
 .lawyers-achievement__value {
   color: #005eec;
@@ -6984,7 +7096,8 @@ html.noscroll {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #005eec; }
+    overflow: hidden;
+    background-color: #0068ef; }
     @media (min-width: 1600px) {
       .s-price__overlay {
         width: 100vw; } }
@@ -7171,6 +7284,32 @@ html.noscroll {
     @media (min-width: 1170px) {
       .s-price__button {
         bottom: -195px; } }
+
+.video-rub {
+  position: absolute;
+  z-index: 0;
+  top: 237px;
+  width: 904px;
+  height: 462px;
+  left: calc(50% - 460px); }
+  @media (min-width: 768px) {
+    .video-rub {
+      width: 770px;
+      height: 394px;
+      top: 0;
+      left: calc(50% - 201px); } }
+  @media (min-width: 1170px) {
+    .video-rub {
+      width: 1354px;
+      height: 691px;
+      top: -60px;
+      left: calc(50% - 388px); } }
+  @media (min-width: 1600px) {
+    .video-rub {
+      width: 1618px;
+      height: 826px;
+      top: -78px;
+      left: calc(50% - 500px); } }
 
 .price-per-step__num {
   margin-bottom: 11px;
@@ -8025,6 +8164,9 @@ html.noscroll {
   padding-right: 25px;
   padding-bottom: 26px;
   padding-left: 25px; }
+  @media (min-width: 768px) {
+    .s-feedback__address {
+      padding-left: calc(50vw - 334px); } }
   @media (min-width: 1170px) {
     .s-feedback__address {
       display: -webkit-box;
@@ -8055,6 +8197,9 @@ html.noscroll {
   padding-right: 25px;
   padding-left: 25px;
   border-top: 1px solid #cfcfcf; }
+  @media (min-width: 768px) {
+    .s-feedback__social {
+      padding-left: calc(50vw - 334px); } }
   @media (min-width: 1170px) {
     .s-feedback__social {
       height: 78px;
@@ -8129,7 +8274,7 @@ html.noscroll {
 
 .address-list {
   margin-bottom: 0; }
-  @media (min-width: 768px) {
+  @media (min-width: 1170px) {
     .address-list {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -8549,6 +8694,36 @@ html.noscroll {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap; } }
+
+.person-full-1 {
+  position: fixed;
+  top: 35px;
+  left: calc(50% - 890px);
+  width: 921px;
+  height: 1380px;
+  background: url(../img/person-1-full.f8bed550.jpg) no-repeat;
+  background-size: contain;
+  mix-blend-mode: darken; }
+
+.person-full-2 {
+  position: fixed;
+  top: -108px;
+  left: calc(50% - 1011px);
+  width: 1111px;
+  height: 1718px;
+  background: url(../img/person-2-full.f4e631b7.jpg) no-repeat;
+  background-size: contain;
+  mix-blend-mode: darken; }
+
+.person-full-3 {
+  position: fixed;
+  top: -92px;
+  left: calc(50% - 1029px);
+  width: 1019px;
+  height: 1528px;
+  background: url(../img/person-3-full.c5634109.jpg) no-repeat;
+  background-size: contain;
+  mix-blend-mode: darken; }
 
 .modal .fancybox-close-small, .section_color .section__overlay {
   background-color: var(--theme-color);

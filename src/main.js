@@ -16,7 +16,7 @@ import './scss/style.scss';
 AOS.init({
   duration: 800,
   easing: 'ease-out',
-  once: true,
+  // once: true,
   anchorPlacement: 'top-center',
 });
 
