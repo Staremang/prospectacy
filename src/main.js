@@ -71,18 +71,27 @@ class Gallery {
       y: 0,
     };
 
-    this.$carousel.owlCarousel({
-      margin: 30,
-      mouseDrag: false,
-      loop: false,
-      dots: false,
-      nav: false,
-      autoWidth: true,
-      items: 1,
-      onInitialized: () => {
-        this.init();
-      },
-    });
+
+    if (document.documentElement.clientWidth >= 768) {
+      this.$carousel.addClass('owl-carousel owl-theme');
+      this.$carousel.owlCarousel({
+        margin: 30,
+        mouseDrag: false,
+        loop: false,
+        dots: false,
+        nav: false,
+        autoWidth: true,
+        items: 1,
+        onInitialized: () => {
+          this.init();
+        },
+        // responsive: {
+        //   768: {
+        //     margin: 30,
+        //   },
+        // },
+      });
+    }
 
     setTimeout(() => {
       this.compute();
@@ -295,6 +304,7 @@ $(() => {
 
   const $aboutBg = $('.s-about__bg-image');
   const $about = $('.s-about');
+
   $('[data-bg-src]').hover(
     (event) => {
       const $this = $(event.currentTarget);
@@ -313,40 +323,48 @@ $(() => {
 
   let $openModal = null;
 
-  if (document.documentElement.clientWidth >= 768) {
-    $('[data-modal]').on('click', (event) => {
-      event.preventDefault();
+  function openModal($modal) {
+    $modal.show();
+    $('.wrapper').addClass('slide-up');
+    $modal.addClass('active');
+    $openModal = $modal;
 
+    $modal.find('[data-anim-name]').each((i, item) => {
+      const name = item.dataset.animName || 'fadeInUp';
+      const delay = 500 + parseInt(item.dataset.animDelay, 10);
 
-      if ($openModal) {
-        $openModal.removeClass('active');
-        setTimeout(() => {
-          $openModal.hide();
-        }, 1000);
-      }
-
-      let target = event.currentTarget.dataset.src || event.currentTarget.getAttribute('href');
-
-      const $target = $(target);
-
-      $target.show();
-      $('.wrapper').addClass('slide-up');
-      $target.addClass('active');
-      $openModal = $target;
+      item.style.animationDelay = `${delay}ms`;
+      item.classList.add('animated');
+      item.classList.add(name);
     });
+  }
 
-    $('[data-modal-close]').on('click', (event) => {
-      event.preventDefault();
+  $('[data-modal]').on('click', (event) => {
+    event.preventDefault();
 
+    if ($openModal) {
       $openModal.removeClass('active');
-      $('.wrapper').removeClass('slide-up');
       setTimeout(() => {
         $openModal.hide();
-        $openModal = null;
       }, 1000);
-    });
-    // new Input();
-  }
+    }
+
+    const targetSelector = event.currentTarget.dataset.src || event.currentTarget.getAttribute('href');
+
+    openModal($(targetSelector));
+  });
+
+  $('[data-modal-close]').on('click', (event) => {
+    event.preventDefault();
+
+    $openModal.removeClass('active');
+    $('.wrapper').removeClass('slide-up');
+    setTimeout(() => {
+      $openModal.hide();
+      $openModal = null;
+    }, 1000);
+  });
+  // new Input();
 
   $('.menu-button, .navbar__overlay ').on('click', () => {
     $('.menu-button').toggleClass('active');
