@@ -410,7 +410,7 @@ html.noscroll {
   //opacity: 0;
   overflow: auto;
   animation: fadeOut 1s ease;
-  background-color: #F3F3F3;
+  background-color: #f3f3f3;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -502,16 +502,54 @@ html.noscroll {
 
 
 .loader {
+  pointer-events: none;
+  z-index: 9999;
+
   &.load {
     z-index: 1;
 
-    .loader__logo {
-      transform: translateY(-100%);
-      opacity: 0.05;
+    @include media-breakpoint-up(md) {
+      .loader__logo {
+        transform: translateY(-100%);
+        opacity: 0.05;
+      }
     }
   }
 
   &__logo {
-    transition: transform 1.2s cubic-bezier(0.39, 0.58, 0.57, 1), opacity .6s;
+    opacity: 0.05;
+    flex: 0 0 auto;
+    transform: rotate(90deg);
+
+    &,
+    svg {
+      width: 440px;
+      height: 37px;
+    }
+
+    @include media-breakpoint-up(md) {
+      opacity: 1;
+      transform: none;
+      transition: transform 1.2s cubic-bezier(0.39, 0.58, 0.57, 1), opacity .6s;
+      &,
+      svg {
+        width: 668px;
+        height: 56px;
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      &,
+      svg {
+        width: 1058px;
+        height: 87px;
+      }
+    }
+    @include media-breakpoint-up(xl) {
+      &,
+      svg {
+        width: 1360px;
+        height: 114px;
+      }
+    }
   }
 }
