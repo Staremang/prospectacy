@@ -616,7 +616,11 @@ class Prospectacy {
     this.$videoScales = document.getElementById('video-scales');
     this.$videoRub = document.getElementById('video-rub');
 
-    if (this.$videoBird) enableInlineVideo(this.$videoBird);
+    if (this.$videoBird) {
+      enableInlineVideo(this.$videoBird);
+      this.$videoBird.play();
+    }
+
     if (this.$videoScales) enableInlineVideo(this.$videoScales);
     if (this.$videoRub) enableInlineVideo(this.$videoRub);
   }

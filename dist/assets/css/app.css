@@ -8953,7 +8953,7 @@ html.noscroll {
         width: 46px;
         height: 46px;
         background-size: 13px; } }
-    @media (min-width: 1600px) {
+    @media (min-width: 1170px) {
       .feedback-modal__button {
         top: 80px;
         right: 100px;
@@ -8975,7 +8975,7 @@ html.noscroll {
     @media (min-width: 768px) {
       .feedback-modal__wrapper {
         padding: 50px 25px; } }
-    @media (min-width: 1600px) {
+    @media (min-width: 1170px) {
       .feedback-modal__wrapper {
         padding: 100px 25px; } }
   .feedback-modal__inner {
@@ -8992,6 +8992,9 @@ html.noscroll {
             -ms-flex-pack: justify;
                 justify-content: space-between;
         width: 642px; } }
+    @media (min-width: 1170px) {
+      .feedback-modal__inner {
+        width: 850px; } }
     @media (min-width: 1600px) {
       .feedback-modal__inner {
         width: 991px; } }
@@ -8999,11 +9002,14 @@ html.noscroll {
     max-width: 270px; }
     @media (min-width: 1170px) {
       .feedback-modal__col-info {
+        max-width: 400px; } }
+    @media (min-width: 1600px) {
+      .feedback-modal__col-info {
         max-width: 500px; } }
-  @media (min-width: 1170px) {
+  @media (min-width: 768px) {
     .feedback-modal__title {
       margin-bottom: 52px; } }
-  @media (min-width: 1600px) {
+  @media (min-width: 1170px) {
     .feedback-modal__title {
       margin-bottom: 56px; } }
   .feedback-modal__description {
@@ -9020,7 +9026,7 @@ html.noscroll {
       .feedback-modal__list {
         display: block;
         max-width: 327px; } }
-  @media (min-width: 1600px) {
+  @media (min-width: 768px) {
     .feedback-modal__item {
       margin-bottom: 27px; } }
 
