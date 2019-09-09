@@ -7037,6 +7037,7 @@ video::-webkit-media-controls-start-playback-button {
             flex: 0 0 auto; }
 
 .video-scales {
+  opacity: 0;
   position: absolute;
   z-index: 0;
   top: 111px;
@@ -7558,6 +7559,7 @@ video::-webkit-media-controls-start-playback-button {
         bottom: -195px; } }
 
 .video-rub {
+  opacity: 0;
   position: absolute;
   z-index: 0;
   top: 237px;

@@ -634,9 +634,6 @@ class Prospectacy {
 
   initVideo() {
     this.$videoBird = document.getElementById('hero-video');
-    this.$videoScales = document.getElementById('video-scales');
-    this.$videoRub = document.getElementById('video-rub');
-
     if (this.$videoBird) {
       enableInlineVideo(this.$videoBird, { iPad: true });
 
@@ -649,8 +646,31 @@ class Prospectacy {
       this.$videoBird.load();
     }
 
-    if (this.$videoScales) enableInlineVideo(this.$videoScales, { iPad: true });
-    if (this.$videoRub) enableInlineVideo(this.$videoRub, { iPad: true });
+    this.$videoScales = document.getElementById('video-scales');
+    if (this.$videoScales) {
+      enableInlineVideo(this.$videoScales, { iPad: true });
+
+      this.$videoScales.addEventListener('canplaythrough', () => {
+        this.$videoScales.play();
+        this.$videoScales.classList.add('animated');
+        this.$videoScales.classList.add('fadeIn');
+      });
+
+      this.$videoScales.load();
+    }
+
+    this.$videoRub = document.getElementById('video-rub');
+    if (this.$videoRub) {
+      enableInlineVideo(this.$videoRub, { iPad: true });
+
+      this.$videoRub.addEventListener('canplaythrough', () => {
+        this.$videoRub.play();
+        this.$videoRub.classList.add('animated');
+        this.$videoRub.classList.add('fadeIn');
+      });
+
+      this.$videoRub.load();
+    }
   }
 
   static get breakpoint() {
