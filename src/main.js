@@ -15,10 +15,10 @@ import 'simplebar/dist/simplebar.css';
 import './scss/style.scss';
 
 AOS.init({
-  // disable: true,
-  duration: 800,
+  disable: 'mobile',
+  duration: 500,
   easing: 'ease-out',
-  // once: true,
+  once: true,
   anchorPlacement: 'top-center',
 });
 
@@ -620,9 +620,14 @@ class Prospectacy {
 
     if (this.$videoBird) {
       enableInlineVideo(this.$videoBird, { iPad: true });
-      // setTimeout(() => {
-      //   this.$videoBird.play();
-      // }, 1000);
+
+      this.$videoBird.addEventListener('canplaythrough', () => {
+        this.$videoBird.play();
+        this.$videoBird.classList.add('animated');
+        this.$videoBird.classList.add('fadeIn');
+      });
+
+      this.$videoBird.load();
     }
 
     if (this.$videoScales) enableInlineVideo(this.$videoScales, { iPad: true });

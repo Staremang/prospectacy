@@ -5107,11 +5107,11 @@ html.noscroll {
     display: inline-block;
     width: 15px;
     height: 7px;
+    margin-left: -9px;
     -webkit-transition: -webkit-transform .3s ease;
     transition: -webkit-transform .3s ease;
     transition: transform .3s ease;
-    transition: transform .3s ease, -webkit-transform .3s ease;
-    margin-left: -9px; }
+    transition: transform .3s ease, -webkit-transform .3s ease; }
   .arrow-link__tail {
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
@@ -5317,6 +5317,10 @@ html.noscroll {
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both; }
 
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn; }
+
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
           animation-name: fadeInUp; }
@@ -5369,9 +5373,13 @@ html.noscroll {
 
 .IIV::-webkit-media-controls-play-button,
 video::-webkit-media-controls-start-playback-button {
+  width: 5px;
   opacity: 0;
-  pointer-events: none;
-  width: 5px; }
+  pointer-events: none; }
+
+[data-aos=fade-up] {
+  -webkit-transform: translate3d(0, 50px, 0);
+          transform: translate3d(0, 50px, 0); }
 
 .header {
   position: fixed;
@@ -6300,6 +6308,7 @@ video::-webkit-media-controls-start-playback-button {
         font-size: 18px; } }
 
 .video-bird {
+  opacity: 0;
   position: absolute;
   top: 68px;
   left: 50%;
