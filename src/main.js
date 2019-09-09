@@ -19,7 +19,7 @@ AOS.init({
   duration: 500,
   easing: 'ease-out',
   once: true,
-  anchorPlacement: 'top-center',
+  // anchorPlacement: 'top-center',
 });
 
 
