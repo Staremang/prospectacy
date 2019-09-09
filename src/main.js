@@ -1,7 +1,8 @@
+import enableInlineVideo from 'iphone-inline-video';
 import Sticky from 'sticky-js';
 import AOS from 'aos';
 import $ from 'jquery';
-import 'simplebar';
+import Simplebar from 'simplebar';
 import 'owl.carousel';
 // import ymaps from 'ymaps';
 
@@ -14,28 +15,11 @@ import 'simplebar/dist/simplebar.css';
 import './scss/style.scss';
 
 AOS.init({
+  disable: true,
   duration: 800,
   easing: 'ease-out',
   // once: true,
   anchorPlacement: 'top-center',
-});
-
-window.addEventListener('load', () => {
-  document.getElementById('logo-mask').style.width = '100%';
-
-  setTimeout(() => {
-    document.body.style.overflow = '';
-    $('.s-hero').addClass('animate');
-    $('.hero-benefits').addClass('animate');
-  }, 1500);
-
-  setTimeout(() => {
-    $('.header').addClass('header_animate');
-  }, 2300);
-
-  setTimeout(() => {
-    document.getElementById('hero-video').play();
-  }, 2500);
 });
 
 
@@ -106,9 +90,9 @@ class Gallery {
       this.compute();
     });
 
-    this.$carousel.on('resized.owl.carousel', (event) => {
-      console.log('resized.owl.carousel');
-    });
+    // this.$carousel.on('resized.owl.carousel', (event) => {
+    //   console.log('resized.owl.carousel');
+    // });
 
     this.$carousel.on('changed.owl.carousel', (event) => {
       if (event.item.index + 1 === event.item.count) {
@@ -157,8 +141,8 @@ class Gallery {
 
   animate() {
     this.realMouse = {
-      x: Math.round(100 * (window.cursor.x - this.offsetLeft)) / 100,
-      y: Math.round(100 * (window.cursor.y - (this.offsetTop - window.scrollY))) / 100,
+      x: Math.round(100 * (window.App.cursor.x - this.offsetLeft)) / 100,
+      y: Math.round(100 * (window.App.cursor.y - (this.offsetTop - window.scrollY))) / 100,
     };
 
     if (this.isHover) {
@@ -210,164 +194,490 @@ class Map {
     this.$buttonLeft = $('.s-contacts__btn-left');
     this.$buttonRight = $('.s-contacts__btn-right');
 
+    this.addressList = [];
 
-    if (document.documentElement.clientWidth >= 768) {
-      this.$slider.addClass('owl-carousel owl-theme');
-      this.$slider.owlCarousel({
-        mouseDrag: false,
-        loop: true,
-        nav: false,
-        items: 2,
+    $('.s-contacts__address').each((i, item) => {
+      this.addressList.push({
+        id: parseInt(item.dataset.point, 10),
+        coords: JSON.parse(item.dataset.pointCoords),
       });
+    });
+
+    if (this.addressList.length === 0) {
+      return;
+    }
+
+
+    this.count = this.addressList.length;
+    this.currentId = null;
+    this.loop = false;
+
+    // if (document.documentElement.clientWidth >= 768) {
+    //   this.loop = true;
+    //
+    //   // this.$slider.on('initialized.owl.carousel', () => {
+    //   //
+    //   // });
+    //
+    // } else {
+    //   this.loop = false;
+    // }
+
+    if (window.ymaps) {
+      window.ymaps.ready(this.init);
     }
   }
 
+  initCarousel() {
+    this.loop = true;
+    this.$slider.addClass('owl-carousel owl-theme');
+    this.$slider.owlCarousel({
+      mouseDrag: false,
+      loop: this.loop,
+      nav: false,
+      items: 2,
+    });
+  }
+
+  destroyCarousel() {
+    this.loop = false;
+    this.$slider.removeClass('owl-carousel owl-theme');
+    this.$slider.trigger('destroy.owl.carousel');
+  }
+
   init = (ymaps) => {
-    this.$slider.on('changed.owl.carousel', (event) => {
-      console.log(event.target, event.item, event.page);
+    // this.$slider.on('changed.owl.carousel', (event) => {
+    //   // console.log(event.target, event.item, event.page);
+    //   this.setId(event.item.index, false);
+    // });
+
+    $('.s-contacts__address').on('click', (event) => {
+      this.setId(parseInt(event.currentTarget.dataset.point, 10));
     });
 
-    this.$buttonRight.on('click', () => {
-      this.$slider.trigger('next.owl.carousel');
-    });
-
-    this.$buttonLeft.on('click', () => {
-      this.$slider.trigger('prev.owl.carousel');
-    });
+    this.$buttonRight.on('click', this.next);
+    this.$buttonLeft.on('click', this.prev);
 
     // Создание карты.
     this.Map = new ymaps.Map('map', {
       center: [55.76, 37.64],
-      zoom: 14,
+      zoom: 16,
       controls: ['zoomControl'],
     });
 
-    const myPlacemark = new ymaps.Placemark([55.76, 37.64], {
-      hintContent: '',
-    }, {
-      // // Опции.
-      // // Необходимо указать данный тип макета.
-      // iconLayout: 'default#image',
-      // // Своё изображение иконки метки.
-      // iconImageHref: 'images/myIcon.gif',
-      // // Размеры метки.
-      // iconImageSize: [30, 42],
-      // // Смещение левого верхнего угла иконки относительно
-      // // её "ножки" (точки привязки).
-      // iconImageOffset: [-5, -38],
+    this.addressList.forEach((item) => {
+      const myPlacemark = new ymaps.Placemark(item.coords, {
+        hintContent: '',
+      }, {
+        // // Опции.
+        // // Необходимо указать данный тип макета.
+        // iconLayout: 'default#image',
+        // // Своё изображение иконки метки.
+        // iconImageHref: 'images/myIcon.gif',
+        // // Размеры метки.
+        // iconImageSize: [30, 42],
+        // // Смещение левого верхнего угла иконки относительно
+        // // её "ножки" (точки привязки).
+        // iconImageOffset: [-5, -38],
+      });
+
+      this.Map.geoObjects.add(myPlacemark);
     });
 
-    this.Map.geoObjects.add(myPlacemark);
+    this.setId(0);
   };
+
+  next = () => {
+    this.$slider.trigger('next.owl.carousel');
+
+    if (this.currentId >= this.count - 1) {
+      if (this.loop) {
+        this.currentId = 0;
+      } else {
+        this.currentId = this.count - 1;
+      }
+    } else {
+      this.currentId += 1;
+    }
+
+    if (!this.loop && this.count - 1) {
+      this.$buttonLeft.removeClass('disabled');
+      this.$buttonRight.addClass('disabled');
+    }
+
+    this.setCenter(this.currentId);
+    // console.log(this.currentId);
+
+    $('.s-contacts__address').removeClass('active');
+    this.$slider.find(`[data-point="${this.currentId}"]`).addClass('active');
+  };
+
+  prev = () => {
+    this.$slider.trigger('prev.owl.carousel');
+
+    if (this.currentId <= 0) {
+      if (this.loop) {
+        this.currentId = this.count - 1;
+      } else {
+        this.currentId = 0;
+      }
+    } else {
+      this.currentId -= 1;
+    }
+
+    if (!this.loop && this.currentId === 0) {
+      this.$buttonRight.removeClass('disabled');
+      this.$buttonLeft.addClass('disabled');
+    }
+
+    this.setCenter(this.currentId);
+    // console.log(this.currentId);
+
+    $('.s-contacts__address').removeClass('active');
+    this.$slider.find(`[data-point="${this.currentId}"]`).addClass('active');
+  };
+
+  setId(id, trigger = true) {
+    if (this.currentId === id) {
+      return;
+    }
+
+    if (id < 0) {
+      if (this.loop) {
+        this.currentId = this.count - 1;
+      } else {
+        this.currentId = 0;
+      }
+    } else if (id > this.count - 1) {
+      if (this.loop) {
+        this.currentId = (id % this.count);
+      } else {
+        this.currentId = this.count - 1;
+      }
+    } else {
+      this.currentId = id;
+    }
+
+    if (!this.loop) {
+      if (this.currentId === 0) {
+        this.$buttonLeft.addClass('disabled');
+        this.$buttonRight.removeClass('disabled');
+      }
+
+      if (this.currentId === this.count - 1) {
+        this.$buttonLeft.removeClass('disabled');
+        this.$buttonRight.addClass('disabled');
+      }
+    }
+
+    this.setCenter(this.currentId);
+    // console.log(this.currentId);
+
+    $('.s-contacts__address').removeClass('active');
+    this.$slider.find(`[data-point="${this.currentId}"]`).addClass('active');
+
+    if (trigger) {
+      this.$slider.trigger('to.owl.carousel', [this.currentId, 300]);
+    }
+  }
+
+  setCenter(id) {
+    const point = this.addressList.find(item => item.id === id);
+    // this.Map.setCenter(firstGeoObject.geometry.getCoordinates());
+    // this.Map.setCenter(point.coords);
+    this.Map.panTo(point.coords, {
+      duration: 1500,
+    });
+  }
 }
 
-$(() => {
-  window.cursor = {
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
-  };
+class Modal {
+  constructor() {
+    this.$openModal = null;
+    this.init();
+  }
 
-  document.addEventListener('mousemove', (event) => {
-    window.cursor.x = event.clientX;
-    window.cursor.y = event.clientY;
-  });
+  init() {
+    $('[data-modal]').on('click', (event) => {
+      event.preventDefault();
 
-  let heroHeight = $('.s-hero').outerHeight();
-  let headerHeight = $('.header').outerHeight();
+      this.close()
+        .then(() => {
+          const targetSelector = event.currentTarget.dataset.src || event.currentTarget.getAttribute('href');
+          this.open($(targetSelector));
+        });
+    });
 
-  document.addEventListener('scroll', () => {
-    if (window.scrollY > (heroHeight - headerHeight)) {
-      $('.header').addClass('header_has-bg');
-    } else {
-      $('.header').removeClass('header_has-bg');
-    }
-  });
-
-  window.addEventListener('resize', () => {
-    heroHeight = $('.s-hero').outerHeight();
-    headerHeight = $('.header').outerHeight();
-  });
-
-  window.app = {
-    gallery: new Gallery(),
-    map: new Map(),
-  };
-
-  window.ymaps.ready(window.app.map.init);
-
-  if (document.documentElement.clientWidth >= 768) {
-    new Sticky('#js-about-sticky', {
-      marginTop: 150,
-      stickyClass: 'is-sticky',
+    $('[data-modal-close]').on('click', (event) => {
+      event.preventDefault();
+      this.close();
     });
   }
 
-  const $aboutBg = $('.s-about__bg-image');
-  const $about = $('.s-about');
+  close() {
+    return new Promise((resolve) => {
+      if (!this.$openModal) {
+        resolve();
+        return;
+      }
 
-  $('[data-bg-src]').hover(
-    (event) => {
-      const $this = $(event.currentTarget);
-      $($this.data('bg-src')).addClass('active');
-      // $aboutBg.addClass('active');
-      $this.addClass('active');
-      $about.addClass('active');
-    },
-    (event) => {
-      const $this = $(event.currentTarget);
-      $aboutBg.removeClass('active');
-      $about.removeClass('active');
-      $this.removeClass('active');
-    },
-  );
+      document.body.style.overflow = '';
 
-  let $openModal = null;
+      this.$openModal
+        .removeClass('active')
+        .css('pointer-events', 'none');
 
-  function openModal($modal) {
-    $modal.show();
-    $('.wrapper').addClass('slide-up');
-    $modal.addClass('active');
-    $openModal = $modal;
+      setTimeout(() => {
+        this.$openModal.hide();
+        this.$openModal = null;
+        resolve();
+      }, 1000);
+    });
+  }
+
+  open($modal) {
+    document.body.style.overflow = 'hidden';
+    // $('.wrapper').addClass('slide-up');
+
+    this.$openModal = $modal
+      .addClass('active')
+      .css({
+        pointerEvents: '',
+        display: 'block',
+      });
 
     $modal.find('[data-anim-name]').each((i, item) => {
       const name = item.dataset.animName || 'fadeInUp';
       const delay = 500 + parseInt(item.dataset.animDelay, 10);
 
+      // eslint-disable-next-line no-param-reassign
       item.style.animationDelay = `${delay}ms`;
       item.classList.add('animated');
       item.classList.add(name);
     });
   }
+}
 
-  $('[data-modal]').on('click', (event) => {
-    event.preventDefault();
+class Header {
+  constructor($header) {
+    this.$el = $header;
+    this.isActive = this.$el.classList.contains('header_active');
 
-    if ($openModal) {
-      $openModal.removeClass('active');
-      setTimeout(() => {
-        $openModal.hide();
-      }, 1000);
+    $('.menu-button ').on('click', this.toggle);
+    $('.navbar__overlay').on('click', this.open);
+  }
+
+  toggle = () => {
+    if (this.isActive) {
+      this.close();
+    } else {
+      this.open();
+    }
+  };
+
+  open = () => {
+    document.body.style.overflow = 'hidden';
+    this.$el.classList.add('header_active');
+    $('.menu-button').addClass('active');
+    this.isActive = true;
+  };
+
+  close = () => {
+    document.body.style.overflow = '';
+    this.$el.classList.remove('header_active');
+    $('.menu-button').removeClass('active');
+    this.isActive = false;
+  };
+}
+
+class Prospectacy {
+  constructor() {
+    this.cursor = {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2,
+    };
+
+    this.lastBreakpoint = null;
+    this.headerBreakpoint = 0;
+
+    window.App = this;
+  }
+
+  init() {
+    this.$header = document.getElementById('header');
+    this.$heroSection = document.getElementById('hero-section');
+    this.$heroSectionBenefits = document.getElementById('hero-benefits');
+
+    this.initVideo();
+
+    this.Gallery = new Gallery();
+    this.Map = new Map();
+    this.Modal = new Modal();
+
+    if (this.$header) {
+      this.Header = new Header(this.$header);
     }
 
-    const targetSelector = event.currentTarget.dataset.src || event.currentTarget.getAttribute('href');
 
-    openModal($(targetSelector));
-  });
+    this.onResize();
 
-  $('[data-modal-close]').on('click', (event) => {
-    event.preventDefault();
+    window.addEventListener('resize', this.onResize);
+    document.addEventListener('mousemove', this.onMove);
+    document.addEventListener('scroll', this.onScroll);
 
-    $openModal.removeClass('active');
-    $('.wrapper').removeClass('slide-up');
-    setTimeout(() => {
-      $openModal.hide();
-      $openModal = null;
-    }, 1000);
-  });
-  // new Input();
 
-  $('.menu-button, .navbar__overlay ').on('click', () => {
-    $('.menu-button').toggleClass('active');
-    $('.header').toggleClass('header_active');
-  });
+    const $aboutBg = $('.s-about__bg-image');
+    const $about = $('.s-about');
+
+    $('[data-bg-src]').hover(
+      (event) => {
+        const $this = $(event.currentTarget);
+        $($this.data('bg-src')).addClass('active');
+        // $aboutBg.addClass('active');
+        $this.addClass('active');
+        $about.addClass('active');
+      },
+      (event) => {
+        const $this = $(event.currentTarget);
+        $aboutBg.removeClass('active');
+        $about.removeClass('active');
+        $this.removeClass('active');
+      },
+    );
+  }
+
+  initVideo() {
+    this.$videoBird = document.getElementById('hero-video');
+    this.$videoScales = document.getElementById('video-scales');
+    this.$videoRub = document.getElementById('video-rub');
+
+    if (this.$videoBird) enableInlineVideo(this.$videoBird);
+    if (this.$videoScales) enableInlineVideo(this.$videoScales);
+    if (this.$videoRub) enableInlineVideo(this.$videoRub);
+  }
+
+  static get breakpoint() {
+    if (document.documentElement.clientWidth >= 1600) {
+      return 'xl';
+    }
+    if (document.documentElement.clientWidth >= 1280) {
+      return 'lg';
+    }
+    if (document.documentElement.clientWidth >= 768) {
+      return 'md';
+    }
+    return 'xs';
+  }
+
+  onResize = () => {
+    const newBreakpoint = Prospectacy.breakpoint;
+
+    if (this.lastBreakpoint !== newBreakpoint) {
+      switch (newBreakpoint) {
+        case 'xs':
+          if (this.aboutStickyParagraph) this.aboutStickyParagraph.destroy();
+          if (this.portfolioSimplebar) this.portfolioSimplebar.unMount();
+          this.Map.destroyCarousel();
+          break;
+        case 'md':
+          this.Map.initCarousel();
+          this.aboutStickyParagraph = new Sticky('#js-about-sticky', {
+            marginTop: 150,
+            stickyClass: 'is-sticky',
+          });
+          this.portfolioSimplebar = new Simplebar(document.querySelector('.portfolio-modal__wrapper'), {
+            autoHide: false,
+          });
+          break;
+        default:
+          break;
+      }
+
+      this.lastBreakpoint = newBreakpoint;
+      console.log(this.lastBreakpoint);
+    }
+
+    try {
+      if (newBreakpoint === 'lg' || newBreakpoint === 'xl') {
+        this.headerBreakpoint = this.$heroSection.getBoundingClientRect().height
+          - this.$header.getBoundingClientRect().height;
+      } else {
+        this.headerBreakpoint = this.$heroSection.getBoundingClientRect().height
+          - this.$heroSectionBenefits.getBoundingClientRect().height;
+      }
+    } catch (e) {
+      this.headerBreakpoint = 0;
+      console.error(e);
+    }
+  };
+
+  onScroll = () => {
+    if (window.scrollY > this.headerBreakpoint) {
+      this.$header.classList.add('header_has-bg');
+    } else {
+      this.$header.classList.remove('header_has-bg');
+    }
+  };
+
+  onMove = (event) => {
+    this.cursor.x = event.clientX;
+    this.cursor.y = event.clientY;
+  };
+
+  static setLoadPercentage(num) {
+    if (document.getElementById('logo-mask')) {
+      setTimeout(() => {
+        document.getElementById('logo-mask').style.width = `${num}%`;
+      }, 200);
+    }
+  }
+
+  static startAnimation() {
+    // document.body.style.overflow = 'hidden';
+    // document.body.style.overflow = '';
+    document.getElementById('loader').classList.add('animate');
+    document.getElementById('header').classList.add('animate');
+    document.getElementById('hero-section').classList.add('animate');
+    document.getElementById('hero-benefits').classList.add('animate');
+    // document.getElementById('hero-video').play();
+
+    // setTimeout(() => {
+    // }, 800);
+    //
+    // setTimeout(() => {
+    // }, 1000);
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // startAnimation();
+  // return;
+
+  const App = new Prospectacy();
+  App.init();
+
+
+  Prospectacy.setLoadPercentage(35);
+});
+
+document.addEventListener('readystatechange', () => {
+  if (document.readyState === 'interactive') {
+    Prospectacy.setLoadPercentage(20);
+  }
+  if (document.readyState === 'complete') {
+    Prospectacy.setLoadPercentage(60);
+  }
+});
+
+window.addEventListener('load', () => {
+  Prospectacy.setLoadPercentage(80);
+
+  setTimeout(() => {
+    Prospectacy.setLoadPercentage(100);
+  }, 700);
+
+  setTimeout(() => {
+    Prospectacy.startAnimation();
+  }, 1500);
 });

@@ -43,11 +43,13 @@ $nav-main-height-sm: 50px;
     //transform: translateY(-30px);
     //opacity: 0;
 
-    &_animate {
-      .navbar {
-        transform: none;
-        opacity: 1;
-      }
+    transform: translateY(-30px);
+    opacity: 0;
+
+    &.animate {
+      transition: transform 1s ease-out, opacity 1s ease;
+      transform: none;
+      opacity: 1;
     }
 
     &_has-bg {
@@ -102,11 +104,9 @@ $nav-main-height-sm: 50px;
     position: relative;
     height: 135px;
     padding-top: 0;
-    transform: translateY(-30px);
-    transition: transform 1s ease-out, opacity 1s ease, color .3s ease, background-color .3s ease, height .3s ease-out;
+    transition: all .3s ease-out;
     //transition: all 1s ease-out;
     //z-index: 0;
-    opacity: 0;
     color: #fff;
   }
 
@@ -131,7 +131,7 @@ $nav-main-height-sm: 50px;
     display: flex;
     //position: relative;
     flex-direction: column;
-    width: 280px;
+    width: 100%;
     height: 100%;
     //padding-top: $nav-main-height-sm;
     padding-top: $nav-main-height-sm + 35px;
@@ -380,7 +380,7 @@ $nav-main-height-sm: 50px;
 
     @include media-breakpoint-up(md) {
       max-width: map_get($container-max-widths, md);
-      height: $nav-main-height;
+      //height: $nav-main-height;
     }
   }
 

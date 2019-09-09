@@ -336,6 +336,7 @@ html.noscroll {
     position: absolute;
     z-index: -1;
     opacity: 0;
+    width: 0;
 
     &:disabled {
       ~ .custom-file__label {
@@ -399,15 +400,16 @@ html.noscroll {
 .modal-page {
   display: none;
   position: fixed;
+  z-index: 100;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   //transition: all .3s ease;
   //opacity: 0;
-  z-index: 100;
+  height: 100%;
+  padding-top: 49px;
   overflow: auto;
   animation: fadeOut 1s ease;
   background-color: #f3f3f3;
@@ -415,7 +417,6 @@ html.noscroll {
   background-position: center;
   background-size: cover;
   animation-fill-mode: both;
-  padding-top: 49px;
 
   &_dark {
     background-color: rgba(#181818, 0.98);
@@ -427,8 +428,8 @@ html.noscroll {
   }
 
   @include media-breakpoint-up(lg) {
-    padding-top: 0;
     z-index: $zindex-fixed + 10;
+    padding-top: 0;
   }
 
   &__inner {
@@ -524,22 +525,18 @@ html.noscroll {
 
 
 .loader {
-  pointer-events: none;
-  z-index: 9999;
 
-  &.load {
-    z-index: 1;
-
+  &.animate {
+    opacity: 0;
+    pointer-events: none;
     @include media-breakpoint-up(md) {
       .loader__logo {
         transform: translateY(-100%);
-        opacity: 0.05;
       }
     }
   }
 
   &__logo {
-    opacity: 0.05;
     flex: 0 0 auto;
     transform: rotate(90deg);
 
@@ -550,15 +547,16 @@ html.noscroll {
     }
 
     @include media-breakpoint-up(md) {
-      opacity: 1;
       transform: none;
-      transition: transform 1.2s cubic-bezier(0.39, 0.58, 0.57, 1), opacity .6s;
+      transition: transform 1.2s cubic-bezier(0.39, 0.58, 0.57, 1);
+      opacity: 1;
       &,
       svg {
         width: 668px;
         height: 56px;
       }
     }
+
     @include media-breakpoint-up(lg) {
       &,
       svg {
@@ -566,6 +564,7 @@ html.noscroll {
         height: 87px;
       }
     }
+
     @include media-breakpoint-up(xl) {
       &,
       svg {

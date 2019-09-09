@@ -237,7 +237,7 @@ module.exports = (env, args) => {
       quiet: true,
       // port: 9002,
       lazy: false,
-      // host: '0.0.0.0',
+      host: '0.0.0.0',
       hot: true,
       inline: true,
       // compress: true,

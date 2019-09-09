@@ -79,7 +79,7 @@ $grid-breakpoints: (
 $grid-gutter-width: 0;
 
 $container-max-widths: (
-  sm: 270px,
+  xs: 270px,
   md: 668px,
   lg: 1040px,
   xl: 1320px
@@ -154,7 +154,7 @@ $spinner-border-width: 2px;
 
 
 
-//
+
 //body {
 //  //background: url("../img/rm/index-1920.png") center top no-repeat;
 //  background: url("../img/rm/index-320.png") center top no-repeat;
