@@ -194,6 +194,7 @@ class Map {
     this.$buttonLeft = $('.s-contacts__btn-left');
     this.$buttonRight = $('.s-contacts__btn-right');
 
+    this.inited = false;
     this.addressList = [];
 
     $('.s-contacts__address').each((i, item) => {
@@ -229,6 +230,7 @@ class Map {
   }
 
   initCarousel() {
+    this.inited = true;
     this.loop = true;
     this.$slider.addClass('owl-carousel owl-theme');
     this.$slider.owlCarousel({
@@ -240,6 +242,7 @@ class Map {
   }
 
   destroyCarousel() {
+    this.inited = false;
     this.loop = false;
     this.$slider.removeClass('owl-carousel owl-theme');
     this.$slider.trigger('destroy.owl.carousel');
@@ -642,14 +645,20 @@ class Prospectacy {
           this.Map.destroyCarousel();
           break;
         case 'md':
-          this.Map.initCarousel();
-          this.aboutStickyParagraph = new Sticky('#js-about-sticky', {
-            marginTop: 150,
-            stickyClass: 'is-sticky',
-          });
-          this.portfolioSimplebar = new Simplebar(document.querySelector('.portfolio-modal__wrapper'), {
-            autoHide: false,
-          });
+        case 'lg':
+        case 'xl':
+          if (!this.Map.inited) this.Map.initCarousel();
+          if (!this.aboutStickyParagraph) {
+            this.aboutStickyParagraph = new Sticky('#js-about-sticky', {
+              marginTop: 150,
+              stickyClass: 'is-sticky',
+            });
+          }
+          if (!this.portfolioSimplebar) {
+            this.portfolioSimplebar = new Simplebar(document.querySelector('.portfolio-modal__wrapper'), {
+              autoHide: false,
+            });
+          }
           break;
         default:
           break;
