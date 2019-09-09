@@ -620,9 +620,9 @@ class Prospectacy {
 
     if (this.$videoBird) {
       enableInlineVideo(this.$videoBird, { iPad: true });
-      setTimeout(() => {
-        this.$videoBird.play();
-      }, 1000);
+      // setTimeout(() => {
+      //   this.$videoBird.play();
+      // }, 1000);
     }
 
     if (this.$videoScales) enableInlineVideo(this.$videoScales, { iPad: true });
