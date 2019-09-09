@@ -617,12 +617,14 @@ class Prospectacy {
     this.$videoRub = document.getElementById('video-rub');
 
     if (this.$videoBird) {
-      enableInlineVideo(this.$videoBird);
-      this.$videoBird.play();
+      enableInlineVideo(this.$videoBird, { iPad: true });
+      setTimeout(() => {
+        this.$videoBird.play();
+      }, 1000);
     }
 
-    if (this.$videoScales) enableInlineVideo(this.$videoScales);
-    if (this.$videoRub) enableInlineVideo(this.$videoRub);
+    if (this.$videoScales) enableInlineVideo(this.$videoScales, { iPad: true });
+    if (this.$videoRub) enableInlineVideo(this.$videoRub, { iPad: true });
   }
 
   static get breakpoint() {
