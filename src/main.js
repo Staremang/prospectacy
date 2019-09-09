@@ -118,10 +118,12 @@ class Gallery {
 
     this.$el.on('mouseenter.gallery', () => {
       this.isHover = true;
+      this.$el.css('cursor', 'none');
     });
 
     this.$el.on('mouseleave.gallery', () => {
       this.isHover = false;
+      this.$el.css('cursor', '');
     });
   }
 
