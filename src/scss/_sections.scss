@@ -1177,7 +1177,7 @@
 }
 
 .portfolio-modal {
-
+  margin-bottom: 60px;
   .portfolio-stats {
     //width: 538px;
     height: 177px;
@@ -1785,14 +1785,14 @@
     font-weight: bold;
     letter-spacing: -0.02em;
     line-height: 22px;
-    @include media-breakpoint-down(xs) {
-      .arrow-link__icon {
-        margin-left: -9px;
-      }
-      .arrow-link__tail {
-        opacity: 0;
-      }
-    }
+    //@include media-breakpoint-down(xs) {
+      //.arrow-link__icon {
+      //  margin-left: -9px;
+      //}
+      //.arrow-link__tail {
+      //  opacity: 0;
+      //}
+    //}
     @include media-breakpoint-up(md) {
       margin-bottom: 9px;
     }
@@ -3593,6 +3593,7 @@
     padding-top: 25px;
     font-size: 14px;
     line-height: 140%;
+    margin-bottom: 90px;
     @include make-container();
     @include make-container-max-widths();
 
