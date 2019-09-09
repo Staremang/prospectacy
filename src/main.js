@@ -637,39 +637,39 @@ class Prospectacy {
     if (this.$videoBird) {
       enableInlineVideo(this.$videoBird, { iPad: true });
 
-      this.$videoBird.addEventListener('canplaythrough', () => {
-        this.$videoBird.play();
-        this.$videoBird.classList.add('animated');
-        this.$videoBird.classList.add('fadeIn');
-      });
-
-      this.$videoBird.load();
+      // this.$videoBird.addEventListener('canplaythrough', () => {
+      //   this.$videoBird.play();
+      //   this.$videoBird.classList.add('animated');
+      //   this.$videoBird.classList.add('fadeIn');
+      // });
+      //
+      // this.$videoBird.load();
     }
 
     this.$videoScales = document.getElementById('video-scales');
     if (this.$videoScales) {
       enableInlineVideo(this.$videoScales, { iPad: true });
 
-      this.$videoScales.addEventListener('canplaythrough', () => {
-        this.$videoScales.play();
-        this.$videoScales.classList.add('animated');
-        this.$videoScales.classList.add('fadeIn');
-      });
-
-      this.$videoScales.load();
+      // this.$videoScales.addEventListener('canplaythrough', () => {
+      //   this.$videoScales.play();
+      //   this.$videoScales.classList.add('animated');
+      //   this.$videoScales.classList.add('fadeIn');
+      // });
+      //
+      // this.$videoScales.load();
     }
 
     this.$videoRub = document.getElementById('video-rub');
     if (this.$videoRub) {
       enableInlineVideo(this.$videoRub, { iPad: true });
 
-      this.$videoRub.addEventListener('canplaythrough', () => {
-        this.$videoRub.play();
-        this.$videoRub.classList.add('animated');
-        this.$videoRub.classList.add('fadeIn');
-      });
-
-      this.$videoRub.load();
+      // this.$videoRub.addEventListener('canplaythrough', () => {
+      //   this.$videoRub.play();
+      //   this.$videoRub.classList.add('animated');
+      //   this.$videoRub.classList.add('fadeIn');
+      // });
+      //
+      // this.$videoRub.load();
     }
   }
 
