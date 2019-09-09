@@ -15,7 +15,7 @@ import 'simplebar/dist/simplebar.css';
 import './scss/style.scss';
 
 AOS.init({
-  disable: true,
+  // disable: true,
   duration: 800,
   easing: 'ease-out',
   // once: true,

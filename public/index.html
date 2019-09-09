@@ -757,11 +757,11 @@
 <div id="company-history" class="modal-page company-modal">
   <!--  <div class="modal-page__background" style="background-image: url('images/history-modal-bg.jpg')"></div>-->
   <div class="company-modal__inner">
-    <a href="#" class="company-modal__back back-link" data-modal-close>Назад</a>
+    <a href="#" class="company-modal__back back-link" data-anim-name="fadeInLeft" data-anim-delay="600" data-modal-close>Назад</a>
     
-    <h2 class="company-modal__title">Команда Prospectasy</h2>
+    <h2 class="company-modal__title" data-anim-name="fadeInUp">Команда Prospectasy</h2>
     
-    <div class="company-modal__stats">
+    <div class="company-modal__stats" data-anim-name="fadeInUp" data-anim-delay="400">
       <div class="company-modal-stats">
         <div class="company-modal-stats__title">28</div>
         <div class="company-modal-stats__text">Профессионалов<br> в команде</div>
@@ -776,22 +776,24 @@
       </div>
     </div>
     
-    <p class="company-modal__text">От латинского prospectus – возможность, реализация, перспектива. Мы выросли из
-      кипрской компании
-      PROSPECTACY LTD, оказывающей услуги в области права. Нам передался не только багаж знаний, но и философия
-      ведения дел — основательно, с умом, с максимальным уважением к клиенту. Мы за открытое, честное
-      взаимодействие
-      — с коллегами, клиентами, соперниками в суде.</p>
-    <ul class="company-modal__text">
-      <li>У нас фиксированные прозрачные тарифы. Никаких растягиваний дел для повышения ценника юриста.</li>
-      <li>Большая команда профессионалов, любящих своё дело. Секрет наших побед в живых, харизматичных юристах.
-      </li>
-      <li>
-        Знаем, как выигрывать самые сложные дела. Досконально изучаем специфику бизнеса, добиваемся результата в 8
-        из 10 процентах случаев.
-      </li>
-    </ul>
-    <button class="company-modal__button circle-button" data-modal data-src="#feedback-modal">
+    <div data-anim-name="fadeInUp" data-anim-delay="200">
+      <p class="company-modal__text">От латинского prospectus – возможность, реализация, перспектива. Мы выросли из
+        кипрской компании
+        PROSPECTACY LTD, оказывающей услуги в области права. Нам передался не только багаж знаний, но и философия
+        ведения дел — основательно, с умом, с максимальным уважением к клиенту. Мы за открытое, честное
+        взаимодействие
+        — с коллегами, клиентами, соперниками в суде.</p>
+      <ul class="company-modal__text">
+        <li>У нас фиксированные прозрачные тарифы. Никаких растягиваний дел для повышения ценника юриста.</li>
+        <li>Большая команда профессионалов, любящих своё дело. Секрет наших побед в живых, харизматичных юристах.
+        </li>
+        <li>
+          Знаем, как выигрывать самые сложные дела. Досконально изучаем специфику бизнеса, добиваемся результата в 8
+          из 10 процентах случаев.
+        </li>
+      </ul>
+    </div>
+    <button class="company-modal__button circle-button" data-anim-name="fadeInUp" data-anim-delay="800" data-modal data-src="#feedback-modal">
       <span>Оставить заявку</span>
     </button>
   </div>
@@ -898,7 +900,7 @@
         </div>
       </div>
       <div class="portfolio-modal__col-right">
-<!--    Не придумал, как без дублирования блоков -->
+        <!--    Не придумал, как без дублирования блоков -->
         <div class="portfolio-stats" data-anim-name="fadeInUp" data-anim-delay="200">
           <div class="portfolio-stats__title">ВЫигранная сумма</div>
           <div class="portfolio-stats__value">89,5<br> млн ₽</div>
