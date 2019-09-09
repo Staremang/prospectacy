@@ -394,6 +394,20 @@ class Map {
 class Modal {
   constructor() {
     this.$openModal = null;
+
+
+    const button = document.createElement('button');
+    button.classList.add('modal-page__btn-back');
+    button.classList.add('back-button');
+    button.innerHTML = '<svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path fill-rule="evenodd" clip-rule="evenodd" d="M4.10383 7.68628L0.625017 3.99994L4.10383 0.313603L5.55839 1.68628L4.31869 2.99994L16 2.99994L16 4.99994L4.31869 4.99994L5.55839 6.3136L4.10383 7.68628Z" fill="currentColor"/>' +
+      '</svg>';
+
+    this.$button = $(button);
+    this.$button.on('click', () => {
+      this.close();
+    });
+
     this.init();
   }
 
@@ -425,9 +439,13 @@ class Modal {
 
       this.$openModal
         .removeClass('active')
-        .css('pointer-events', 'none');
+        .css('pointer-events', 'none')
+        .off('scroll.modal');
+
+      this.$button.removeClass('visible');
 
       setTimeout(() => {
+        this.$button.detach();
         this.$openModal.hide();
         this.$openModal = null;
         resolve();
@@ -455,7 +473,19 @@ class Modal {
       item.classList.add('animated');
       item.classList.add(name);
     });
+
+
+    $modal.append(this.$button);
+    $modal.on('scroll.modal', this.onScroll);
   }
+
+  onScroll = () => {
+    if (this.$openModal.scrollTop() > 100) {
+      this.$button.addClass('visible');
+    } else {
+      this.$button.removeClass('visible');
+    }
+  };
 }
 
 class Header {
@@ -544,6 +574,38 @@ class Prospectacy {
         $this.removeClass('active');
       },
     );
+
+
+    $('.s-portfolio').find('.next-link').on('click', (event) => {
+      event.preventDefault();
+
+      for (let i = 0; i < 5; i += 1) {
+        const $el = $(`<div class="s-portfolio__col">
+          <div class="project-item">
+            <a href="#project-modal-1" data-modal class="project-item__title arrow-link">
+              Невыполнение договорных обязательств по строительным работам
+              <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей задолженности по договору
+              подряда.</p>
+            <div class="project-item__footer">
+              <span class="project-item__sticker">89,5 млн ₽</span>
+            </div>
+          </div>
+        </div>`);
+
+        $el.addClass('animated');
+        $el.addClass('fadeInUp');
+        $el.css({
+          'animation-delay': `${i * 200}ms`,
+        });
+
+        $('.s-portfolio__list').append($el);
+      }
+    });
   }
 
   initVideo() {

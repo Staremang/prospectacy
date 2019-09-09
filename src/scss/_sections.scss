@@ -163,238 +163,6 @@
 }
 
 
-.circle-button {
-  @extend %button-reset;
-  display: flex;
-  position: relative;
-  z-index: 1;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 16px;
-  line-height: 110%;
-  text-align: center;
-
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: all .3s ease-in-out;
-    border-radius: 50%;
-    background-color: $main-color;
-  }
-
-  &:hover {
-    &::before {
-      transform: scale(1.1);
-      background-color: $main-color-hover;
-    }
-  }
-
-  @include media-breakpoint-up(lg) {
-    width: 150px;
-    height: 150px;
-    font-size: 22px;
-    line-height: 120%;
-  }
-  @include media-breakpoint-up(xl) {
-    width: 160px;
-    height: 160px;
-    font-size: 24px;
-  }
-}
-
-.next-link {
-  display: inline-block;
-  position: relative;
-  padding: 5px 0;
-  color: $main-color;
-  font-family: $font-family-halvar;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: -0.02em;
-  line-height: 120%;
-
-  &:hover {
-    //border-bottom: 3px solid $main-color;
-    color: $main-color;
-    text-decoration: none;
-
-    &::before {
-      transform: scaleX(1);
-    }
-
-    &::after {
-      transform: translateX(15px);
-    }
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .3s ease;
-    background: currentColor;
-  }
-
-  &::after {
-    //content: url('../img/icon-arrow-right.svg');
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: calc(50% - 5px);
-    right: -30px;
-    width: 20px;
-    height: 10px;
-    //margin-left: 17px;
-    transition: all .3s ease-out;
-    background: url('../img/icon-arrow-right.svg') no-repeat center;
-    background-size: contain;
-  }
-
-  @include media-breakpoint-up(lg) {
-    font-size: 28px;
-    &::after {
-      top: calc(50% - 5px);
-      right: -56px;
-      width: 38px;
-      height: 17px;
-    }
-    &::before {
-      height: 3px;
-    }
-  }
-  @include media-breakpoint-up(xl) {
-    font-size: 34px;
-  }
-}
-
-.back-link {
-  display: inline-block;
-  position: relative;
-  padding: 2px 0 2px 25px;
-  color: $main-color;
-  font-family: $font-family-halvar;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: -0.02em;
-  line-height: 120%;
-
-  &:hover {
-    //border-bottom: 3px solid $main-color;
-    color: $main-color;
-    text-decoration: none;
-
-    &::after {
-      transform: scaleX(1);
-    }
-
-    &::before {
-      transform: translateX(-15px);
-    }
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    //width: 100%;
-    left: 25px;
-    height: 2px;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform .3s ease;
-    background: currentColor;
-  }
-
-  &::before {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: calc(50% - 4px);
-    left: 0;
-    width: 16px;
-    height: 8px;
-    transition: transform .3s ease-out;
-    background: url('../img/icon-arrow-left-small.svg') no-repeat center;
-    background-size: contain;
-  }
-
-  @include media-breakpoint-up(lg) {
-    padding: 5px 0 5px 50px;
-    font-size: 28px;
-    &::before {
-      top: calc(50% - 6px);
-      width: 38px;
-      height: 17px;
-      background: url('../img/icon-arrow-left.svg') no-repeat center;
-    }
-    &::after {
-      left: 50px;
-      height: 3px;
-    }
-  }
-
-  @include media-breakpoint-up(xl) {
-    font-size: 34px;
-  }
-}
-
-.arrow-link {
-  transition: color .3s ease;
-
-  &:hover {
-    color: $main-color-hover;
-    text-decoration: none;
-  }
-
-  &__icon {
-    display: inline-block;
-    width: 15px;
-    height: 7px;
-    margin-left: 3px;
-    transition: transform .3s ease;
-  }
-
-  @include media-breakpoint-up(md) {
-    &:hover {
-      .arrow-link__icon {
-        transform: translateX(26px);
-      }
-
-      .arrow-link__tail {
-        transform: scaleX(1);
-      }
-    }
-
-    &__icon {
-      display: inline-block;
-      width: 38px;
-      height: 17px;
-      margin-left: -24px;
-    }
-
-    &__tail {
-      transform: scaleX(0);
-      transform-origin: 90%;
-      transition: transform .3s ease;
-    }
-  }
-}
-
 /**
  * Главная
  */
@@ -1413,6 +1181,7 @@
   .portfolio-stats {
     //width: 538px;
     height: 177px;
+    margin-bottom: 25px;
   }
 
   @include media-breakpoint-up(lg) {
@@ -1445,11 +1214,18 @@
   }
 
   &__col-right {
+    .portfolio-stats {
+      display: none;
+    }
+
     @include media-breakpoint-up(md) {
       flex: 0 0 270px;
       max-width: 270px;
       margin-right: 50px;
       padding-top: 120px;
+      .portfolio-stats {
+        display: block;
+      }
     }
     @include media-breakpoint-up(lg) {
       flex: 0 0 538px;
@@ -1513,6 +1289,9 @@
       &:not([data-simplebar="init"]) {
         overflow: auto;
       }
+      .portfolio-stats {
+        display: none;
+      }
     }
 
     @include media-breakpoint-up(lg) {
@@ -1524,6 +1303,23 @@
     margin-bottom: 25px;
     @include media-breakpoint-up(lg) {
       margin-bottom: 67px;
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 140%;
+
+    > p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: 16px;
+    }
+    @include media-breakpoint-up(xl) {
+      font-size: 18px;
+      line-height: 150%;
     }
   }
 }
@@ -3273,9 +3069,9 @@
     flex-direction: column;
     justify-content: space-between;
     @include media-breakpoint-up(md) {
-      flex-direction: row;
       top: 32px;
       left: calc(50% + 126px);
+      flex-direction: row;
       width: 208px;
     }
     @include media-breakpoint-up(lg) {
@@ -4163,6 +3959,7 @@
 
   &__contacts {
     //margin-top: 375px;
+    padding-top: 25px;
     margin-bottom: 27px;
     @include media-breakpoint-up(lg) {
       display: flex;
@@ -4172,15 +3969,21 @@
       flex-direction: column;
       align-items: center;
       margin-top: 0;
+      padding-top: 0;
     }
   }
 
   &__button {
-    margin-top: -50px;
-    margin-left: auto;
+    position: absolute;
+    right: 0;
+    top: -50px;
+    //margin-top: -50px;
+    //margin-left: auto;
 
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(md) {
+      position: relative;
       margin: 0;
+      top: 0;
     }
   }
 
