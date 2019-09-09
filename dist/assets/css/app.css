@@ -5361,6 +5361,12 @@ html.noscroll {
       width: 1360px;
       height: 114px; } }
 
+.IIV::-webkit-media-controls-play-button,
+.IIV::-webkit-media-controls-start-playback-button {
+  opacity: 0;
+  pointer-events: none;
+  width: 5px; }
+
 .header {
   position: fixed;
   z-index: 1030;
