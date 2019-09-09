@@ -580,6 +580,17 @@ class Prospectacy {
       },
     );
 
+    $('[data-anchor]').on('click', (event) => {
+      const targetEl = document.querySelector(event.currentTarget.getAttribute('href'));
+      if (targetEl) {
+        event.preventDefault();
+        if (this.Header) {
+          this.Header.close();
+        }
+        this.scrollTo(targetEl);
+      }
+    });
+
 
     $('.s-portfolio').find('.next-link').on('click', (event) => {
       event.preventDefault();
@@ -611,6 +622,14 @@ class Prospectacy {
         $('.s-portfolio__list').append($el);
       }
     });
+  }
+
+  scrollTo(element, duration = 1000) {
+    const offsetTop = element.getBoundingClientRect().top + window.pageYOffset;
+
+    $('html, body').animate({
+      scrollTop: offsetTop - this.$header.getBoundingClientRect().height,
+    }, duration);
   }
 
   initVideo() {

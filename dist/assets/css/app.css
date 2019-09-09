@@ -6779,7 +6779,7 @@ video::-webkit-media-controls-start-playback-button {
         font-size: 18px; } }
 
 .portfolio-modal {
-  margin-bottom: 60px; }
+  padding-bottom: 60px; }
   .portfolio-modal .portfolio-stats {
     height: 177px;
     margin-bottom: 25px; }
@@ -8840,6 +8840,7 @@ video::-webkit-media-controls-start-playback-button {
       max-width: 1320px; } }
   @media (min-width: 1170px) {
     .company-modal__inner {
+      padding-left: 50%;
       margin-top: 10vh;
       margin-bottom: 10vh;
       padding-top: 0;

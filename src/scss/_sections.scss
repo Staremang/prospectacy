@@ -1178,7 +1178,7 @@
 }
 
 .portfolio-modal {
-  margin-bottom: 60px;
+  padding-bottom: 60px;
   .portfolio-stats {
     //width: 538px;
     height: 177px;
@@ -3601,6 +3601,7 @@
     @include media-breakpoint-up(lg) {
       //display: flex;
       //justify-content: space-between;
+      padding-left: 50%;
       margin-top: 10vh;
       margin-bottom: 10vh;
       padding-top: 0;
