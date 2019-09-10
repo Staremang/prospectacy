@@ -40,9 +40,10 @@ class Gallery {
 
     this.isHover = false;
     this.isReverse = false;
+    this.isDisabled = false;
 
-    this.index = null;
-    this.count = null;
+    this.index = 0;
+    this.count = 0;
 
     this.mouse = {
       x: window.innerWidth / 2,
@@ -90,9 +91,9 @@ class Gallery {
     this.compute();
     this.animate();
 
-    window.addEventListener('resize', () => {
-      this.compute();
-    });
+    // window.addEventListener('resize', () => {
+    //   this.compute();
+    // });
 
     // this.$carousel.on('resized.owl.carousel', (event) => {
     //   console.log('resized.owl.carousel');
@@ -125,28 +126,28 @@ class Gallery {
 
     this.$el.on('mouseenter.gallery', () => {
       this.isHover = true;
-      this.$cursor.css('opacity', '1');
+      // this.$cursor.css('opacity', '1');
       this.$el.css('cursor', 'none');
     });
 
     this.$el.on('mouseleave.gallery', () => {
       this.isHover = false;
-      this.$cursor.css('opacity', '0');
+      // this.$cursor.css('opacity', '0');
       this.$el.css('cursor', '');
     });
   }
 
   compute() {
-    this.hasSmoothScroll = 0;
+    // this.hasSmoothScroll = 0;
 
     // y.hasClass('has-smooth-scroll') && (this.hasSmoothScroll = !0);
 
     // this.clientWidth = this.el.clientWidth;
     // this.clientHeight = this.el.clientHeight;
 
-    const t = this.hasSmoothScroll ? window.scrollY : 0;
+    // const t = this.hasSmoothScroll ? window.scrollY : 0;
 
-    this.offsetTop = this.$el.offset().top + t;
+    this.offsetTop = this.$el.offset().top;
     this.offsetLeft = this.$el.offset().left;
   }
 
@@ -160,21 +161,21 @@ class Gallery {
       this.mouse.x = Y(this.mouse.x, this.realMouse.x, 0.2);
       this.mouse.y = Y(this.mouse.y, this.realMouse.y, 0.2);
 
-      if (
-        (this.index < this.count - 1)
-        && (this.realMouse.x >= window.innerWidth / 2 || this.index === 0)
-      ) {
+      if (this.realMouse.x >= window.innerWidth / 2) {
         this.isReverse = false;
         this.$cursor.removeClass('gallery__control_reverse');
+        this.isDisabled = this.index >= this.count - 1;
       } else {
         this.isReverse = true;
         this.$cursor.addClass('gallery__control_reverse');
+        this.isDisabled = this.index === 0;
       }
 
       this.$cursor.css({
         '-webkit-transform': `translate3d(${this.mouse.x}px, ${this.mouse.y}px, 0px)`,
         '-ms-transform': `translate3d(${this.mouse.x}px, ${this.mouse.y}px, 0px)`,
         transform: `translate3d(${this.mouse.x}px, ${this.mouse.y}px, 0px)`,
+        opacity: this.isDisabled ? '0.5' : '1',
       });
     } else {
       this.realMouse = {
@@ -189,6 +190,7 @@ class Gallery {
         '-webkit-transform': `translate3d(${this.mouse.x}px, ${this.mouse.y}px, 0px)`,
         '-ms-transform': `translate3d(${this.mouse.x}px, ${this.mouse.y}px, 0px)`,
         transform: `translate3d(${this.mouse.x}px, ${this.mouse.y}px, 0px)`,
+        opacity: 0,
       });
     }
 
@@ -735,6 +737,10 @@ class Prospectacy {
   }
 
   onResize = () => {
+    if (this.Gallery) {
+      this.Gallery.compute();
+    }
+
     const newBreakpoint = Prospectacy.breakpoint;
 
     if (this.lastBreakpoint !== newBreakpoint) {
@@ -784,6 +790,9 @@ class Prospectacy {
   };
 
   onScroll = () => {
+    if (this.Gallery) {
+      this.Gallery.compute();
+    }
     if (window.scrollY > this.headerBreakpoint) {
       this.$header.classList.add('header_has-bg');
     } else {
