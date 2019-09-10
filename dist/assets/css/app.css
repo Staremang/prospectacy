@@ -8181,7 +8181,10 @@ video::-webkit-media-controls-start-playback-button {
     -webkit-user-select: none;
        -moz-user-select: none;
         -ms-user-select: none;
-            user-select: none; }
+            user-select: none;
+    opacity: 0;
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease; }
     .gallery__control_reverse .gallery__counter {
       left: 88px; }
     .gallery__control_reverse .gallery__arrow {

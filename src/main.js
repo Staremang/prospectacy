@@ -41,6 +41,9 @@ class Gallery {
     this.isHover = false;
     this.isReverse = false;
 
+    this.index = null;
+    this.count = null;
+
     this.mouse = {
       x: window.innerWidth / 2,
       y: window.innerHeight / 2,
@@ -96,15 +99,18 @@ class Gallery {
     // });
 
     this.$carousel.on('changed.owl.carousel', (event) => {
-      if (event.item.index + 1 === event.item.count) {
-        this.isReverse = true;
-        this.$cursor.addClass('gallery__control_reverse');
-      }
+      // if (event.item.index + 1 === event.item.count) {
+      //   this.isReverse = true;
+      //   this.$cursor.addClass('gallery__control_reverse');
+      // }
+      //
+      // if (event.item.index === 0) {
+      //   this.isReverse = false;
+      //   this.$cursor.removeClass('gallery__control_reverse');
+      // }
 
-      if (event.item.index === 0) {
-        this.isReverse = false;
-        this.$cursor.removeClass('gallery__control_reverse');
-      }
+      this.index = event.item.index;
+      this.count = event.item.count;
 
       this.$counter.html(`${event.item.index + 1}/${event.item.count}`);
     });
@@ -119,11 +125,13 @@ class Gallery {
 
     this.$el.on('mouseenter.gallery', () => {
       this.isHover = true;
+      this.$cursor.css('opacity', '1');
       this.$el.css('cursor', 'none');
     });
 
     this.$el.on('mouseleave.gallery', () => {
       this.isHover = false;
+      this.$cursor.css('opacity', '0');
       this.$el.css('cursor', '');
     });
   }
@@ -151,6 +159,17 @@ class Gallery {
     if (this.isHover) {
       this.mouse.x = Y(this.mouse.x, this.realMouse.x, 0.2);
       this.mouse.y = Y(this.mouse.y, this.realMouse.y, 0.2);
+
+      if (
+        (this.index < this.count - 1)
+        && (this.realMouse.x >= window.innerWidth / 2 || this.index === 0)
+      ) {
+        this.isReverse = false;
+        this.$cursor.removeClass('gallery__control_reverse');
+      } else {
+        this.isReverse = true;
+        this.$cursor.addClass('gallery__control_reverse');
+      }
 
       this.$cursor.css({
         '-webkit-transform': `translate3d(${this.mouse.x}px, ${this.mouse.y}px, 0px)`,
