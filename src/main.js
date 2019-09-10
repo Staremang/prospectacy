@@ -1,3 +1,4 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import enableInlineVideo from 'iphone-inline-video';
 import Sticky from 'sticky-js';
 import AOS from 'aos';
@@ -398,7 +399,7 @@ class Map {
 
 class Modal {
   constructor() {
-    this.$openModal = null;
+    this.openModalEl = null;
 
 
     const button = document.createElement('button');
@@ -407,11 +408,16 @@ class Modal {
     button.innerHTML = '<svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">' +
       '<path fill-rule="evenodd" clip-rule="evenodd" d="M4.10383 7.68628L0.625017 3.99994L4.10383 0.313603L5.55839 1.68628L4.31869 2.99994L16 2.99994L16 4.99994L4.31869 4.99994L5.55839 6.3136L4.10383 7.68628Z" fill="currentColor"/>' +
       '</svg>';
-
-    this.$button = $(button);
-    this.$button.on('click', () => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
       this.close();
     });
+
+    // this.$button = $(button);
+    // this.$button.on('click', () => {
+    //   this.close();
+    // });
+    this.$button = $(button);
 
     this.init();
   }
@@ -423,7 +429,7 @@ class Modal {
       this.close()
         .then(() => {
           const targetSelector = event.currentTarget.dataset.src || event.currentTarget.getAttribute('href');
-          this.open($(targetSelector));
+          this.open(document.querySelector(targetSelector));
         });
     });
 
@@ -435,41 +441,60 @@ class Modal {
 
   close() {
     return new Promise((resolve) => {
-      if (!this.$openModal) {
+      if (!this.openModalEl) {
         resolve();
         return;
       }
 
-      document.body.style.overflow = '';
+      enableBodyScroll(this.openModalEl);
+      // document.body.style.overflow = '';
 
-      this.$openModal
-        .removeClass('active')
-        .css('pointer-events', 'none')
-        .off('scroll.modal');
+      this.openModalEl.classList.remove('active');
+      this.openModalEl.style.pointerEvents = 'none';
+      this.openModalEl.removeEventListener('scroll', this.onScroll);
+
+      // this.$openModal
+      //   .removeClass('active')
+      //   .css('pointer-events', 'none')
+      //   .off('scroll.modal');
 
       this.$button.removeClass('visible');
 
       setTimeout(() => {
         this.$button.detach();
-        this.$openModal.hide();
-        this.$openModal = null;
+        // this.$openModal.hide();
+        // this.$openModal = null;
+        this.openModalEl.style.display = 'none';
+        this.openModalEl = null;
         resolve();
       }, 1000);
     });
   }
 
-  open($modal) {
-    document.body.style.overflow = 'hidden';
+  open(modalEl) {
+    if (!modalEl) {
+      return;
+    }
+
+    this.openModalEl = modalEl;
+
+    disableBodyScroll(this.openModalEl);
+    // document.body.style.overflow = 'hidden';
     // $('.wrapper').addClass('slide-up');
 
-    this.$openModal = $modal
-      .addClass('active')
-      .css({
-        pointerEvents: '',
-        display: 'block',
-      });
+    this.openModalEl.classList.add('active');
+    this.openModalEl.style.pointerEvents = '';
+    this.openModalEl.style.display = 'block';
 
-    $modal.find('[data-anim-name]').each((i, item) => {
+    // this.$openModal = $modal
+    //   .addClass('active')
+    //   .css({
+    //     pointerEvents: '',
+    //     display: 'block',
+    //   });
+
+    // $modal.find('[data-anim-name]').each((i, item) => {
+    [].forEach.call(this.openModalEl.querySelectorAll('[data-anim-name]'), (item) => {
       const name = item.dataset.animName || 'fadeInUp';
       const delay = 500 + parseInt(item.dataset.animDelay, 10);
 
@@ -479,13 +504,14 @@ class Modal {
       item.classList.add(name);
     });
 
+    this.openModalEl.addEventListener('scroll', this.onScroll);
 
-    $modal.append(this.$button);
-    $modal.on('scroll.modal', this.onScroll);
+    $(this.openModalEl).append(this.$button);
+    // $(this.openModalEl).on('scroll.modal', this.onScroll);
   }
 
   onScroll = () => {
-    if (this.$openModal.scrollTop() > 100) {
+    if (this.openModalEl.scrollTop > 100) {
       this.$button.addClass('visible');
     } else {
       this.$button.removeClass('visible');
@@ -534,6 +560,7 @@ class Prospectacy {
 
     this.lastBreakpoint = null;
     this.headerBreakpoint = 0;
+    this.aboutBgInited = false;
 
     window.App = this;
   }
@@ -560,25 +587,6 @@ class Prospectacy {
     document.addEventListener('mousemove', this.onMove);
     document.addEventListener('scroll', this.onScroll);
 
-
-    const $aboutBg = $('.s-about__bg-image');
-    const $about = $('.s-about');
-
-    $('[data-bg-src]').hover(
-      (event) => {
-        const $this = $(event.currentTarget);
-        $($this.data('bg-src')).addClass('active');
-        // $aboutBg.addClass('active');
-        $this.addClass('active');
-        $about.addClass('active');
-      },
-      (event) => {
-        const $this = $(event.currentTarget);
-        $aboutBg.removeClass('active');
-        $about.removeClass('active');
-        $this.removeClass('active');
-      },
-    );
 
     $('[data-anchor]').on('click', (event) => {
       const targetEl = document.querySelector(event.currentTarget.getAttribute('href'));
@@ -673,6 +681,27 @@ class Prospectacy {
     }
   }
 
+  initAboutBg() {
+    const $aboutBg = $('.s-about__bg-image');
+    const $about = $('.s-about');
+
+    $('[data-bg-src]').hover(
+      (event) => {
+        const $this = $(event.currentTarget);
+        $($this.data('bg-src')).addClass('active');
+        // $aboutBg.addClass('active');
+        $this.addClass('active');
+        $about.addClass('active');
+      },
+      (event) => {
+        const $this = $(event.currentTarget);
+        $aboutBg.removeClass('active');
+        $about.removeClass('active');
+        $this.removeClass('active');
+      },
+    );
+  }
+
   static get breakpoint() {
     if (document.documentElement.clientWidth >= 1600) {
       return 'xl';
@@ -699,6 +728,7 @@ class Prospectacy {
         case 'md':
         case 'lg':
         case 'xl':
+          if (!this.aboutBgInited) this.initAboutBg();
           if (!this.Map.inited) this.Map.initCarousel();
           if (!this.aboutStickyParagraph) {
             this.aboutStickyParagraph = new Sticky('#js-about-sticky', {

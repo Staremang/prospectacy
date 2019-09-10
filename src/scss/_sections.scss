@@ -3928,6 +3928,8 @@
     overflow: hidden;
     border-bottom: 1px solid #eee;
     mix-blend-mode: darken;
+    background: #fff;
+
     @include media-breakpoint-up(lg) {
       position: fixed;
       top: 0;

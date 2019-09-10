@@ -671,6 +671,7 @@ html.noscroll {
   background-position: center;
   background-size: cover;
   animation-fill-mode: both;
+  -webkit-overflow-scrolling: touch;
 
   &_dark {
     background-color: rgba(#181818, 0.98);

@@ -5169,7 +5169,8 @@ html.noscroll {
   background-position: center;
   background-size: cover;
   -webkit-animation-fill-mode: both;
-          animation-fill-mode: both; }
+          animation-fill-mode: both;
+  -webkit-overflow-scrolling: touch; }
   .modal-page_dark {
     background-color: rgba(24, 24, 24, 0.98);
     color: #fff; }
@@ -9058,7 +9059,8 @@ video::-webkit-media-controls-start-playback-button {
     height: 326px;
     overflow: hidden;
     border-bottom: 1px solid #eee;
-    mix-blend-mode: darken; }
+    mix-blend-mode: darken;
+    background: #fff; }
     @media (min-width: 1170px) {
       .person-modal__photo {
         position: fixed;
