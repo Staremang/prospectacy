@@ -8947,6 +8947,8 @@ video::-webkit-media-controls-start-playback-button {
   padding-top: 0;
   background-color: rgba(24, 24, 24, 0.98);
   color: #fff; }
+  .feedback-modal .back-button {
+    display: none; }
   .feedback-modal__button {
     position: fixed;
     top: 25px;

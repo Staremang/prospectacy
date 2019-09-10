@@ -3790,6 +3790,10 @@
   background-color: rgba(#181818, 0.98);
   color: #fff;
 
+  .back-button {
+    display: none;
+  }
+
   &__button {
     @extend %button-reset;
     position: fixed;
