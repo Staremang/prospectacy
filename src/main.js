@@ -285,12 +285,22 @@ class Map {
     this.$buttonRight.on('click', this.next);
     this.$buttonLeft.on('click', this.prev);
 
+    this.mapEl = document.getElementById('map');
     // Создание карты.
-    this.Map = new ymaps.Map('map', {
+    this.Map = new ymaps.Map(this.mapEl, {
       center: [55.76, 37.64],
       zoom: 16,
       controls: ['zoomControl'],
     });
+    // mousewheel DOMMouseScroll
+    // console.log(ymaps.domEvent.manager.group(this.mapEl));
+    //
+    ymaps.domEvent.manager.add(this.mapEl, 'mousewheel', (event) => {
+      if (event.get('altKey') || event.get('ctrlKey') || event.get('metaKey') || event.get('shiftKey')) {
+        return;
+      }
+      event.callMethod('stopPropagation');
+    }, null, true);
 
     this.addressList.forEach((item) => {
       const myPlacemark = new ymaps.Placemark(item.coords, {
@@ -831,6 +841,8 @@ class Prospectacy {
 }
 
 
+let per = 0;
+
 document.addEventListener('DOMContentLoaded', () => {
   // startAnimation();
   // return;
@@ -839,26 +851,32 @@ document.addEventListener('DOMContentLoaded', () => {
   App.init();
 
 
-  Prospectacy.setLoadPercentage(35);
+  Prospectacy.setLoadPercentage(per += 15);
+
+  const timer = setInterval(() => {
+    if (per < 100) {
+      Prospectacy.setLoadPercentage(per += 15);
+    } else {
+      clearInterval(timer);
+
+      Prospectacy.setLoadPercentage(100);
+
+      setTimeout(() => {
+        Prospectacy.startAnimation();
+      }, 1000);
+    }
+  }, 1000);
 });
 
 document.addEventListener('readystatechange', () => {
   if (document.readyState === 'interactive') {
-    Prospectacy.setLoadPercentage(20);
+    Prospectacy.setLoadPercentage(per += 20);
   }
   if (document.readyState === 'complete') {
-    Prospectacy.setLoadPercentage(60);
+    Prospectacy.setLoadPercentage(per += 20);
   }
 });
 
 window.addEventListener('load', () => {
-  Prospectacy.setLoadPercentage(80);
-
-  setTimeout(() => {
-    Prospectacy.setLoadPercentage(100);
-  }, 700);
-
-  setTimeout(() => {
-    Prospectacy.startAnimation();
-  }, 1500);
+  Prospectacy.setLoadPercentage(per = 100);
 });
