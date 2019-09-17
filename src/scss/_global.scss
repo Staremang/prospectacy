@@ -412,6 +412,11 @@ html.noscroll {
   line-height: 110%;
   text-align: center;
 
+  > span {
+    display: inline-block;
+    width: 100%;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -618,7 +623,7 @@ html.noscroll {
     transition: transform .3s ease;
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     &:hover {
       .arrow-link__icon {
         transform: translateX(26px);

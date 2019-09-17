@@ -7,6 +7,7 @@ import Simplebar from 'simplebar';
 import 'owl.carousel';
 // import ymaps from 'ymaps';
 
+import Platform from './js/Platform';
 import './js/Input';
 // import './js/Modal';
 
@@ -260,8 +261,9 @@ class Map {
     this.$slider.owlCarousel({
       mouseDrag: false,
       loop: this.loop,
-      nav: false,
+      autoWidth: true,
       items: 2,
+      nav: false,
     });
   }
 
@@ -279,7 +281,15 @@ class Map {
     // });
 
     $('.s-contacts__address').on('click', (event) => {
-      this.setId(parseInt(event.currentTarget.dataset.point, 10));
+      const id = parseInt(event.currentTarget.dataset.point, 10);
+
+      if (document.documentElement.clientWidth >= 768) {
+        if (id !== this.currentId) {
+          this.next();
+        }
+      } else {
+        this.setId(id);
+      }
     });
 
     this.$buttonRight.on('click', this.next);
@@ -594,6 +604,7 @@ class Prospectacy {
     this.aboutBgInited = false;
 
     window.App = this;
+    window.Platform = Platform;
   }
 
   init() {
@@ -609,6 +620,10 @@ class Prospectacy {
 
     if (this.$header) {
       this.Header = new Header(this.$header);
+    }
+
+    if (!Platform.has.touch) {
+      this.initAboutBg();
     }
 
 
@@ -763,7 +778,6 @@ class Prospectacy {
         case 'md':
         case 'lg':
         case 'xl':
-          if (!this.aboutBgInited) this.initAboutBg();
           if (!this.Map.inited) this.Map.initCarousel();
           if (!this.aboutStickyParagraph) {
             this.aboutStickyParagraph = new Sticky('#js-about-sticky', {
