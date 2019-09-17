@@ -78,8 +78,11 @@ export default class Particles {
   }
 
   imageOnLoad = (e) => {
+    const ratio = e.target.width / this.canvas.height; // Пропорции изображения
+
+    // Ограничиваем высоту изображения половиной высоты элемента
     const height = this.canvas.height * 0.5;
-    const width = (height / e.target.height) * e.target.width;
+    const width = height * ratio;
 
     const rect = new Proton.Rectangle(
       (this.canvas.width - width) / 2,
@@ -87,7 +90,8 @@ export default class Particles {
       width,
       height,
     );
-    this.context.drawImage(e.target, rect.x, rect.y, width, height);
+
+    this.context.drawImage(e.target, rect.x, rect.y, rect.width, rect.height);
     this.createProton(rect);
 
     this.tick();
