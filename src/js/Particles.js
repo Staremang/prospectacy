@@ -78,7 +78,7 @@ export default class Particles {
   }
 
   imageOnLoad = (e) => {
-    const ratio = e.target.width / this.canvas.height; // Пропорции изображения
+    const ratio = e.target.width / e.target.height; // Пропорции изображения
 
     // Ограничиваем высоту изображения половиной высоты элемента
     const height = this.canvas.height * 0.5;
