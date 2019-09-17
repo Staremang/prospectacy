@@ -628,7 +628,7 @@
   }
 }
 
-.video-bird {
+#bird {
   //opacity: 0;
   position: absolute;
   top: 68px;
@@ -652,6 +652,7 @@
     width: 1920px;
     height: 980px;
     transform: translate(-569px, -50%);
+    //transform: translate(-569px, -50%) perspective(1000px) rotateY(-30deg) scale(1.5)
   }
 }
 
@@ -811,7 +812,7 @@
       color: $main-color;
     }
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
       > mark {
         transition: border-bottom .3s ease;
         //transition: border-bottom .3s ease, color .5s ease;
@@ -1179,6 +1180,7 @@
 
 .portfolio-modal {
   padding-bottom: 60px;
+
   .portfolio-stats {
     //width: 538px;
     height: 177px;
@@ -1792,12 +1794,12 @@
     letter-spacing: -0.02em;
     line-height: 22px;
     //@include media-breakpoint-down(xs) {
-      //.arrow-link__icon {
-      //  margin-left: -9px;
-      //}
-      //.arrow-link__tail {
-      //  opacity: 0;
-      //}
+    //.arrow-link__icon {
+    //  margin-left: -9px;
+    //}
+    //.arrow-link__tail {
+    //  opacity: 0;
+    //}
     //}
     @include media-breakpoint-up(md) {
       margin-bottom: 9px;
@@ -2196,25 +2198,25 @@
   }
 
   &__note {
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 17px;
-    letter-spacing: -0.02em;
-    color: #111111;
-    position: relative;
     display: inline-block;
-    transform: translateY(50%);
+    position: relative;
     margin-left: 10px;
+    transform: translateY(50%);
+    color: #111;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+    line-height: 17px;
 
     &::before {
       content: '';
       position: absolute;
+      top: -6px;
+      left: -8px;
       width: 1px;
       height: 25px;
-      left: -8px;
-      top: -6px;
-      background: currentColor;
       transform: rotate(45deg);
+      background: currentColor;
     }
 
     @include media-breakpoint-up(md) {
@@ -2226,9 +2228,9 @@
       line-height: 26px;
 
       &::before {
-        height: 57px;
         top: -20px;
         left: -10px;
+        height: 57px;
       }
     }
     @include media-breakpoint-up(lg) {
@@ -2918,9 +2920,9 @@
     z-index: 10;
     top: 0;
     left: 0;
-    user-select: none;
-    opacity: 0;
     transition: opacity .3s ease;
+    opacity: 0;
+    user-select: none;
 
     &_reverse {
       .gallery__counter {
@@ -3091,6 +3093,7 @@
 
     &:not(.active) {
       cursor: pointer;
+
       > .contacts-address {
         opacity: 0.6;
         pointer-events: none;
@@ -3661,20 +3664,20 @@
     //padding-bottom: 90px;
     //height: 100%;
     //overflow: auto;
+    margin-bottom: 90px;
     padding-top: 25px;
     font-size: 14px;
     line-height: 140%;
-    margin-bottom: 90px;
     @include make-container();
     @include make-container-max-widths();
 
     @include media-breakpoint-up(lg) {
       //display: flex;
       //justify-content: space-between;
-      padding-left: 50%;
       margin-top: 10vh;
       margin-bottom: 10vh;
       padding-top: 0;
+      padding-left: 50%;
       font-size: 18px;
     }
     @include media-breakpoint-up(xl) {
@@ -3999,8 +4002,8 @@
     height: 326px;
     overflow: hidden;
     border-bottom: 1px solid #eee;
-    mix-blend-mode: darken;
     background: #fff;
+    mix-blend-mode: darken;
 
     @include media-breakpoint-up(lg) {
       position: fixed;
@@ -4044,8 +4047,8 @@
 
   &__contacts {
     //margin-top: 375px;
-    padding-top: 25px;
     margin-bottom: 27px;
+    padding-top: 25px;
     @include media-breakpoint-up(lg) {
       display: flex;
       position: fixed;
@@ -4060,15 +4063,15 @@
 
   &__button {
     position: absolute;
-    right: 0;
     top: -50px;
+    right: 0;
     //margin-top: -50px;
     //margin-left: auto;
 
     @include media-breakpoint-up(lg) {
       position: relative;
-      margin: 0;
       top: 0;
+      margin: 0;
     }
   }
 

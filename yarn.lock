@@ -5730,6 +5730,11 @@ promise-inflight@^1.0.1:
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
   integrity sha1-mEcocL8igTL8vdhoEputEsPAKeM=
 
+proton-js@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/proton-js/-/proton-js-3.1.2.tgz#dd78740ee9584b951da9b4feeb38b43f063e85b4"
+  integrity sha512-080ghT1uT9ntPUFo3upt4x2rHIY5FAaluzYgcHikz6dno97CgLSvJbfGpvap+4jCT6yxl4itXEr/9TTKZvA7hA==
+
 proxy-addr@~2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-2.0.5.tgz#34cbd64a2d81f4b1fd21e76f9f06c8a45299ee34"

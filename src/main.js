@@ -8,6 +8,7 @@ import 'owl.carousel';
 // import ymaps from 'ymaps';
 
 import Platform from './js/Platform';
+import Particles from './js/Particles';
 import './js/Input';
 // import './js/Modal';
 
@@ -633,6 +634,8 @@ class Prospectacy {
     document.addEventListener('mousemove', this.onMove);
     document.addEventListener('scroll', this.onScroll);
 
+    new Particles(document.getElementById('bird'), 'images/bird.png');
+
 
     $('[data-anchor]').on('click', (event) => {
       const targetEl = document.querySelector(event.currentTarget.getAttribute('href'));
@@ -687,18 +690,18 @@ class Prospectacy {
   }
 
   initVideo() {
-    this.$videoBird = document.getElementById('hero-video');
-    if (this.$videoBird) {
-      enableInlineVideo(this.$videoBird, { iPad: true });
-
-      // this.$videoBird.addEventListener('canplaythrough', () => {
-      //   this.$videoBird.play();
-      //   this.$videoBird.classList.add('animated');
-      //   this.$videoBird.classList.add('fadeIn');
-      // });
-      //
-      // this.$videoBird.load();
-    }
+    // this.$videoBird = document.getElementById('hero-video');
+    // if (this.$videoBird) {
+    //   enableInlineVideo(this.$videoBird, { iPad: true });
+    //
+    //   // this.$videoBird.addEventListener('canplaythrough', () => {
+    //   //   this.$videoBird.play();
+    //   //   this.$videoBird.classList.add('animated');
+    //   //   this.$videoBird.classList.add('fadeIn');
+    //   // });
+    //   //
+    //   // this.$videoBird.load();
+    // }
 
     this.$videoScales = document.getElementById('video-scales');
     if (this.$videoScales) {
