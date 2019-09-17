@@ -78,12 +78,16 @@ export default class Particles {
   }
 
   imageOnLoad = (e) => {
+    const height = this.canvas.height * 0.5;
+    const width = (height / e.target.height) * e.target.width;
+
     const rect = new Proton.Rectangle(
-      (this.canvas.width - e.target.width) / 2,
-      (this.canvas.height - e.target.height) / 2,
-      e.target.width, e.target.height,
+      (this.canvas.width - width) / 2,
+      (this.canvas.height - height) / 2,
+      width,
+      height,
     );
-    this.context.drawImage(e.target, rect.x, rect.y);
+    this.context.drawImage(e.target, rect.x, rect.y, width, height);
     this.createProton(rect);
 
     this.tick();
