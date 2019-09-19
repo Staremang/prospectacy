@@ -4886,7 +4886,6 @@ html.noscroll {
             justify-content: center;
     margin-bottom: 0;
     padding: 19px 10px;
-    border: 2px dashed currentColor;
     border-radius: 10px;
     letter-spacing: -0.01em;
     line-height: 1;
@@ -4904,6 +4903,12 @@ html.noscroll {
     height: 18px;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%); }
+  .custom-file__border {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0; }
   .custom-file__title {
     margin-bottom: 6px;
     font-size: 16px;
@@ -5847,7 +5852,6 @@ video::-webkit-media-controls-start-playback-button {
 .wrapper {
   position: relative;
   z-index: 4;
-  overflow: hidden;
   -webkit-transition: opacity .5s, -webkit-transform .5s ease-out;
   transition: opacity .5s, -webkit-transform .5s ease-out;
   transition: transform .5s ease-out, opacity .5s;
@@ -6347,7 +6351,6 @@ video::-webkit-media-controls-start-playback-button {
   position: relative;
   padding-top: 35px;
   padding-bottom: 67px;
-  overflow: hidden;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
   color: #111;
@@ -6463,10 +6466,14 @@ video::-webkit-media-controls-start-playback-button {
     margin-bottom: 50px; }
     @media (min-width: 768px) {
       .s-about__sticky-text {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 100px;
         max-width: 270px;
         margin-bottom: 0; } }
     @media (min-width: 1170px) {
       .s-about__sticky-text {
+        top: 140px;
         max-width: 420px; } }
     @media (min-width: 1600px) {
       .s-about__sticky-text {
@@ -7840,11 +7847,11 @@ video::-webkit-media-controls-start-playback-button {
             flex: 0 0 auto;
     margin-bottom: 25px; }
     .s-friendship__col:nth-of-type(1) .s-friendship__image {
-      background-image: url(../img/friendship-photo-1-mobile.6ff10805.jpg); }
+      background-image: url(../img/friendship-photo-1-mobile.0ebb27fb.jpg); }
     .s-friendship__col:nth-of-type(2) .s-friendship__image {
-      background-image: url(../img/friendship-photo-2-mobile.72276aee.jpg); }
+      background-image: url(../img/friendship-photo-2-mobile.c0e9221f.jpg); }
     .s-friendship__col:nth-of-type(3) .s-friendship__image {
-      background-image: url(../img/friendship-photo-3-mobile.583ba325.jpg); }
+      background-image: url(../img/friendship-photo-3-mobile.ce812865.jpg); }
     @media (min-width: 768px) {
       .s-friendship__col {
         margin-right: 16px;
@@ -7855,21 +7862,22 @@ video::-webkit-media-controls-start-playback-button {
             right: 0;
             left: auto;
             width: 302px;
-            height: 196px; }
+            height: 196px;
+            background-image: url(../img/friendship-photo-1.d49e0df7.jpg); }
         .s-friendship__col:nth-of-type(2) {
           width: 205px;
           padding-top: 424px; }
           .s-friendship__col:nth-of-type(2) .s-friendship__image {
             width: 205px;
             height: 354px;
-            background-image: url(../img/friendship-photo-3.fe3ffccc.jpg); }
+            background-image: url(../img/friendship-photo-2.18ea7756.jpg); }
         .s-friendship__col:nth-of-type(3) {
           width: 181px;
           padding-top: 424px; }
           .s-friendship__col:nth-of-type(3) .s-friendship__image {
             width: 228px;
             height: 300px;
-            background-image: url(../img/friendship-photo-2.cfc5dec5.jpg); } }
+            background-image: url(../img/friendship-photo-3.64567dbf.jpg); } }
     @media (min-width: 1170px) {
       .s-friendship__col {
         margin-right: 28px; }
@@ -7879,8 +7887,7 @@ video::-webkit-media-controls-start-playback-button {
             max-width: 296px; }
           .s-friendship__col:nth-of-type(1) .s-friendship__image {
             width: 503px;
-            height: 327px;
-            background-image: url(../img/friendship-photo-1.37b2d272.jpg); }
+            height: 327px; }
         .s-friendship__col:nth-of-type(2) {
           width: 340px;
           padding-top: 667px; }
@@ -7888,8 +7895,7 @@ video::-webkit-media-controls-start-playback-button {
             max-width: 279px; }
           .s-friendship__col:nth-of-type(2) .s-friendship__image {
             width: 340px;
-            height: 589px;
-            background-image: url(../img/friendship-photo-3.fe3ffccc.jpg); }
+            height: 589px; }
         .s-friendship__col:nth-of-type(3) {
           width: 296px;
           padding-top: 667px; }
@@ -7897,8 +7903,7 @@ video::-webkit-media-controls-start-playback-button {
             max-width: 296px; }
           .s-friendship__col:nth-of-type(3) .s-friendship__image {
             width: 380px;
-            height: 500px;
-            background-image: url(../img/friendship-photo-2.cfc5dec5.jpg); } }
+            height: 500px; } }
     @media (min-width: 1600px) {
       .s-friendship__col {
         position: static;
@@ -7920,8 +7925,7 @@ video::-webkit-media-controls-start-playback-button {
             top: 0;
             left: 350px;
             width: 410px;
-            height: 647px;
-            background-image: url(../img/friendship-photo-2.cfc5dec5.jpg); }
+            height: 647px; }
           .s-friendship__col:nth-of-type(2) .s-friendship__block {
             position: absolute;
             top: 729px;
@@ -7938,8 +7942,7 @@ video::-webkit-media-controls-start-playback-button {
             top: 572px;
             left: -110px;
             width: 410px;
-            height: 577px;
-            background-image: url(../img/friendship-photo-3.fe3ffccc.jpg); } }
+            height: 577px; } }
   .s-friendship__image {
     display: block;
     width: 320px;
@@ -8274,7 +8277,8 @@ video::-webkit-media-controls-start-playback-button {
     color: #fff; }
 
 .s-contacts {
-  padding-top: 30px; }
+  padding-top: 30px;
+  overflow: hidden; }
   @media (min-width: 768px) {
     .s-contacts {
       padding-top: 80px;
@@ -8864,7 +8868,7 @@ video::-webkit-media-controls-start-playback-button {
 
 @media (min-width: 1170px) {
   .company-modal {
-    background: #000 url(../img/history-modal-bg.8b71d0b4.jpg) center no-repeat;
+    background: #000 url(../img/history-modal-bg.60475f80.jpg) center no-repeat;
     background-size: cover;
     color: #fff; } }
 
@@ -8952,7 +8956,7 @@ video::-webkit-media-controls-start-playback-button {
   margin-bottom: 30px;
   margin-left: -25px;
   padding: 30px 25px 39px;
-  background: url(../img/history-modal-bg.8b71d0b4.jpg) center no-repeat;
+  background: url(../img/history-modal-bg.60475f80.jpg) center no-repeat;
   background-size: cover;
   color: #fff; }
   @media (min-width: 1170px) {
@@ -9315,6 +9319,32 @@ video::-webkit-media-controls-start-playback-button {
       left: calc(50% - 1029px);
       width: 1019px;
       height: 1528px; } }
+
+.s-group-photo {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  will-change: transform; }
+  @media (min-width: 768px) {
+    .s-group-photo {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; } }
+  .s-group-photo__img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover; }
 
 .modal .fancybox-close-small, .section_color .section__overlay {
   background-color: var(--theme-color);

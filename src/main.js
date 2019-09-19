@@ -1,6 +1,6 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import enableInlineVideo from 'iphone-inline-video';
-import Sticky from 'sticky-js';
+// import Sticky from 'sticky-js';
 import AOS from 'aos';
 import $ from 'jquery';
 import Simplebar from 'simplebar';
@@ -25,6 +25,19 @@ AOS.init({
   // anchorPlacement: 'top-center',
 });
 
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  } else {
+    var error = new Error(response.statusText);
+    error.response = response;
+    throw error;
+  }
+}
+
+function parseJSON(response) {
+  return response.json();
+}
 
 /**
  * @return {number}
@@ -67,6 +80,7 @@ class Gallery {
       this.$carousel.addClass('owl-carousel owl-theme');
       this.$carousel.owlCarousel({
         margin: 30,
+        lazyLoad: true,
         mouseDrag: false,
         loop: false,
         dots: false,
@@ -612,6 +626,7 @@ class Prospectacy {
     this.$header = document.getElementById('header');
     this.$heroSection = document.getElementById('hero-section');
     this.$heroSectionBenefits = document.getElementById('hero-benefits');
+    this.$groupPhoto = document.getElementById('group-photo');
 
     this.initVideo();
 
@@ -634,7 +649,41 @@ class Prospectacy {
     document.addEventListener('mousemove', this.onMove);
     document.addEventListener('scroll', this.onScroll);
 
-    new Particles(document.getElementById('bird'), 'images/bird.png');
+    // new Particles(document.getElementById('bird'), 'images/bird.png');
+
+    $('form').on('submit', (event) => {
+      event.preventDefault();
+
+      const form = event.currentTarget;
+      const formData = new FormData(form);
+
+      const button = form.querySelector('button[type="submit"]');
+      const file = form.querySelector('input[type="file"]');
+      if (file) {
+        formData.append('file', file.files[0]);
+      }
+
+      form.classList.add('loading');
+
+      $.ajax({
+        url: form.action,
+        data: formData,
+        processData: false,
+        contentType: false,
+        type: form.method,
+      }).done(() => {
+        button.classList.remove('btn-blue');
+        button.classList.add('btn-green');
+        button.innerHTML = `<svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0606 3.06077L9.99999 16.1214L0.939331 7.06077L3.06065 4.93945L9.99999 11.8788L20.9393 0.939453L23.0606 3.06077Z" fill="white"/>
+              </svg> Заявка отправлена`;
+
+        form.classList.add('success');
+      }).fail(() => {
+        alert('Ошибка');
+      });
+
+    });
 
 
     $('[data-anchor]').on('click', (event) => {
@@ -769,12 +818,13 @@ class Prospectacy {
       this.Gallery.compute();
     }
 
+
     const newBreakpoint = Prospectacy.breakpoint;
 
     if (this.lastBreakpoint !== newBreakpoint) {
       switch (newBreakpoint) {
         case 'xs':
-          if (this.aboutStickyParagraph) this.aboutStickyParagraph.destroy();
+          // if (this.aboutStickyParagraph) this.aboutStickyParagraph.destroy();
           if (this.portfolioSimplebar) this.portfolioSimplebar.unMount();
           this.Map.destroyCarousel();
           break;
@@ -782,12 +832,12 @@ class Prospectacy {
         case 'lg':
         case 'xl':
           if (!this.Map.inited) this.Map.initCarousel();
-          if (!this.aboutStickyParagraph) {
-            this.aboutStickyParagraph = new Sticky('#js-about-sticky', {
-              marginTop: 150,
-              stickyClass: 'is-sticky',
-            });
-          }
+          // if (!this.aboutStickyParagraph) {
+          //   this.aboutStickyParagraph = new Sticky('#js-about-sticky', {
+          //     marginTop: 150,
+          //     stickyClass: 'is-sticky',
+          //   });
+          // }
           if (!this.portfolioSimplebar) {
             this.portfolioSimplebar = new Simplebar(document.querySelector('.portfolio-modal__wrapper'), {
               autoHide: false,
@@ -817,10 +867,20 @@ class Prospectacy {
   };
 
   onScroll = () => {
+    if (this.$groupPhoto) {
+      if (this.$groupPhoto.offsetTop <= window.pageYOffset) {
+        const offset = window.pageYOffset - this.$groupPhoto.offsetTop;
+
+        this.$groupPhoto.style.transform = `scale(${Math.max(1 - offset / document.documentElement.clientHeight, 0.5)})`;
+      } else {
+        this.$groupPhoto.style.transform = `scale(1)`;
+      }
+    }
+
     if (this.Gallery) {
       this.Gallery.compute();
     }
-    if (window.scrollY > this.headerBreakpoint) {
+    if (window.pageYOffset > this.headerBreakpoint) {
       this.$header.classList.add('header_has-bg');
     } else {
       this.$header.classList.remove('header_has-bg');
