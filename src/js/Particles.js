@@ -1,5 +1,5 @@
-// import Proton from 'proton-js';
-import Proton from 'proton-js/src/index';
+import Proton from 'proton-js';
+// import Proton from 'proton-js/src/index';
 
 
 function customScaleBehaviour() {
@@ -81,7 +81,7 @@ export default class Particles {
     const ratio = e.target.width / e.target.height; // Пропорции изображения
 
     // Ограничиваем высоту изображения половиной высоты элемента
-    const height = this.canvas.height * 0.5;
+    const height = this.canvas.height * 0.7;
     const width = height * ratio;
 
     const rect = new Proton.Rectangle(

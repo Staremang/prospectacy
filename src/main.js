@@ -1,4 +1,5 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import Scrollbar from 'smooth-scrollbar';
 import enableInlineVideo from 'iphone-inline-video';
 // import Sticky from 'sticky-js';
 import AOS from 'aos';
@@ -80,7 +81,7 @@ class Gallery {
       this.$carousel.addClass('owl-carousel owl-theme');
       this.$carousel.owlCarousel({
         margin: 30,
-        lazyLoad: true,
+        // lazyLoad: true,
         mouseDrag: false,
         loop: false,
         dots: false,
@@ -623,6 +624,15 @@ class Prospectacy {
   }
 
   init() {
+
+
+    // Scrollbar.init(document.querySelector('#main-scrollbar'), {
+    //   damping: 0.1,
+    //   // plugin: {
+    //   //   filterEvent: 1,
+    //   // },
+    // });
+
     this.$header = document.getElementById('header');
     this.$heroSection = document.getElementById('hero-section');
     this.$heroSectionBenefits = document.getElementById('hero-benefits');
@@ -649,7 +659,7 @@ class Prospectacy {
     document.addEventListener('mousemove', this.onMove);
     document.addEventListener('scroll', this.onScroll);
 
-    // new Particles(document.getElementById('bird'), 'images/bird.png');
+    new Particles(document.getElementById('bird'), 'images/bird.png');
 
     $('form').on('submit', (event) => {
       event.preventDefault();
@@ -872,7 +882,7 @@ class Prospectacy {
         const p = (this.$groupPhoto.offsetTop - window.pageYOffset) / (document.documentElement.clientHeight);
         console.log(p);
 
-        this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 -  p, 0.5), 1)})`;
+        this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - p, 0.5), 1)})`;
       } else {
         this.$groupPhoto.style.transform = `scale(0.5)`;
       }

@@ -36,7 +36,7 @@ module.exports = (env, args) => {
         // },
         {
           test: /\.m?jsx?$/,
-          // exclude: /node_modules/,
+          exclude: /node_modules/,
           use: [
             { loader: 'babel-loader', options: { cacheDirectory: true } },
           ],
