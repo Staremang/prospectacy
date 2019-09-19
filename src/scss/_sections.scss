@@ -4255,16 +4255,16 @@
 
 .s-group-photo {
   display: none;
-  align-items: center;
-
-  justify-content: center;
-  height: 100vh;
+  //align-items: center;
   margin: 0;
+
+  //justify-content: center;
   overflow: hidden;
-  transform-origin: bottom right;
-  transform-style: preserve-3d;
+  transform: scale(0.5);
+  transform-origin: top right;
+  transform-style: preserve-/3d;
   will-change: transform;
-  
+
   @include media-breakpoint-up(md) {
     display: flex;
   }
@@ -4272,6 +4272,6 @@
 
   &__img {
     width: 100%;
-    object-fit: cover;
+    //object-fit: cover;
   }
 }

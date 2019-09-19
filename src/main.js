@@ -868,12 +868,13 @@ class Prospectacy {
 
   onScroll = () => {
     if (this.$groupPhoto) {
-      if (this.$groupPhoto.offsetTop <= window.pageYOffset) {
-        const offset = window.pageYOffset - this.$groupPhoto.offsetTop;
+      if ((this.$groupPhoto.offsetTop - document.documentElement.clientHeight / 2) <= window.pageYOffset) {
+        const p = (this.$groupPhoto.offsetTop - window.pageYOffset) / (document.documentElement.clientHeight);
+        console.log(p);
 
-        this.$groupPhoto.style.transform = `scale(${Math.max(1 - offset / document.documentElement.clientHeight, 0.5)})`;
+        this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 -  p, 0.5), 1)})`;
       } else {
-        this.$groupPhoto.style.transform = `scale(1)`;
+        this.$groupPhoto.style.transform = `scale(0.5)`;
       }
     }
 

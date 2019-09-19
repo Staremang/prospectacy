@@ -9322,19 +9322,14 @@ video::-webkit-media-controls-start-playback-button {
 
 .s-group-photo {
   display: none;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 100vh;
   margin: 0;
   overflow: hidden;
-  -webkit-transform-origin: bottom right;
-          transform-origin: bottom right;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+  -webkit-transform-style: preserve-/3d;
+          transform-style: preserve-/3d;
   will-change: transform; }
   @media (min-width: 768px) {
     .s-group-photo {
@@ -9342,9 +9337,7 @@ video::-webkit-media-controls-start-playback-button {
       display: -ms-flexbox;
       display: flex; } }
   .s-group-photo__img {
-    width: 100%;
-    -o-object-fit: cover;
-       object-fit: cover; }
+    width: 100%; }
 
 .modal .fancybox-close-small, .section_color .section__overlay {
   background-color: var(--theme-color);
