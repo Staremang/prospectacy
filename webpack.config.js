@@ -211,6 +211,15 @@ module.exports = (env, args) => {
           alwaysWriteToDisk: true,
         },
       ),
+      new HtmlWebpackPlugin(
+        {
+          filename: 'privacy.html',
+          template: path.resolve(__dirname, 'public/privacy.html'),
+          chunks: [],
+          minify: false,
+          alwaysWriteToDisk: true,
+        },
+      ),
 
       new HtmlWebpackHarddiskPlugin(),
       // new ScriptExtHtmlWebpackPlugin(

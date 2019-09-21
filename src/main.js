@@ -178,7 +178,7 @@ class Gallery {
       this.mouse.x = Y(this.mouse.x, this.realMouse.x, 0.2);
       this.mouse.y = Y(this.mouse.y, this.realMouse.y, 0.2);
 
-      if (this.realMouse.x >= window.innerWidth / 2) {
+      if (this.realMouse.x >= document.documentElement.clientWidth / 2) {
         this.isReverse = false;
         this.$cursor.removeClass('gallery__control_reverse');
         this.isDisabled = this.index >= this.count - 1;
@@ -619,6 +619,9 @@ class Prospectacy {
     this.headerBreakpoint = 0;
     this.aboutBgInited = false;
 
+    this.groupPhotoTop = 0;
+    this.groupPhotoAnimOffset = 0;
+
     window.App = this;
     window.Platform = Platform;
   }
@@ -639,6 +642,7 @@ class Prospectacy {
     this.$groupPhoto = document.getElementById('group-photo');
 
     this.initVideo();
+    // this.animate();
 
     this.Gallery = new Gallery();
     this.Map = new Map();
@@ -659,7 +663,7 @@ class Prospectacy {
     document.addEventListener('mousemove', this.onMove);
     document.addEventListener('scroll', this.onScroll);
 
-    new Particles(document.getElementById('bird'), 'images/bird.png');
+    // new Particles(document.getElementById('bird'), 'images/bird.png');
 
     $('form').on('submit', (event) => {
       event.preventDefault();
@@ -877,16 +881,21 @@ class Prospectacy {
   };
 
   onScroll = () => {
+    // this.groupPhotoAnimOffset = Math.abs(this.$groupPhoto.offsetTop - window.pageYOffset + document.documentElement.clientHeight / 2);
+    // this.groupPhotoTop = Math.round(100 * (this.$groupPhoto.getBoundingClientRect().top - document.documentElement.clientHeight / 2 * -1)) / 100;
+    // console.log(this.groupPhotoTop);
+
     if (this.$groupPhoto) {
       if ((this.$groupPhoto.offsetTop - document.documentElement.clientHeight / 2) <= window.pageYOffset) {
         const p = (this.$groupPhoto.offsetTop - window.pageYOffset) / (document.documentElement.clientHeight);
-        console.log(p);
 
         this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - p, 0.5), 1)})`;
+        // this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - this.groupPhotoAnimOffset / document.documentElement.clientHeight, 0.5), 1)})`;
       } else {
         this.$groupPhoto.style.transform = `scale(0.5)`;
       }
     }
+
 
     if (this.Gallery) {
       this.Gallery.compute();
@@ -901,6 +910,19 @@ class Prospectacy {
   onMove = (event) => {
     this.cursor.x = event.clientX;
     this.cursor.y = event.clientY;
+  };
+
+  animate = () => {
+    if (this.$groupPhoto) {
+      if ((this.$groupPhoto.offsetTop - document.documentElement.clientHeight / 2) <= window.pageYOffset) {
+
+        this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - this.groupPhotoAnimOffset / document.documentElement.clientHeight, 0.5), 1)})`;
+      } else {
+        this.$groupPhoto.style.transform = `scale(0.5)`;
+      }
+    }
+
+    this.raf = requestAnimationFrame(this.animate);
   };
 
   static setLoadPercentage(num) {

@@ -7863,14 +7863,22 @@ video::-webkit-media-controls-start-playback-button {
             left: auto;
             width: 302px;
             height: 196px;
-            background-image: url(../img/friendship-photo-1.d49e0df7.jpg); }
+            background-image: url(../img/friendship-photo-1.d49e0df7.jpg); } }
+      @media only screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-width: 768px) and (min-resolution: 1.5dppx), (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 768px) and (min-resolution: 144dpi) {
+        .s-friendship__col:nth-of-type(1) .s-friendship__image {
+          background-image: url(../img/friendship-photo-1@2x.5492532f.jpg); } }
+    @media (min-width: 768px) {
         .s-friendship__col:nth-of-type(2) {
           width: 205px;
           padding-top: 424px; }
           .s-friendship__col:nth-of-type(2) .s-friendship__image {
             width: 205px;
             height: 354px;
-            background-image: url(../img/friendship-photo-2.18ea7756.jpg); }
+            background-image: url(../img/friendship-photo-2.18ea7756.jpg); } }
+      @media only screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-width: 768px) and (min-resolution: 1.5dppx), (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 768px) and (min-resolution: 144dpi) {
+        .s-friendship__col:nth-of-type(2) .s-friendship__image {
+          background-image: url(../img/friendship-photo-2@2x.d6ce905d.jpg); } }
+    @media (min-width: 768px) {
         .s-friendship__col:nth-of-type(3) {
           width: 181px;
           padding-top: 424px; }
@@ -7878,6 +7886,9 @@ video::-webkit-media-controls-start-playback-button {
             width: 228px;
             height: 300px;
             background-image: url(../img/friendship-photo-3.64567dbf.jpg); } }
+      @media only screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-width: 768px) and (min-resolution: 1.5dppx), (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 768px) and (min-resolution: 144dpi) {
+        .s-friendship__col:nth-of-type(3) .s-friendship__image {
+          background-image: url(../img/friendship-photo-3@2x.cb450c5c.jpg); } }
     @media (min-width: 1170px) {
       .s-friendship__col {
         margin-right: 28px; }
