@@ -698,9 +698,11 @@ class Prospectacy {
     $('form').on('submit', (event) => {
       event.preventDefault();
 
+
       const form = event.currentTarget;
       const formData = new FormData(form);
 
+      // console.log(form);
       const button = form.querySelector('button[type="submit"]');
       const file = form.querySelector('input[type="file"]');
       if (file) {
@@ -710,11 +712,11 @@ class Prospectacy {
       form.classList.add('loading');
 
       $.ajax({
-        url: form.action,
+        url: form.getAttribute('action'),
         data: formData,
         processData: false,
         contentType: false,
-        type: form.method,
+        type: form.getAttribute('method'),
       }).done(() => {
         button.classList.remove('btn-blue');
         button.classList.add('btn-green');
