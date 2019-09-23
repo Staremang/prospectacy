@@ -9278,7 +9278,9 @@ video::-webkit-media-controls-start-playback-button {
     border-bottom: 1px solid rgba(17, 17, 17, 0.1);
     opacity: 0.8; }
     .person-modal__project-name:hover {
-      text-decoration: none; }
+      text-decoration: none;
+      opacity: 0.6;
+      border-bottom-color: #005eec; }
     @media (min-width: 1170px) {
       .person-modal__project-name {
         display: inline-block;

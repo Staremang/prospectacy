@@ -483,7 +483,7 @@ class Modal {
     $('[data-modal]').on('click', (event) => {
       event.preventDefault();
 
-      this.close();
+      // this.close();
 
       const targetSelector = event.currentTarget.dataset.src || event.currentTarget.getAttribute('href');
       this.open(document.querySelector(targetSelector));
@@ -665,7 +665,7 @@ class Prospectacy {
     document.addEventListener('mousemove', this.onMove);
     document.addEventListener('scroll', this.onScroll);
 
-    // new Particles(document.getElementById('bird'), 'images/bird.png');
+    new Particles(document.getElementById('bird'), 'images/bird.png');
 
     $('form').on('submit', (event) => {
       event.preventDefault();
