@@ -6255,10 +6255,12 @@ video::-webkit-media-controls-start-playback-button {
       margin-right: 49px; } }
   @media (min-width: 1600px) {
     .hero-benefits__item:nth-of-type(1) {
-      margin-right: 0px; } }
-  @media (min-width: 1600px) {
-    .hero-benefits__item {
-      width: 320px; } }
+      width: 320px;
+      margin-right: 0px; }
+    .hero-benefits__item:nth-of-type(2) {
+      width: 320px; }
+    .hero-benefits__item:nth-of-type(3) {
+      width: 250px; } }
   .hero-benefits__num {
     margin-bottom: 7px;
     opacity: .4;
