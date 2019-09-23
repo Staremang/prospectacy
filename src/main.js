@@ -487,7 +487,30 @@ class Modal {
       // this.close();
 
       const targetSelector = event.currentTarget.dataset.src || event.currentTarget.getAttribute('href');
-      this.open(document.querySelector(targetSelector));
+      const targetEl = document.querySelector(targetSelector);
+
+      if (!targetEl) {
+        return;
+      }
+
+      if (event.currentTarget.dataset.field) {
+        // data-field и data-field-value
+        const form = targetEl.querySelector('form');
+        const input = targetEl.querySelector(`input[name="${event.currentTarget.dataset.field}"]`);
+
+        if (input) {
+          input.value = event.currentTarget.dataset.fieldValue || '';
+        } else if (form) {
+          const newInput = document.createElement('input');
+          newInput.type = 'hidden';
+          newInput.name = event.currentTarget.dataset.field;
+          newInput.value = event.currentTarget.dataset.fieldValue || '';
+
+          form.appendChild(newInput);
+        }
+      }
+
+      this.open(targetEl);
     });
 
     $('[data-modal-close]').on('click', (event) => {
@@ -719,35 +742,61 @@ class Prospectacy {
     });
 
 
-    $('.s-portfolio').find('.next-link').on('click', (event) => {
+    let shownItems = 0;
+    const $portfolioList = $('.s-portfolio__col');
+    const $portfolioLink = $('.s-portfolio').find('.next-link');
+
+
+    $portfolioList.hide();
+    $portfolioList.slice(shownItems, shownItems += 5).show();
+
+    $portfolioLink.on('click', (event) => {
       event.preventDefault();
 
-      for (let i = 0; i < 5; i += 1) {
-        const $el = $(`<div class="s-portfolio__col">
-          <div class="project-item">
-            <a href="#project-modal-1" data-modal class="project-item__title arrow-link">
-              Невыполнение договорных обязательств по строительным работам
-              <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor"/>
-              </svg>
-            </a>
-            <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей задолженности по договору
-              подряда.</p>
-            <div class="project-item__footer">
-              <span class="project-item__sticker">89,5 млн ₽</span>
-            </div>
-          </div>
-        </div>`);
-
+      $portfolioList.slice(shownItems, shownItems += 5).each((i, item) => {
+        const $el = $(item);
+        $el.show();
         $el.addClass('animated');
         $el.addClass('fadeInUp');
         $el.css({
           'animation-delay': `${i * 200}ms`,
         });
+      });
 
-        $('.s-portfolio__list').append($el);
+      if (shownItems >= $portfolioList.length) {
+        $portfolioLink.hide();
+      } else {
+        const l = ($portfolioList.length - shownItems) % 5;
+
+        $portfolioLink.html(`Еще ${l} проект${l !== 1 && (l === 5 ? 'ов' : 'а')}`);
       }
+
+      // for (let i = 0; i < 5; i += 1) {
+      //   const $el = $(`<div class="s-portfolio__col">
+      //     <div class="project-item">
+      //       <a href="#project-modal-1" data-modal class="project-item__title arrow-link">
+      //         Невыполнение договорных обязательств по строительным работам
+      //         <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      //           <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor"/>
+      //           <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor"/>
+      //         </svg>
+      //       </a>
+      //       <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей задолженности по договору
+      //         подряда.</p>
+      //       <div class="project-item__footer">
+      //         <span class="project-item__sticker">89,5 млн ₽</span>
+      //       </div>
+      //     </div>
+      //   </div>`);
+      //
+      //   $el.addClass('animated');
+      //   $el.addClass('fadeInUp');
+      //   $el.css({
+      //     'animation-delay': `${i * 200}ms`,
+      //   });
+      //
+      //   $('.s-portfolio__list').append($el);
+      // }
     });
   }
 
