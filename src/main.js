@@ -457,6 +457,7 @@ class Map {
 class Modal {
   constructor() {
     this.openModalEl = null;
+    this.zIndex = 2000;
 
 
     const button = document.createElement('button');
@@ -491,19 +492,21 @@ class Modal {
 
     $('[data-modal-close]').on('click', (event) => {
       event.preventDefault();
-      this.close();
+
+      const $target = $(event.currentTarget).parents('.modal-page');
+      this.close($target);
     });
   }
 
-  close() {
+  close($target) {
     return new Promise((resolve) => {
-      if (!this.openModalEl) {
-        resolve();
-        return;
-      }
+      // if (!this.openModalEl) {
+      //   resolve();
+      //   return;
+      // }
 
-      const modal = this.openModalEl;
-      this.openModalEl = null;
+      const modal = $target[0];
+      // this.openModalEl = null;
 
       enableBodyScroll(modal);
       // document.body.style.overflow = '';
@@ -543,6 +546,8 @@ class Modal {
 
     this.openModalEl.classList.add('active');
     this.openModalEl.style.pointerEvents = '';
+    this.openModalEl.style.zIndex = this.zIndex + 1;
+    this.zIndex += 1;
     this.openModalEl.style.display = 'block';
 
     // this.$openModal = $modal
