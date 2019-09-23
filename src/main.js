@@ -483,11 +483,10 @@ class Modal {
     $('[data-modal]').on('click', (event) => {
       event.preventDefault();
 
-      this.close()
-        .then(() => {
-          const targetSelector = event.currentTarget.dataset.src || event.currentTarget.getAttribute('href');
-          this.open(document.querySelector(targetSelector));
-        });
+      this.close();
+
+      const targetSelector = event.currentTarget.dataset.src || event.currentTarget.getAttribute('href');
+      this.open(document.querySelector(targetSelector));
     });
 
     $('[data-modal-close]').on('click', (event) => {
@@ -503,12 +502,15 @@ class Modal {
         return;
       }
 
-      enableBodyScroll(this.openModalEl);
+      const modal = this.openModalEl;
+      this.openModalEl = null;
+
+      enableBodyScroll(modal);
       // document.body.style.overflow = '';
 
-      this.openModalEl.classList.remove('active');
-      this.openModalEl.style.pointerEvents = 'none';
-      this.openModalEl.removeEventListener('scroll', this.onScroll);
+      modal.classList.remove('active');
+      modal.style.pointerEvents = 'none';
+      modal.removeEventListener('scroll', this.onScroll);
 
       // this.$openModal
       //   .removeClass('active')
@@ -521,8 +523,8 @@ class Modal {
         this.$button.detach();
         // this.$openModal.hide();
         // this.$openModal = null;
-        this.openModalEl.style.display = 'none';
-        this.openModalEl = null;
+        modal.style.display = 'none';
+        // this.openModalEl = null;
         resolve();
       }, 1000);
     });
