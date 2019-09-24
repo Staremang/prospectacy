@@ -840,8 +840,11 @@ class Prospectacy {
   initVideo() {
     this.$videoBird = document.getElementById('video-bird');
     if (this.$videoBird) {
-      enableInlineVideo(this.$videoBird, { iPad: true });
+      enableInlineVideo(this.$videoBird);
 
+      setTimeout(() => {
+        this.$videoBird.play();
+      }, 1000);
       // this.$videoBird.addEventListener('canplaythrough', () => {
       //   this.$videoBird.play();
       //   this.$videoBird.classList.add('animated');
@@ -853,7 +856,10 @@ class Prospectacy {
 
     this.$videoScales = document.getElementById('video-scales');
     if (this.$videoScales) {
-      enableInlineVideo(this.$videoScales, { iPad: true });
+      enableInlineVideo(this.$videoScales);
+      setTimeout(() => {
+        this.$videoScales.play();
+      }, 1000);
 
       // this.$videoScales.addEventListener('canplaythrough', () => {
       //   this.$videoScales.play();
@@ -866,7 +872,10 @@ class Prospectacy {
 
     this.$videoRub = document.getElementById('video-rub');
     if (this.$videoRub) {
-      enableInlineVideo(this.$videoRub, { iPad: true });
+      enableInlineVideo(this.$videoRub);
+      setTimeout(() => {
+        this.$videoRub.play();
+      }, 1000);
 
       // this.$videoRub.addEventListener('canplaythrough', () => {
       //   this.$videoRub.play();
