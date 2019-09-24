@@ -425,110 +425,26 @@
 
 @font-face {
   font-family: 'Graphik LCG';
-  src: url(../fonts/GraphikLCG-Thin.feaba822.woff2) format("woff2"), url(../fonts/GraphikLCG-Thin.d21200d9.woff) format("woff"), url(../fonts/GraphikLCG-Thin.806b6831.ttf) format("truetype");
-  font-weight: 100;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Graphik LCG';
-  src: url(../fonts/GraphikLCG-Extralight.454a269e.woff2) format("woff2"), url(../fonts/GraphikLCG-Extralight.9b4d4436.woff) format("woff"), url(../fonts/GraphikLCG-Extralight.c1af7132.ttf) format("truetype");
-  font-weight: 200;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Graphik LCG';
-  src: url(../fonts/GraphikLCG-Bold.0a863dc6.woff2) format("woff2"), url(../fonts/GraphikLCG-Bold.ccf9f0ec.woff) format("woff"), url(../fonts/GraphikLCG-Bold.b4721857.ttf) format("truetype");
-  font-weight: bold;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Graphik LCG';
-  src: url(../fonts/GraphikLCG-Light.91bde36b.woff2) format("woff2"), url(../fonts/GraphikLCG-Light.afc50e8a.woff) format("woff"), url(../fonts/GraphikLCG-Light.d73bdf48.ttf) format("truetype");
-  font-weight: 300;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Graphik LCG';
-  src: url(../fonts/GraphikLCG-Semibold.04581b0e.woff2) format("woff2"), url(../fonts/GraphikLCG-Semibold.339c2e00.woff) format("woff"), url(../fonts/GraphikLCG-Semibold.f87eef8d.ttf) format("truetype");
-  font-weight: 600;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Graphik LCG';
-  src: url(../fonts/GraphikLCG-Super.c5306116.woff2) format("woff2"), url(../fonts/GraphikLCG-Super.cf860eaa.woff) format("woff"), url(../fonts/GraphikLCG-Super.813fa953.ttf) format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Graphik LCG';
-  src: url(../fonts/GraphikLCG-Medium.10b7bd9b.woff2) format("woff2"), url(../fonts/GraphikLCG-Medium.0d776a83.woff) format("woff"), url(../fonts/GraphikLCG-Medium.5d0a360b.ttf) format("truetype");
+  src: url(../fonts/Graphik-Medium-Web.woff2) format("woff2"), url(../fonts/Graphik-Medium-Web.woff) format("woff"), url(../fonts/Graphik-Medium-Web.ttf) format("truetype");
   font-weight: 500;
   font-style: normal; }
 
 @font-face {
   font-family: 'Graphik LCG';
-  src: url(../fonts/GraphikLCG-Black.518fff7c.woff2) format("woff2"), url(../fonts/GraphikLCG-Black.efe98be2.woff) format("woff"), url(../fonts/GraphikLCG-Black.ba664de4.ttf) format("truetype");
-  font-weight: 900;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Graphik LCG';
-  src: url(../fonts/GraphikLCG-Regular.2f338b5e.woff2) format("woff2"), url(../fonts/GraphikLCG-Regular.b1ae0f61.woff) format("woff"), url(../fonts/GraphikLCG-Regular.469bebb6.ttf) format("truetype");
+  src: url(../fonts/Graphik-Regular-Web.woff2) format("woff2"), url(../fonts/Graphik-Regular-Web.woff) format("woff"), url(../fonts/Graphik-Regular-Web.ttf) format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'Halvar Breitschrift';
-  src: url(../fonts/HalvarBreit-XTh.36b76a35.woff2) format("woff2"), url(../fonts/HalvarBreit-XTh.a481d378.woff) format("woff"), url(../fonts/HalvarBreit-XTh.b1f7d4fe.ttf) format("truetype");
-  font-weight: 100;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Halvar Breitschrift';
-  src: url(../fonts/HalvarBreit-Th.7ccccbb0.woff2) format("woff2"), url(../fonts/HalvarBreit-Th.fca1368d.woff) format("woff"), url(../fonts/HalvarBreit-Th.2362c1cd.ttf) format("truetype");
-  font-weight: 100;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Halvar Breitschrift';
-  src: url(../fonts/HalvarBreit-Hl.8a830d23.woff2) format("woff2"), url(../fonts/HalvarBreit-Hl.a26a9c85.woff) format("woff"), url(../fonts/HalvarBreit-Hl.84d0e8bd.ttf) format("truetype");
-  font-weight: 100;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Halvar Breitschrift';
-  src: url(../fonts/HalvarBreit-Md.a9e44600.woff2) format("woff2"), url(../fonts/HalvarBreit-Md.444d69bb.woff) format("woff"), url(../fonts/HalvarBreit-Md.cc4d0104.ttf) format("truetype");
-  font-weight: 500;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Halvar Breitschrift';
-  src: url(../fonts/HalvarBreit-Blk.0f8b1a33.woff2) format("woff2"), url(../fonts/HalvarBreit-Blk.bfe8a572.woff) format("woff"), url(../fonts/HalvarBreit-Blk.e084f3a8.ttf) format("truetype");
-  font-weight: 900;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Halvar Breitschrift';
-  src: url(../fonts/HalvarBreit-XBd.0cc424bb.woff2) format("woff2"), url(../fonts/HalvarBreit-XBd.ea8f4583.woff) format("woff"), url(../fonts/HalvarBreit-XBd.258d5e1b.ttf) format("truetype");
+  src: url(../fonts/Halvar-Breitschrift-ExtraBold-Web.woff2) format("woff2"), url(../fonts/Halvar-Breitschrift-ExtraBold-Web.woff) format("woff"), url(../fonts/Halvar-Breitschrift-ExtraBold-Web.ttf) format("truetype");
   font-weight: 800;
   font-style: normal; }
 
 @font-face {
   font-family: 'Halvar Breitschrift';
-  src: url(../fonts/HalvarBreit-Rg.9fa68119.woff2) format("woff2"), url(../fonts/HalvarBreit-Rg.e8877207.woff) format("woff"), url(../fonts/HalvarBreit-Rg.74be0c5e.ttf) format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Halvar Breitschrift';
-  src: url(../fonts/HalvarBreit-Bd.08f6fd04.woff2) format("woff2"), url(../fonts/HalvarBreit-Bd.34a7f77a.woff) format("woff"), url(../fonts/HalvarBreit-Bd.0548888f.ttf) format("truetype");
+  src: url(../fonts/Halvar-Breitschrift-Bold-Web.woff2) format("woff2"), url(../fonts/Halvar-Breitschrift-Bold-Web.woff) format("woff"), url(../fonts/Halvar-Breitschrift-Bold-Web.ttf) format("truetype");
   font-weight: bold;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Halvar Breitschrift';
-  src: url(../fonts/HalvarBreit-Lt.168b6136.woff2) format("woff2"), url(../fonts/HalvarBreit-Lt.3cee8b0a.woff) format("woff"), url(../fonts/HalvarBreit-Lt.1718a671.ttf) format("truetype");
-  font-weight: 300;
   font-style: normal; }
 
 :root {

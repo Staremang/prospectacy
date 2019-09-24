@@ -153,7 +153,7 @@ module.exports = (env, args) => {
                 fallback: {
                   loader: 'file-loader',
                   options: {
-                    name: 'assets/fonts/[name].[hash:8].[ext]',
+                    name: 'assets/fonts/[name].[ext]',
                   },
                 },
               },
