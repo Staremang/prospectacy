@@ -9,7 +9,7 @@ import 'owl.carousel';
 // import ymaps from 'ymaps';
 
 import Platform from './js/Platform';
-import Particles from './js/Particles';
+// import Particles from './js/Particles';
 import './js/Input';
 // import './js/Modal';
 
@@ -696,20 +696,20 @@ class Prospectacy {
     document.addEventListener('mousemove', this.onMove);
     document.addEventListener('scroll', this.onScroll);
 
-    new Particles(document.getElementById('bird'), {
-      img: 'images/bird.png',
-      color: ['#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b','#005eec', '#d3bc7b'],
-    });
-
-    new Particles(document.getElementById('video-scales'), {
-      img: 'images/scales.png',
-      color: '#005eec',
-    });
-
-    new Particles(document.getElementById('video-rub'), {
-      img: 'images/rub.png',
-      color: '#ffffff',
-    });
+    // new Particles(document.getElementById('bird'), {
+    //   img: 'images/bird.png',
+    //   color: ['#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b','#005eec', '#d3bc7b'],
+    // });
+    //
+    // new Particles(document.getElementById('video-scales'), {
+    //   img: 'images/scales.png',
+    //   color: '#005eec',
+    // });
+    //
+    // new Particles(document.getElementById('video-rub'), {
+    //   img: 'images/rub.png',
+    //   color: '#ffffff',
+    // });
 
 
     $('input[type="file"]').change((event) => {

@@ -662,19 +662,19 @@
   }
 }
 
-#bird {
-  display: none;
-  @include media-breakpoint-up(md) {
-    display: block;
-  }
-}
-
-#video-bird {
-  display: block;
-  @include media-breakpoint-up(md) {
-    display: none;
-  }
-}
+//#bird {
+//  display: none;
+//  @include media-breakpoint-up(md) {
+//    display: block;
+//  }
+//}
+//
+//#video-bird {
+//  display: block;
+//  @include media-breakpoint-up(md) {
+//    display: none;
+//  }
+//}
 
 
 /**
@@ -1517,7 +1517,7 @@
 
 .video-scales {
   //opacity: 0;
-  display: none;
+  //display: none;
   position: absolute;
   z-index: 0;
   top: 111px;
@@ -1526,18 +1526,18 @@
   width: 398px;
   height: 398px;
 
-  &_mob {
-    display: block;
-  }
+  //&_mob {
+  //  display: block;
+  //}
 
   @include media-breakpoint-up(md) {
-    display: block;
+    //display: block;
     top: -19px;
     width: 477px;
     height: 477px;
-    &_mob {
-      display: none;
-    }
+    //&_mob {
+    //  display: none;
+    //}
   }
   @include media-breakpoint-up(lg) {
     top: 31px;
@@ -2135,7 +2135,7 @@
 
 .video-rub {
   //opacity: 0;
-  display: none;
+  //display: none;
   //width: 980px;
   //height: 980px;
   position: absolute;
@@ -2146,20 +2146,20 @@
 
   height: 462px;
 
-  &_mob {
-    display: block;
-  }
+  //&_mob {
+  //  display: block;
+  //}
 
   @include media-breakpoint-up(md) {
-    display: block;
+    //display: block;
     top: 0;
     left: calc(50% - 201px);
     width: 770px;
 
     height: 394px;
-    &_mob {
-      display: none;
-    }
+    //&_mob {
+    //  display: none;
+    //}
   }
 
   @include media-breakpoint-up(lg) {
