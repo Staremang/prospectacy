@@ -11,9 +11,9 @@ function customScaleBehaviour() {
     },
     applyBehaviour(particle) {
       if (particle.energy >= 2 / 3) {
-        particle.scale = (1 - particle.energy) * 3;
+        particle.scale = (1 - particle.energy) * 1.8;
       } else if (particle.energy <= 1 / 3) {
-        particle.scale = particle.energy * 3;
+        particle.scale = particle.energy * 1.8;
       }
       particle.radius = particle.oldRadius * particle.scale;
     },
@@ -107,25 +107,35 @@ export default class Particles {
     this.emitter = new Proton.Emitter();
 
     // setRate
-    this.emitter.rate = new Proton.Rate(new Proton.Span(40, 40), new Proton.Span(0.08));
+    this.emitter.rate = new Proton.Rate(new Proton.Span(10, 10), new Proton.Span(0.02));
 
     // addInitialize
-    this.emitter.addInitialize(new Proton.Position(new Proton.PointZone(3, 5)));
-    this.emitter.addInitialize(new Proton.Mass(3));
-    this.emitter.addInitialize(new Proton.Radius(1, 2));
+    this.emitter.addInitialize(new Proton.Position(new Proton.PointZone(5, 14)));
+    this.emitter.addInitialize(new Proton.Mass(5));
+    this.emitter.addInitialize(new Proton.Radius(2, 3));
     this.emitter.addInitialize(new Proton.Life(4));
     const imagedata = this.context.getImageData(rect.x, rect.y, rect.width, rect.height);
     this.emitter.addInitialize(new Proton.P(new Proton.ImageZone(imagedata, rect.x, rect.y + 10)));
 
     // addBehaviour
 
-    this.randomBehaviour = new Proton.RandomDrift(20, 18, 0.2);
+    this.randomBehaviour = new Proton.RandomDrift(10, 11, 0.3);
     this.gravity = new Proton.Gravity(0);
     this.emitter.addBehaviour(customScaleBehaviour());
-    this.attractionBehaviour = new Proton.Attraction(this.mouseObj, 12, 100);
-    this.attractionBehaviour2 = new Proton.Attraction(this.mouseObj, 0, 0);
-    this.repulsionBehaviour = new Proton.Repulsion(this.mouseObj, 3, 0);
-    this.emitter.addBehaviour(this.attractionBehaviour);
+
+    this.mouseObj2 = {
+      x: -500,
+      y: 200,
+    };
+
+    this.repulsionBehaviour = new Proton.Repulsion(this.mouseObj, 0, 0);
+    this.attractionBehaviour = new Proton.Attraction(this.mouseObj2, 12, 200);
+
+    // this.attractionBehaviour = new Proton.Attraction(this.mouseObj, 12, 200);
+    // // this.attractionBehaviour2 = new Proton.Attraction(this.mouseObj, 0, 0);
+    // this.repulsionBehaviour = new Proton.Repulsion(this.mouseObj, 0, 0);
+    // this.emitter.addBehaviour(this.attractionBehaviour);
+    this.emitter.addBehaviour(this.attractionBehaviour, this.repulsionBehaviour);
     // this.emitter.addBehaviour(this.repulsionBehaviour);
     // this.emitter.addBehaviour(this.attractionBehaviour2);
     this.emitter.addBehaviour(this.gravity);
@@ -140,7 +150,8 @@ export default class Particles {
     this.renderer = new Proton.CanvasRenderer(this.canvas);
     this.proton.addRenderer(this.renderer);
     // this.canvas.addEventListener('mousemove', this.mousemoveHandler);
-    document.getElementById('hero-section').addEventListener('mousemove', this.mousemoveHandler);
+    // document.getElementById('hero-section').addEventListener('mousemove', this.mousemoveHandler);
+    document.body.addEventListener('mousemove', this.mousemoveHandler);
 
     // debug
     // Proton.Debug.drawEmitter(this.proton, this.canvas, this.emitter);
@@ -163,9 +174,10 @@ export default class Particles {
       y: Math.round(100 * (window.App.cursor.y - (this.offsetTop - window.pageYOffset))) / 100,
     };
 
-    this.attractionBehaviour.reset(this.mouseObj, -10, 60);
+    this.attractionBehaviour.reset(this.mouseObj, -20, 80);
     // this.attractionBehaviour.reset(this.mouseObj, 5, 100);
     // this.attractionBehaviour2.reset(this.mouseObj, 12, 100);
+    this.repulsionBehaviour.reset(this.mouseObj, 3, 50);
   };
 
   tick = () => {
