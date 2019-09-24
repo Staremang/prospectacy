@@ -107,12 +107,12 @@ export default class Particles {
     this.emitter = new Proton.Emitter();
 
     // setRate
-    this.emitter.rate = new Proton.Rate(new Proton.Span(50, 50), new Proton.Span(0.02));
+    this.emitter.rate = new Proton.Rate(new Proton.Span(20, 20), new Proton.Span(0.02));
 
     // addInitialize
     this.emitter.addInitialize(new Proton.Position(new Proton.PointZone(5, 14)));
     this.emitter.addInitialize(new Proton.Mass(5));
-    this.emitter.addInitialize(new Proton.Radius(2, 4));
+    this.emitter.addInitialize(new Proton.Radius(4, 5));
     this.emitter.addInitialize(new Proton.Life(4));
     const imagedata = this.context.getImageData(rect.x, rect.y, rect.width, rect.height);
     this.emitter.addInitialize(new Proton.P(new Proton.ImageZone(imagedata, rect.x, rect.y + 10)));
