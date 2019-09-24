@@ -701,15 +701,15 @@ class Prospectacy {
       color: ['#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b','#005eec', '#d3bc7b'],
     });
 
-    // new Particles(document.getElementById('video-scales'), {
-    //   img: 'images/scales.png',
-    //   color: '#005eec',
-    // });
-    //
-    // new Particles(document.getElementById('video-rub'), {
-    //   img: 'images/rub.png',
-    //   color: '#ffffff',
-    // });
+    new Particles(document.getElementById('video-scales'), {
+      img: 'images/scales.png',
+      color: '#005eec',
+    });
+
+    new Particles(document.getElementById('video-rub'), {
+      img: 'images/rub.png',
+      color: '#ffffff',
+    });
 
 
     $('input[type="file"]').change((event) => {
