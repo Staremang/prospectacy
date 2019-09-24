@@ -5949,7 +5949,10 @@ video::-webkit-media-controls-start-playback-button {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; }
+    height: 490px; }
+    @media (min-width: 768px) {
+      .s-hero__overlay {
+        height: 100%; } }
     @media (min-width: 1170px) {
       .s-hero__overlay {
         position: fixed; } }
@@ -6233,7 +6236,7 @@ video::-webkit-media-controls-start-playback-button {
       .hero-benefits__description {
         font-size: 18px; } }
 
-#bird {
+.video-bird {
   position: absolute;
   top: 68px;
   left: 50%;
@@ -6242,25 +6245,37 @@ video::-webkit-media-controls-start-playback-button {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%); }
   @media (min-width: 768px) {
-    #bird {
+    .video-bird {
       top: 16px;
       width: 784px;
       height: 399px;
       -webkit-transform: translateX(-295px);
               transform: translateX(-295px); } }
   @media (min-width: 1170px) {
-    #bird {
+    .video-bird {
       top: 50%;
       width: 1478px;
       height: 754px;
       -webkit-transform: translate(-480px, -50%);
               transform: translate(-480px, -50%); } }
   @media (min-width: 1600px) {
-    #bird {
+    .video-bird {
       width: 1920px;
       height: 980px;
       -webkit-transform: translate(-569px, -50%);
               transform: translate(-569px, -50%); } }
+
+#bird {
+  display: none; }
+  @media (min-width: 768px) {
+    #bird {
+      display: block; } }
+
+#video-bird {
+  display: block; }
+  @media (min-width: 768px) {
+    #video-bird {
+      display: none; } }
 
 /**
  * О нас

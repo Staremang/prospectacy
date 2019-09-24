@@ -674,7 +674,7 @@ class Prospectacy {
     this.$heroSectionBenefits = document.getElementById('hero-benefits');
     this.$groupPhoto = document.getElementById('group-photo');
 
-    // this.initVideo();
+    this.initVideo();
     // this.animate();
 
     this.Gallery = new Gallery();
@@ -701,15 +701,15 @@ class Prospectacy {
       color: ['#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b','#005eec', '#d3bc7b'],
     });
 
-    new Particles(document.getElementById('video-scales'), {
-      img: 'images/scales.png',
-      color: '#005eec',
-    });
-
-    new Particles(document.getElementById('video-rub'), {
-      img: 'images/rub.png',
-      color: '#ffffff',
-    });
+    // new Particles(document.getElementById('video-scales'), {
+    //   img: 'images/scales.png',
+    //   color: '#005eec',
+    // });
+    //
+    // new Particles(document.getElementById('video-rub'), {
+    //   img: 'images/rub.png',
+    //   color: '#ffffff',
+    // });
 
 
     $('input[type="file"]').change((event) => {
@@ -838,18 +838,18 @@ class Prospectacy {
   }
 
   initVideo() {
-    // this.$videoBird = document.getElementById('hero-video');
-    // if (this.$videoBird) {
-    //   enableInlineVideo(this.$videoBird, { iPad: true });
-    //
-    //   // this.$videoBird.addEventListener('canplaythrough', () => {
-    //   //   this.$videoBird.play();
-    //   //   this.$videoBird.classList.add('animated');
-    //   //   this.$videoBird.classList.add('fadeIn');
-    //   // });
-    //   //
-    //   // this.$videoBird.load();
-    // }
+    this.$videoBird = document.getElementById('video-bird');
+    if (this.$videoBird) {
+      enableInlineVideo(this.$videoBird, { iPad: true });
+
+      // this.$videoBird.addEventListener('canplaythrough', () => {
+      //   this.$videoBird.play();
+      //   this.$videoBird.classList.add('animated');
+      //   this.$videoBird.classList.add('fadeIn');
+      // });
+      //
+      // this.$videoBird.load();
+    }
 
     this.$videoScales = document.getElementById('video-scales');
     if (this.$videoScales) {

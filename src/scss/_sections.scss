@@ -292,7 +292,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 490px;
+    @include media-breakpoint-up(md) {
+      height: 100%;
+    }
     @include media-breakpoint-up(lg) {
       position: fixed;
       //z-index: -1;
@@ -631,7 +634,7 @@
   }
 }
 
-#bird {
+.video-bird {
   //opacity: 0;
   position: absolute;
   top: 68px;
@@ -658,6 +661,20 @@
     //transform: translate(-569px, -50%) perspective(1000px) rotateY(-30deg) scale(1.5)
   }
 }
+
+#bird {
+  display: none;
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+}
+#video-bird {
+  display: block;
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
 
 
 /**
