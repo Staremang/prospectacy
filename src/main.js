@@ -466,9 +466,11 @@ class Modal {
     button.innerHTML = '<svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">' +
       '<path fill-rule="evenodd" clip-rule="evenodd" d="M4.10383 7.68628L0.625017 3.99994L4.10383 0.313603L5.55839 1.68628L4.31869 2.99994L16 2.99994L16 4.99994L4.31869 4.99994L5.55839 6.3136L4.10383 7.68628Z" fill="currentColor"/>' +
       '</svg>';
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      this.close();
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      const $target = $(event.currentTarget).parents('.modal-page');
+      this.close($target);
     });
 
     // this.$button = $(button);
@@ -528,6 +530,7 @@ class Modal {
       //   return;
       // }
 
+      // console.log(modal);
       const modal = $target[0];
       // this.openModalEl = null;
 
@@ -671,7 +674,7 @@ class Prospectacy {
     this.$heroSectionBenefits = document.getElementById('hero-benefits');
     this.$groupPhoto = document.getElementById('group-photo');
 
-    this.initVideo();
+    // this.initVideo();
     // this.animate();
 
     this.Gallery = new Gallery();
@@ -693,7 +696,31 @@ class Prospectacy {
     document.addEventListener('mousemove', this.onMove);
     document.addEventListener('scroll', this.onScroll);
 
-    new Particles(document.getElementById('bird'), 'images/bird.png');
+    new Particles(document.getElementById('bird'), {
+      img: 'images/bird.png',
+      color: ['#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b','#005eec', '#d3bc7b'],
+    });
+
+    new Particles(document.getElementById('video-scales'), {
+      img: 'images/scales.png',
+      color: '#005eec',
+    });
+
+    new Particles(document.getElementById('video-rub'), {
+      img: 'images/rub.png',
+      color: '#ffffff',
+    });
+
+
+    $('input[type="file"]').change((event) => {
+      const fileName = event.target.files[0].name;
+      const $container = $(event.currentTarget).parents('.custom-file');
+      const $title = $container.find('.custom-file__title');
+      const $subtitle = $container.find('.custom-file__subtitle');
+
+      $title.html(fileName);
+      $subtitle.html('Выбранный файл');
+    });
 
     $('form').on('submit', (event) => {
       event.preventDefault();
@@ -751,7 +778,7 @@ class Prospectacy {
 
     $portfolioList.hide();
     $portfolioList.slice(shownItems, shownItems += 5).show();
-
+    AOS.refresh();
     $portfolioLink.on('click', (event) => {
       event.preventDefault();
 

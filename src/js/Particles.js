@@ -1,4 +1,5 @@
 import Proton from 'proton-js';
+
 // import Proton from 'proton-js/src/index';
 
 
@@ -21,13 +22,15 @@ function customScaleBehaviour() {
 
 
 export default class Particles {
-  constructor(canvas, src) {
+  constructor(canvas, options) {
     if (!canvas) {
       return;
     }
 
     this.canvas = canvas;
     this.context = canvas.getContext('2d');
+
+    this.options = options;
 
     this.proton = null;
     this.renderer = null;
@@ -41,9 +44,11 @@ export default class Particles {
     this.attractionBehaviour = null;
 
 
-    this.imageSrc = src;
+    // this.imageSrc = src;
     this.offsetTop = null;
     this.offsetLeft = null;
+
+    this.status = null;
 
     this.init();
   }
@@ -74,7 +79,7 @@ export default class Particles {
   loadImage() {
     const image = new Image();
     image.addEventListener('load', this.imageOnLoad);
-    image.src = this.imageSrc;
+    image.src = this.options.img;
   }
 
   imageOnLoad = (e) => {
@@ -125,7 +130,7 @@ export default class Particles {
     // this.emitter.addBehaviour(this.attractionBehaviour2);
     this.emitter.addBehaviour(this.gravity);
     this.emitter.addBehaviour(this.randomBehaviour);
-    this.emitter.addBehaviour(new Proton.Color(['#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b', '#005eec', '#005eec', '#d3bc7b']));
+    this.emitter.addBehaviour(new Proton.Color(this.options.color));
     this.emitter.addBehaviour(new Proton.CrossZone(new Proton.RectZone(2, 0, this.canvas.width, this.canvas.height), 'collision'));
     this.emitter.emit();
     // add this.emitter
@@ -164,7 +169,19 @@ export default class Particles {
   };
 
   tick = () => {
+    if (this.status === 'pause') {
+      return;
+    }
     requestAnimationFrame(this.tick);
     this.proton.update();
   };
+
+  pause() {
+    this.status = 'pause';
+  }
+
+  play() {
+    this.status = null;
+    this.tick();
+  }
 }

@@ -6711,6 +6711,8 @@ video::-webkit-media-controls-start-playback-button {
   .portfolio-modal .portfolio-stats {
     height: 177px;
     margin-bottom: 25px; }
+    .portfolio-modal .portfolio-stats__value {
+      margin-top: auto; }
   @media (min-width: 768px) {
     .portfolio-modal {
       display: -webkit-box;
