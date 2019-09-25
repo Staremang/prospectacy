@@ -1011,8 +1011,8 @@
 
     @include media-breakpoint-up(md) {
       display: inline-block;
-      width: 50%;
-      max-width: 50%;
+      width: 49%;
+      max-width: 49%;
       margin-bottom: 60px;
       padding: 0 20px;
       float: left;
@@ -1023,6 +1023,7 @@
     @include media-breakpoint-up(lg) {
       margin-bottom: 90px;
       padding: 0 75px;
+      float: none;
       &:nth-child(2) {
         clear: none;
       }
@@ -1285,6 +1286,7 @@
     flex: 1 0;
     height: auto;
     max-height: 100%;
+    word-break: break-word;
     //padding-top: 20px;
 
 
@@ -1399,11 +1401,11 @@
   }
 
   &__img {
-    max-width: 134px;
+    width: 134px;
     max-height: 141px;
 
     @include media-breakpoint-up(lg) {
-      max-width: 318px;
+      width: 318px;
       max-height: 333px;
     }
   }
