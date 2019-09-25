@@ -641,6 +641,8 @@
 }
 
 .video-bird {
+  display: flex;
+  justify-content: center;
   //opacity: 0;
   position: absolute;
   top: 68px;
@@ -649,8 +651,11 @@
   height: 368px;
   transform: translateX(-50%);
 
+  > img {
+    display: none;
+  }
   > * {
-    width: 100%;
+    //width: 100%;
     height: 100%;
   }
   @include media-breakpoint-up(md) {
@@ -664,11 +669,13 @@
     width: 1478px;
     height: 754px;
     transform: translate(-480px, -50%);
+    //transform: translate(-672px, -50%);
   }
   @include media-breakpoint-up(xl) {
     width: 1920px;
     height: 980px;
     transform: translate(-569px, -50%);
+    //transform: translate(-797px, -50%);
     //transform: translate(-569px, -50%) perspective(1000px) rotateY(-30deg) scale(1.5)
   }
 }

@@ -6246,6 +6246,12 @@ video::-webkit-media-controls-start-playback-button {
         font-size: 18px; } }
 
 .video-bird {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: absolute;
   top: 68px;
   left: 50%;
@@ -6253,8 +6259,9 @@ video::-webkit-media-controls-start-playback-button {
   height: 368px;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%); }
+  .video-bird > img {
+    display: none; }
   .video-bird > * {
-    width: 100%;
     height: 100%; }
   @media (min-width: 768px) {
     .video-bird {
