@@ -10,6 +10,7 @@ import 'owl.carousel';
 
 import Platform from './js/Platform';
 // import Particles from './js/Particles';
+import './js/Particles2';
 import './js/Input';
 // import './js/Modal';
 
@@ -674,7 +675,7 @@ class Prospectacy {
     this.$heroSectionBenefits = document.getElementById('hero-benefits');
     this.$groupPhoto = document.getElementById('group-photo');
 
-    this.initVideo();
+    // this.initVideo();
     // this.animate();
 
     this.Gallery = new Gallery();
@@ -710,6 +711,28 @@ class Prospectacy {
     //   img: 'images/rub.png',
     //   color: '#ffffff',
     // });
+
+    new NextParticle({
+      image: document.getElementById('bird'),
+      addTimestamp: true,
+      width: document.getElementById('bird').getBoundingClientRect().width,
+      height: document.getElementById('bird').getBoundingClientRect().height,
+      initPosition: 'random',
+      initDirection: 'random',
+      particleGap: 3,
+      particleSize: 1.8,
+      gravity: 0.2,
+      noise: 80,
+      mouseForce: 30,
+      // renderer: 'webgl',
+
+      // class="next-particle"
+      // data-width="1920"
+      // data-height="1080"
+      // data-max-width="100%"
+      // data-max-height="100%"
+      // data-particle-gap="8" data-init-position="random" data-init-direction="random" data-fade-position="right" data-fade-direction="right" data-layer-count="2" data-depth="1" data-particle-size="1.8" data-gravity="0.2" data-noise="80" data-mouse-force="30"
+    })
 
 
     $('input[type="file"]').change((event) => {
