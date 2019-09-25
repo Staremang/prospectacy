@@ -4828,7 +4828,11 @@ html.noscroll {
   .custom-file__title {
     margin-bottom: 6px;
     font-size: 16px;
-    font-weight: 500; }
+    font-weight: 500;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
     @media (min-width: 1170px) {
       .custom-file__title {
         font-size: 20px; } }
