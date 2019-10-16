@@ -658,10 +658,17 @@ class Prospectacy {
 
     window.App = this;
     window.Platform = Platform;
+
+
+    this.isInit = false;
   }
 
   init() {
+    if (this.isInit) {
+      return;
+    }
 
+    this.isInit = true;
 
     // Scrollbar.init(document.querySelector('#main-scrollbar'), {
     //   damping: 0.1,
@@ -675,7 +682,7 @@ class Prospectacy {
     this.$heroSectionBenefits = document.getElementById('hero-benefits');
     this.$groupPhoto = document.getElementById('group-photo');
 
-    // this.initVideo();
+    this.initVideo();
     // this.animate();
 
     this.Gallery = new Gallery();
@@ -712,25 +719,25 @@ class Prospectacy {
     //   color: '#ffffff',
     // });
 
-    const birdEl = document.querySelector('.video-bird');
-
-    if (birdEl) {
-      const birdRect = birdEl.getBoundingClientRect();
-
-      new NextParticle({
-        image: document.getElementById('bird'),
-        addTimestamp: true,
-        width: birdRect.width,
-        height: birdRect.height,
-        initPosition: 'random',
-        initDirection: 'random',
-        particleGap: 5,
-        // particleSize: 1.8,
-        gravity: 0.2,
-        noise: 80,
-        mouseForce: 30,
-      });
-    }
+    // const birdEl = document.querySelector('.video-bird');
+    //
+    // if (birdEl) {
+    //   const birdRect = birdEl.getBoundingClientRect();
+    //
+    //   new NextParticle({
+    //     image: document.getElementById('bird'),
+    //     addTimestamp: true,
+    //     width: birdRect.width,
+    //     height: birdRect.height,
+    //     initPosition: 'random',
+    //     initDirection: 'random',
+    //     particleGap: 5,
+    //     // particleSize: 1.8,
+    //     gravity: 0.2,
+    //     noise: 80,
+    //     mouseForce: 30,
+    //   });
+    // }
 
 
     $('input[type="file"]').change((event) => {
@@ -1041,10 +1048,18 @@ class Prospectacy {
   };
 
   static setLoadPercentage(num) {
+    console.log(num);
+
     if (document.getElementById('logo-mask')) {
       setTimeout(() => {
         document.getElementById('logo-mask').style.width = `${num}%`;
       }, 200);
+    }
+
+    if (num >= 100) {
+      setTimeout(() => {
+        Prospectacy.startAnimation();
+      }, 1000);
     }
   }
 
@@ -1063,45 +1078,89 @@ class Prospectacy {
     // setTimeout(() => {
     // }, 1000);
   }
+
+
+  // static initApi() {
+  //   this.initDOMLoadedElements = this.initDOMLoadedElements.bind(this);
+  //
+  //   // Taken from jQuery `ready` function
+  //   // Instantiate elements already present on the page
+  //   if (
+  //     document.readyState === 'complete'
+  //     || (document.readyState !== 'loading' && !document.documentElement.doScroll)
+  //   ) {
+  //     // Handle it asynchronously to allow scripts the opportunity to delay init
+  //     window.setTimeout(this.initDOMLoadedElements);
+  //   } else {
+  //     document.addEventListener('DOMContentLoaded', this.initDOMLoadedElements);
+  //     window.addEventListener('load', this.initDOMLoadedElements);
+  //   }
+  // }
+  //
+  // static initDOMLoadedElements() {
+  //   document.removeEventListener('DOMContentLoaded', this.initDOMLoadedElements);
+  //   window.removeEventListener('load', this.initDOMLoadedElements);
+  //
+  //   Array.prototype.forEach.call(
+  //     document.querySelectorAll('.input-field'),
+  //     (el) => {
+  //       if (!el.Input) new Input(el);
+  //     },
+  //   );
+  // }
 }
 
 
+const App = new Prospectacy();
+
+// Наговнокодил тут, короче
+
 let per = 0;
 
-document.addEventListener('DOMContentLoaded', () => {
-  // startAnimation();
-  // return;
+const timer = setInterval(() => {
+  if (per < 100) {
+    Prospectacy.setLoadPercentage(per += 15);
+  } else {
+    clearInterval(timer);
+    Prospectacy.setLoadPercentage(100);
+  }
+}, 1000);
 
-  const App = new Prospectacy();
+
+if (document.readyState === 'interactive') {
   App.init();
+  Prospectacy.setLoadPercentage(per = 35);
+}
 
-
-  Prospectacy.setLoadPercentage(per += 15);
-
-  const timer = setInterval(() => {
-    if (per < 100) {
-      Prospectacy.setLoadPercentage(per += 15);
-    } else {
-      clearInterval(timer);
-
-      Prospectacy.setLoadPercentage(100);
-
-      setTimeout(() => {
-        Prospectacy.startAnimation();
-      }, 1000);
-    }
-  }, 1000);
-});
+if (document.readyState === 'complete') {
+  if (per < 100) {
+    clearInterval(timer);
+    Prospectacy.setLoadPercentage(per = 100);
+  }
+}
 
 document.addEventListener('readystatechange', () => {
   if (document.readyState === 'interactive') {
-    Prospectacy.setLoadPercentage(per += 20);
+    App.init();
+    Prospectacy.setLoadPercentage(per = 35);
   }
   if (document.readyState === 'complete') {
-    Prospectacy.setLoadPercentage(per += 20);
+    if (per < 100) {
+      clearInterval(timer);
+      Prospectacy.setLoadPercentage(per = 100);
+    }
   }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  App.init();
+
+  Prospectacy.setLoadPercentage(per = 30);
+});
+
 window.addEventListener('load', () => {
-  Prospectacy.setLoadPercentage(per = 100);
+  if (per < 100) {
+    clearInterval(timer);
+    Prospectacy.setLoadPercentage(per = 100);
+  }
 });

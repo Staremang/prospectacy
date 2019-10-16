@@ -6246,12 +6246,6 @@ video::-webkit-media-controls-start-playback-button {
         font-size: 18px; } }
 
 .video-bird {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   position: absolute;
   top: 68px;
   left: 50%;
@@ -7818,10 +7812,10 @@ video::-webkit-media-controls-start-playback-button {
             left: auto;
             width: 302px;
             height: 196px;
-            background-image: url(../img/friendship-photo-1.d49e0df7.jpg); } }
+            background-image: url(../img/friendship-photo-1.4ef4eff6.jpg); } }
       @media only screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-width: 768px) and (min-resolution: 1.5dppx), (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 768px) and (min-resolution: 144dpi) {
         .s-friendship__col:nth-of-type(1) .s-friendship__image {
-          background-image: url(../img/friendship-photo-1@2x.5492532f.jpg); } }
+          background-image: url(../img/friendship-photo-1@2x.34d0fac6.jpg); } }
     @media (min-width: 768px) {
         .s-friendship__col:nth-of-type(2) {
           width: 205px;
@@ -7829,10 +7823,10 @@ video::-webkit-media-controls-start-playback-button {
           .s-friendship__col:nth-of-type(2) .s-friendship__image {
             width: 205px;
             height: 354px;
-            background-image: url(../img/friendship-photo-2.18ea7756.jpg); } }
+            background-image: url(../img/friendship-photo-2.78226030.jpg); } }
       @media only screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-width: 768px) and (min-resolution: 1.5dppx), (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 768px) and (min-resolution: 144dpi) {
         .s-friendship__col:nth-of-type(2) .s-friendship__image {
-          background-image: url(../img/friendship-photo-2@2x.d6ce905d.jpg); } }
+          background-image: url(../img/friendship-photo-2@2x.3803453a.jpg); } }
     @media (min-width: 768px) {
         .s-friendship__col:nth-of-type(3) {
           width: 181px;
@@ -7840,10 +7834,10 @@ video::-webkit-media-controls-start-playback-button {
           .s-friendship__col:nth-of-type(3) .s-friendship__image {
             width: 228px;
             height: 300px;
-            background-image: url(../img/friendship-photo-3.64567dbf.jpg); } }
+            background-image: url(../img/friendship-photo-3.93796359.jpg); } }
       @media only screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-width: 768px) and (min-resolution: 1.5dppx), (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 768px) and (min-resolution: 144dpi) {
         .s-friendship__col:nth-of-type(3) .s-friendship__image {
-          background-image: url(../img/friendship-photo-3@2x.cb450c5c.jpg); } }
+          background-image: url(../img/friendship-photo-3@2x.3f27f5fe.jpg); } }
     @media (min-width: 1170px) {
       .s-friendship__col {
         margin-right: 28px; }
@@ -8834,7 +8828,7 @@ video::-webkit-media-controls-start-playback-button {
 
 @media (min-width: 1170px) {
   .company-modal {
-    background: #000 url(../img/history-modal-bg.60475f80.jpg) center no-repeat;
+    background: #000 url(../img/history-modal-bg.85e48796.jpg) center no-repeat;
     background-size: cover;
     color: #fff; } }
 
@@ -8922,7 +8916,7 @@ video::-webkit-media-controls-start-playback-button {
   margin-bottom: 30px;
   margin-left: -25px;
   padding: 30px 25px 39px;
-  background: url(../img/history-modal-bg.60475f80.jpg) center no-repeat;
+  background: url(../img/history-modal-bg.85e48796.jpg) center no-repeat;
   background-size: cover;
   color: #fff; }
   @media (min-width: 1170px) {
