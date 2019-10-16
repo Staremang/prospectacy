@@ -232,6 +232,8 @@ class Gallery {
 
 class Map {
   constructor() {
+    this.mapEl = document.getElementById('map');
+
     this.$slider = $('.s-contacts__slider');
     this.$buttonLeft = $('.s-contacts__btn-left');
     this.$buttonRight = $('.s-contacts__btn-right');
@@ -266,8 +268,44 @@ class Map {
     //   this.loop = false;
     // }
 
+
+    // this.$slider.on('changed.owl.carousel', (event) => {
+    //   // console.log(event.target, event.item, event.page);
+    //   this.setId(event.item.index, false);
+    // });
+
+    $('.s-contacts__address').on('click', (event) => {
+      const id = parseInt(event.currentTarget.dataset.point, 10);
+
+      if (document.documentElement.clientWidth >= 768) {
+        if (id !== this.currentId) {
+          this.next();
+        }
+      } else {
+        this.setId(id);
+      }
+    });
+
+    this.$buttonRight.on('click', this.next);
+    this.$buttonLeft.on('click', this.prev);
+
+
     if (window.ymaps) {
-      window.ymaps.ready(this.init);
+      // window.ymaps.ready(this.initMap);
+      window.ymaps.ready((payload) => {
+        const observer = new IntersectionObserver(((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const map = entry.target;
+              observer.unobserve(map);
+
+              this.initMap(payload);
+            }
+          });
+        }));
+
+        observer.observe(this.mapEl);
+      });
     }
   }
 
@@ -291,28 +329,11 @@ class Map {
     this.$slider.trigger('destroy.owl.carousel');
   }
 
-  init = (ymaps) => {
-    // this.$slider.on('changed.owl.carousel', (event) => {
-    //   // console.log(event.target, event.item, event.page);
-    //   this.setId(event.item.index, false);
-    // });
+  initMap = (ymaps) => {
+    if (this.Map) {
+      return;
+    }
 
-    $('.s-contacts__address').on('click', (event) => {
-      const id = parseInt(event.currentTarget.dataset.point, 10);
-
-      if (document.documentElement.clientWidth >= 768) {
-        if (id !== this.currentId) {
-          this.next();
-        }
-      } else {
-        this.setId(id);
-      }
-    });
-
-    this.$buttonRight.on('click', this.next);
-    this.$buttonLeft.on('click', this.prev);
-
-    this.mapEl = document.getElementById('map');
     // Создание карты.
     this.Map = new ymaps.Map(this.mapEl, {
       center: [55.76, 37.64],
@@ -866,13 +887,59 @@ class Prospectacy {
   }
 
   initVideo() {
+    this.videoObserver = new IntersectionObserver(((entries, observer) => {
+      // console.log(entries);
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    }));
+
+
     this.$videoBird = document.getElementById('video-bird');
     if (this.$videoBird) {
-      enableInlineVideo(this.$videoBird);
+      // enableInlineVideo(this.$videoBird);
 
-      setTimeout(() => {
-        this.$videoBird.play();
-      }, 1000);
+
+      this.$videoBird.load();
+
+      // if (typeof this.onCanPlay === 'function') {
+      //   this.$videoBird.removeEventListener('canplay', this.onCanPlay);
+      // }
+
+      if (this.$videoBird.readyState < 3) {
+        this.onCanPlay = () => {
+          this.$videoBird.removeEventListener('canplay', this.onCanPlay);
+
+
+          this.videoObserver.observe(this.$videoBird);
+          Prospectacy.startAnimation();
+
+          // setTimeout(() => {
+          //   console.log('start');
+          //   this.videoObserver.observe(this.$videoBird);
+          //   // this.$videoBird.play();
+          // }, 1800);
+        };
+
+        this.$videoBird.addEventListener('canplay', this.onCanPlay);
+      } else {
+        this.videoObserver.observe(this.$videoBird);
+        Prospectacy.startAnimation();
+        // setTimeout(() => {
+        //   console.log('start');
+        //   this.videoObserver.observe(this.$videoBird);
+        //   // this.$videoBird.play();
+        // }, 1800);
+      }
+
+      // setTimeout(() => {
+      //   this.$videoBird.play();
+      // }, 1000);
       // this.$videoBird.addEventListener('canplaythrough', () => {
       //   this.$videoBird.play();
       //   this.$videoBird.classList.add('animated');
@@ -884,10 +951,12 @@ class Prospectacy {
 
     this.$videoScales = document.getElementById('video-scales');
     if (this.$videoScales) {
-      enableInlineVideo(this.$videoScales);
-      setTimeout(() => {
-        this.$videoScales.play();
-      }, 1000);
+      // enableInlineVideo(this.$videoScales);
+
+      this.videoObserver.observe(this.$videoScales);
+      // setTimeout(() => {
+      //   this.$videoScales.play();
+      // }, 1000);
 
       // this.$videoScales.addEventListener('canplaythrough', () => {
       //   this.$videoScales.play();
@@ -900,10 +969,12 @@ class Prospectacy {
 
     this.$videoRub = document.getElementById('video-rub');
     if (this.$videoRub) {
-      enableInlineVideo(this.$videoRub);
-      setTimeout(() => {
-        this.$videoRub.play();
-      }, 1000);
+      // enableInlineVideo(this.$videoRub);
+
+      this.videoObserver.observe(this.$videoRub);
+      // setTimeout(() => {
+      //   this.$videoRub.play();
+      // }, 1000);
 
       // this.$videoRub.addEventListener('canplaythrough', () => {
       //   this.$videoRub.play();
@@ -1051,15 +1122,15 @@ class Prospectacy {
     console.log(num);
 
     if (document.getElementById('logo-mask')) {
-      setTimeout(() => {
-        document.getElementById('logo-mask').style.width = `${num}%`;
-      }, 200);
+      document.getElementById('logo-mask').style.width = `${num}%`;
+      // setTimeout(() => {
+      // }, 200);
     }
 
     if (num >= 100) {
       setTimeout(() => {
         Prospectacy.startAnimation();
-      }, 1000);
+      }, 500);
     }
   }
 
@@ -1073,6 +1144,7 @@ class Prospectacy {
     // document.getElementById('hero-video').play();
 
     // setTimeout(() => {
+    //   document.getElementById('video-bird').play();
     // }, 800);
     //
     // setTimeout(() => {
