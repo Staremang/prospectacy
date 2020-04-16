@@ -79,15 +79,15 @@ module.exports = (env, args) => {
                 sourceMap: false,
               },
             },
-            // {
-            //   loader: 'sass-loader',
-            //   options: {
-            //     sourceMap: false,
-            //   },
-            // },
             {
-              loader: 'fast-sass-loader',
+              loader: 'sass-loader',
+              options: {
+                sourceMap: false,
+              },
             },
+            // {
+            //   loader: 'fast-sass-loader',
+            // },
           ],
         },
         /* config.module.rule('images') */
@@ -216,6 +216,14 @@ module.exports = (env, args) => {
           filename: 'privacy.html',
           template: path.resolve(__dirname, 'public/privacy.html'),
           chunks: [],
+          minify: false,
+          alwaysWriteToDisk: true,
+        },
+      ),
+      new HtmlWebpackPlugin(
+        {
+          filename: 'covid19.html',
+          template: path.resolve(__dirname, 'public/covid19.html'),
           minify: false,
           alwaysWriteToDisk: true,
         },

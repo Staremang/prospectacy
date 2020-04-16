@@ -52,7 +52,7 @@
   </style>
   <title>Prospectacy</title>
   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<link href="assets/css/app.css" rel="stylesheet"></head>
+</head>
 <body>
 
 <div id="loader" class="loader">
@@ -153,18 +153,18 @@
 
 
   <div class="wrapper">
-    <section class="s-hero" id="hero-section">
-      <div class="s-hero__mask">
+    <section class="cv-hero" id="hero-section">
+      <div class="cv-hero__mask">
 
-        <div class="s-hero__overlay">
+        <div class="cv-hero__overlay">
           <!--          <div class="video-bird">-->
           <!--&lt;!&ndash;            <img id="bird" class="next-particle" data-particle-gap="3" data-init-position="random" data-init-direction="random" data-fade-position="right" data-fade-direction="right" data-layer-count="2" data-depth="1" data-particle-size="1.8" data-gravity="0.2" data-noise="80" data-mouse-force="30" src="images/bird.png">&ndash;&gt;-->
           <!--            <img id="bird" src="images/bird.png">-->
           <!--          </div>-->
           <!--          <canvas id="bird" class="video-bird"></canvas>-->
-          <video id="video-bird" class="video-bird" playsinline muted loop src="video/bird-new1.mp4"></video>
+          <!--<video id="video-bird" class="video-bird" playsinline muted loop src="video/bird-new1.mp4"></video>-->
 
-          <svg class="s-hero__logo" viewBox="0 0 1523 129" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="cv-hero__logo" viewBox="0 0 1523 129" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M79.004 3.32797C94.0887 3.32797 105.87 6.94331 114.347 14.174C122.949 21.28 127.25 31.1286 127.25 43.72V45.59C127.25 58.1813 122.949 68.0923 114.347 75.323C105.87 82.5536 94.0887 86.169 79.004 86.169H33.376V126H0.276978V3.32797H79.004ZM78.256 57.371C83.2426 57.371 87.045 56.3736 89.663 54.379C92.281 52.3843 93.59 49.4546 93.59 45.59V43.72C93.59 39.98 92.281 37.1126 89.663 35.118C87.045 33.1233 83.2426 32.126 78.256 32.126H33.376V57.371H78.256Z" fill="white" />
             <path d="M268.829 45.777C268.829 55.7503 265.837 63.8536 259.853 70.087C253.869 76.3203 245.205 80.3096 233.86 82.055L268.081 120.951V126H230.681L194.216 82.99H174.955V126H141.856V3.32797H220.583C235.543 3.32797 247.324 6.94331 255.926 14.174C264.528 21.4046 268.829 31.3156 268.829 43.907V45.777ZM235.169 43.72C235.169 35.9906 230.058 32.126 219.835 32.126H174.955V57.371H219.835C224.822 57.371 228.624 56.3736 231.242 54.379C233.86 52.3843 235.169 49.4546 235.169 45.59V43.72Z" fill="white" />
             <path d="M355.535 128.431C340.699 128.431 327.609 125.875 316.265 120.764C305.045 115.528 296.38 108.173 290.272 98.698C284.163 89.0986 281.109 78.0033 281.109 65.412V64.103C281.109 51.387 284.163 40.2916 290.272 30.817C296.38 21.2176 305.045 13.8623 316.265 8.75097C327.609 3.51497 340.699 0.896973 355.535 0.896973C370.619 0.896973 383.772 3.51497 394.992 8.75097C406.212 13.8623 414.876 21.2176 420.985 30.817C427.093 40.2916 430.148 51.387 430.148 64.103V65.412C430.148 78.128 427.093 89.2233 420.985 98.698C414.876 108.173 406.212 115.528 394.992 120.764C383.772 125.875 370.619 128.431 355.535 128.431ZM355.535 97.576C382.837 97.576 396.488 87.0416 396.488 65.973V63.729C396.488 53.257 392.997 45.3406 386.016 39.98C379.159 34.4946 368.999 31.752 355.535 31.752C342.32 31.752 332.222 34.4946 325.241 39.98C318.259 45.4653 314.769 53.3816 314.769 63.729V65.973C314.769 76.3203 318.197 84.1743 325.054 89.535C331.91 94.8956 342.071 97.576 355.535 97.576Z" fill="white" />
@@ -179,51 +179,50 @@
           </svg>
         </div>
 
-        <div class="s-hero__fixed">
-          <div class="s-hero__content">
-            <div class="s-hero__inner">
-              <h1 class="s-hero__title">
-                Ведём и выигрываем<br>
-                дела в арбитражных<br>
-                судах Москвы и СПБ
+        <div class="cv-hero__fixed">
+          <div class="cv-hero__content">
+            <div class="cv-hero__inner">
+              <h1 class="cv-hero__title">
+                Поможем вашему бизнесу
+                сохранить <span class="selected">спокойствие</span><br>
+                на карантине
               </h1>
-              <button class="s-hero__button circle-button" data-modal data-src="#feedback-modal" data-field="inpitname" data-field-value="234f5ff4235">
+              <button class="cv-hero__button circle-button" data-modal data-src="#feedback-modal" data-field="inpitname" data-field-value="234f5ff4235">
                 <span>Оставить заявку</span>
               </button>
               <!-- Почта и телефон меняются в двух местах -->
-              <div class="s-hero__contacts">
+              <div class="cv-hero__contacts">
                 <div>
-                  <a href="tel:+74997556446" class="s-hero__link">+7 (499) 755-64-46</a>
+                  <a href="tel:+74997556446" class="cv-hero__link">+7 (499) 755-64-46</a>
                 </div>
                 <div>
-                  <a href="mailto:win@prospectacy.ru" class="s-hero__link">arbitr@prospectacy.ru</a>
+                  <a href="mailto:win@prospectacy.ru" class="cv-hero__link">arbitr@prospectacy.ru</a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="s-hero__benefits">
+          <div class="cv-hero__benefits">
             <ol class="hero-benefits" id="hero-benefits">
               <li class="hero-benefits__item">
                 <div class="hero-benefits__num">01</div>
-                <h3 class="hero-benefits__title">Помогаем бизнесу<br> сохранить деньги</h3>
+                <h3 class="hero-benefits__title">Сохраним ваши деньги</h3>
                 <p class="hero-benefits__description">
-                  Занимаемся урегулированием конфликтов и судебных споров среднего и крупного
-                  бизнеса.
+                  Урегулируем конфликты и судебные споры, возникшие из-за пандемии коронавируса.
                 </p>
               </li>
               <li class="hero-benefits__item">
                 <div class="hero-benefits__num">02</div>
-                <h3 class="hero-benefits__title">Находим решения<br> в каждом деле</h3>
+                <h3 class="hero-benefits__title">Подготовим план действий</h3>
                 <p class="hero-benefits__description">
-                  Досконально изучаем проблему<br>
-                  и специфику бизнеса. Находим пути решения конкретно вашего случая.
+                  Решим, как законно добиться от подрядчиков или государства выполнения обязанностей.
                 </p>
               </li>
               <li class="hero-benefits__item">
                 <div class="hero-benefits__num">03</div>
-                <h3 class="hero-benefits__title">Консультируем бесплатно</h3>
+                <h3 class="hero-benefits__title selected">Решим проблему</h3>
                 <p class="hero-benefits__description">
-                  Обсудим задачу, оценим возможность подачи в суд или мирного решения.
+                  Выйдем из ситуации<br>
+                  с минимальными потерями, сохранив бизнес.
                 </p>
               </li>
             </ol>
@@ -232,323 +231,144 @@
       </div>
     </section>
 
-    <section id="services" class="s-about" aria-label="Услуги" role="region">
-      <div class="s-about__background">
-        <div id="about-bg-1" class="s-about__bg-image" style="background-image: url('images/about-bg-1.jpg')"></div>
-        <div id="about-bg-2" class="s-about__bg-image" style="background-image: url('images/about-bg-2.jpg')"></div>
-        <div id="about-bg-3" class="s-about__bg-image" style="background-image: url('images/about-bg-3.jpg')"></div>
-        <div id="about-bg-4" class="s-about__bg-image" style="background-image: url('images/about-bg-4.jpg')"></div>
-        <div id="about-bg-5" class="s-about__bg-image" style="background-image: url('images/about-bg-5.jpg')"></div>
-        <div id="about-bg-6" class="s-about__bg-image" style="background-image: url('images/about-bg-6.jpg')"></div>
-        <div id="about-bg-7" class="s-about__bg-image" style="background-image: url('images/about-bg-7.jpg')"></div>
-        <div id="about-bg-8" class="s-about__bg-image" style="background-image: url('images/about-bg-8.jpg')"></div>
-        <div id="about-bg-9" class="s-about__bg-image" style="background-image: url('images/about-bg-9.jpg')"></div>
+    <section class="cv-when" aria-label="Когда к нам обращаются" role="region">
+      <div class="cv-when__inner">
+        <h2 class="cv-when__title">Когда к нам обращаются</h2>
+        <p class="cv-when__text">Начиная с февраля 2020 мы ежедневно работаем с бизнесом, попавшим в
+          трудности из-за пандемии <span class="selected">COVID-19</span>. Мы накопили опыт
+          во всех частых спорах. И знаем, как вам помочь.</p>
+        <ul class="cv-when__list">
+          <li class="cv-when__item">
+            <a href="#" class="cv-when-item">
+              <h3 class="cv-when-item__title">Клиенты требуют отсрочку</h3>
+              <p class="cv-when-item__text">Ваши клиенты требуют отсрочить платежи,
+                ссылаясь на ограничительные меры.</p>
+              <span class="cv-when-item__link">
+                Как мы поможем
+                <svg width="21" height="10" viewBox="0 0 33 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.7685 0.916504L32.1693 8.00013L24.7685 15.0838L22.6942 12.9165L26.2635 9.50013H0V6.50013H26.2635L22.6942 3.08376L24.7685 0.916504Z" fill="currentColor" />
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li class="cv-when__item">
+            <a href="#" class="cv-when-item">
+              <h3 class="cv-when-item__title">Аренда стала непосильной</h3>
+              <p class="cv-when-item__text">Арендодатель отказал в каникулах по аренде.</p>
+              <span class="cv-when-item__link">
+                Как мы поможем
+                <svg width="21" height="10" viewBox="0 0 33 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.7685 0.916504L32.1693 8.00013L24.7685 15.0838L22.6942 12.9165L26.2635 9.50013H0V6.50013H26.2635L22.6942 3.08376L24.7685 0.916504Z" fill="currentColor" />
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li class="cv-when__item">
+            <a href="#" class="cv-when-item">
+              <h3 class="cv-when-item__title">Нужно обеспечить работу
+                производства
+              </h3>
+              <p class="cv-when-item__text">Как обеспечить перемещение сотрудников
+                на производство, какими документами их снабдить. Нужно ли переделывать рабочие
+                места. </p>
+              <span class="cv-when-item__link">
+                Как мы поможем
+                <svg width="21" height="10" viewBox="0 0 33 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.7685 0.916504L32.1693 8.00013L24.7685 15.0838L22.6942 12.9165L26.2635 9.50013H0V6.50013H26.2635L22.6942 3.08376L24.7685 0.916504Z" fill="currentColor" />
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li class="cv-when__item">
+            <a href="#" class="cv-when-item">
+              <h3 class="cv-when-item__title">Нужно приостановить
+                действие договора
+              </h3>
+              <p class="cv-when-item__text">Вы не можете исполнить контракт
+                из-за ограничительных мер карантина.
+                Имеете ли вы на это право?</p>
+              <span class="cv-when-item__link">
+                Как мы поможем
+                <svg width="21" height="10" viewBox="0 0 33 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.7685 0.916504L32.1693 8.00013L24.7685 15.0838L22.6942 12.9165L26.2635 9.50013H0V6.50013H26.2635L22.6942 3.08376L24.7685 0.916504Z" fill="currentColor" />
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li class="cv-when__item">
+            <a href="#" class="cv-when-item">
+              <h3 class="cv-when-item__title">Хотите получить поддержку
+                государства
+              </h3>
+              <p class="cv-when-item__text">Какие поддерживающие меры приняло правительство и как
+                ими воспользоваться.</p>
+
+              <span class="cv-when-item__link">
+                Как мы поможем
+                <svg width="21" height="10" viewBox="0 0 33 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.7685 0.916504L32.1693 8.00013L24.7685 15.0838L22.6942 12.9165L26.2635 9.50013H0V6.50013H26.2635L22.6942 3.08376L24.7685 0.916504Z" fill="currentColor" />
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li class="cv-when__item">
+            <a href="#" class="cv-when-item">
+              <h3 class="cv-when-item__title">Банкротство</h3>
+              <p class="cv-when-item__text">Ваша компания обанкротилась из-за карантина. Нужно
+                получить официальный статус.</p>
+
+              <span class="cv-when-item__link">
+                Как мы поможем
+                <svg width="21" height="10" viewBox="0 0 33 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.7685 0.916504L32.1693 8.00013L24.7685 15.0838L22.6942 12.9165L26.2635 9.50013H0V6.50013H26.2635L22.6942 3.08376L24.7685 0.916504Z" fill="currentColor" />
+                </svg>
+              </span>
+            </a>
+          </li>
+        </ul>
       </div>
-      <div class="s-about__inner">
-        <div class="s-about__first-col" data-sticky-container>
-          <p class="s-about__sticky-text" id="js-about-sticky" data-aos="fade-up" data-aos-anchor-placement="top-center">
-            Берёмся за работу, когда<br>
-            у компании назревает спор<br>
-            или он уже начался. Подадим иск или выстроим защиту против иска.
-          </p>
-        </div>
-        <div class="s-about__second-col">
-          <p class="s-about__text">
-            Поможем выйти победителем
-            <br> при взыскании <mark data-bg-src="#about-bg-1"><span>дебиторской</span>
-            <br> <span>задолженности</span></mark>, спорах
-            <br> с <mark data-bg-src="#about-bg-2"><span>договорами поставки</span></mark>,
-            <br> <mark data-bg-src="#about-bg-3"><span>подряда</span></mark> и
-            <mark data-bg-src="#about-bg-4"><span>займа</span></mark>.
-          </p>
-          <p class="s-about__text">
-            При нарушениях договоров
-            <br> <mark data-bg-src="#about-bg-5"><span>аренды</span></mark>
-            и <mark data-bg-src="#about-bg-6"><span>услуг</span></mark>.
-          </p>
-          <p class="s-about__text">
-            При любых спорах
-            <br> с <mark data-bg-src="#about-bg-7"><span>недвижимостью</span></mark>.
-          </p>
-          <p class="s-about__text">
-            А также прениях
-            <br> с <mark data-bg-src="#about-bg-8"><span>государственными</span>
-            <br> <span>органами</span></mark>
-            <br> и <mark data-bg-src="#about-bg-9"><span>административных</span>
-            <br> <span>нарушениях</span></mark>.
-          </p>
+    </section>
+
+    <section class="cv-who" aria-label="С каким бизнесом работаем" role="region">
+      <div class="cv-who__inner">
+        <h2 class="cv-who__title">С каким бизнесом работаем</h2>
+        <p class="cv-who__text">Нельзя быть экспертами во всём. Мы накопили большую экспертизу для
+          следующих типов бизнеса.</p>
+        <div class="cv-who-list">
+          <div class="cv-who-list__item active">
+            <div class="cv-who-list__title">Кафе и рестораны</div>
+            <div class="cv-who-list__qq">
+              <div class="cv-who-list__qq-item">Имеет ли исполнитель право отсрочить платежи?</div>
+              <div class="cv-who-list__qq-item">Как обеспечить перемещение работников?</div>
+              <div class="cv-who-list__qq-item">Как нужно переоборудовать рабочие места?</div>
+              <div class="cv-who-list__qq-item">Как оформить разрешение на работу?</div>
+            </div>
+          </div>
+          <div class="cv-who-list__item">
+            <div class="cv-who-list__title">Производство</div>
+          </div>
+          <div class="cv-who-list__item">
+            <div class="cv-who-list__title">Предприятия,<br> работающие<br> с населением</div>
+          </div>
+          <div class="cv-who-list__item">
+            <div class="cv-who-list__title">Торговые компании</div>
+          </div>
+          <div class="cv-who-list__item">
+            <div class="cv-who-list__title">Арендный бизнес</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="portfolio" class="s-portfolio" aria-label="Портфолио" role="region">
-      <div class="s-portfolio__inner">
-        <h2 class="s-portfolio__title">Портфолио побед наших клиентов</h2>
-        <div class="s-portfolio__stats">
-          <div class="portfolio-stats" data-aos="fade-up" data-aos-delay="0" data-aos-anchor-placement="top-center">
-            <div class="portfolio-stats__title">Портфолио</div>
-            <div class="portfolio-stats__value blue">94% дел</div>
-            <div class="portfolio-stats__description">завершились в пользу наших клиентов</div>
-          </div>
-        </div>
-        <div class="s-portfolio__list">
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-delay="200" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#project-modal-1" data-modal class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-delay="400" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#project-modal-2" data-modal class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-delay="600" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#project-modal-3" data-modal class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-delay="800" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#" class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#project-modal-1" data-modal class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#project-modal-2" data-modal class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#project-modal-3" data-modal class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#" class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#" class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#project-modal-1" data-modal class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#project-modal-2" data-modal class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#project-modal-3" data-modal class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-          <div class="s-portfolio__col" data-aos="fade-up" data-aos-anchor-placement="top-center">
-            <div class="project-item">
-              <a href="#" class="project-item__title arrow-link">
-                Невыполнение договорных обязательств по строительным работам
-                <svg class="arrow-link__icon" viewBox="0 0 38 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="arrow-link__tail" fill-rule="evenodd" clip-rule="evenodd" d="M34 9.56055H1V6.56055H34V9.56055Z" fill="currentColor" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1213 0L37.182 8.06066L29.1213 16.1213L27 14L32.9393 8.06066L27 2.12132L29.1213 0Z" fill="currentColor" />
-                </svg>
-              </a>
-              <p class="project-item__text">Взыскано 82,5 млн рублей убытков и 7 млн рублей
-                задолженности по договору
-                подряда.</p>
-              <div class="project-item__footer">
-                <span class="project-item__sticker">89,5 млн ₽</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="s-portfolio__next">
-          <a href="#" class="next-link">Ещё 5 проектов</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="lawyers" class="s-lawyers" aria-label="Юристы" role="region">
-      <!--      <canvas id="video-scales" class="video-scales"></canvas>-->
-      <!--      <div class="video-scales">-->
-      <!--        <img id="video-scales" class="next-particle"-->
-      <!--             src="images/scales.png"-->
-      <!--             data-height="100%"-->
-      <!--             data-width="100%"-->
-      <!--             data-color="#005eec"-->
-      <!--             data-particle-gap="3"-->
-      <!--             data-layer-count="1"-->
-      <!--             data-gravity="0.2"-->
-      <!--             data-noise="100"-->
-      <!--             data-mouse-force="30">-->
-      <!--      </div>-->
-      <video id="video-scales" class="video-scales video-scales_mob" preload="metadata" muted loop src="video/scales.mp4"></video>
-      <div class="s-lawyers__inner">
-        <h2 class="s-lawyers__title">Ведущие юристы Prospectacy со стажем до 12 лет</h2>
-        <div class="lawyers-achievement">
-          <div class="lawyers-achievement__value">2</div>
-          <div class="lawyers-achievement__measure">млрд<br> рублей</div>
-          <div class="lawyers-achievement__description">выиграно в пользу клиентов</div>
-        </div>
-        <ul class="s-lawyers__list">
-          <li class="s-lawyers__item">
-
-            <div class="lawyer lawyer_konstantin">
+    <section class="cv-lawyers" aria-label="Юристы" role="region">
+      <div class="cv-lawyers__inner">
+        <h2 class="cv-lawyers__title">Доверьте своё дело юристам со стажем <span class="selected">до 12 лет</span></h2>
+        <p class="cv-lawyers__subtitle">И большим опытом в спорах, возникающих из-за карантина.</p>
+        <ul class="cv-lawyers__list">
+          <li class="cv-lawyers__item">
+            <div class="lawyer lawyer_no-hover lawyer_konstantin">
               <div class="lawyer__photo">
-                <img class="lawyer__img" src="images/konstantin.jpg" srcset="images/konstantin@2x.jpg 2x" alt="Константин Заутренников">
-                <img class="lawyer__img lawyer__img_hover" src="images/konstantin-hover.jpg" srcset="images/konstantin-hover@2x.jpg 2x" alt="Константин Заутренников">
+                <img class="lawyer__img" src="images/konstantin.png" srcset="images/konstantin@2x.png 2x" alt="Константин Заутренников">
               </div>
               <a href="#person-modal-1" data-modal class="lawyer__name stretched-link arrow-link">
                 Константин Заутренников
@@ -565,11 +385,10 @@
               <div class="lawyer__alias">Ментор</div>
             </div>
           </li>
-          <li class="s-lawyers__item">
-            <div class="lawyer lawyer_maria">
+          <li class="cv-lawyers__item">
+            <div class="lawyer lawyer_no-hover lawyer_maria">
               <div class="lawyer__photo">
-                <img class="lawyer__img" src="images/maria.jpg" srcset="images/maria@2x.jpg 2x" alt="Мария Лайнер">
-                <img class="lawyer__img lawyer__img_hover" src="images/maria-hover.jpg" srcset="images/maria-hover@2x.jpg 2x" alt="Мария Лайнер">
+                <img class="lawyer__img" src="images/maria.png" srcset="images/maria@2x.png 2x" alt="Мария Лайнер">
               </div>
               <a href="#person-modal-2" data-modal class="lawyer__name stretched-link arrow-link">
                 Мария Лайнер
@@ -586,11 +405,10 @@
               <div class="lawyer__alias">Спаситель</div>
             </div>
           </li>
-          <li class="s-lawyers__item">
-            <div class="lawyer lawyer_sergey">
+          <li class="cv-lawyers__item">
+            <div class="lawyer lawyer_no-hover lawyer_sergey">
               <div class="lawyer__photo">
-                <img class="lawyer__img" src="images/sergey.jpg" srcset="images/sergey@2x.jpg 2x" alt="Сергей Омельниченко">
-                <img class="lawyer__img lawyer__img_hover" src="images/sergey-hover.jpg" srcset="images/sergey-hover@2x.jpg 2x" alt="Сергей Омельниченко">
+                <img class="lawyer__img" src="images/sergey.png" srcset="images/sergey@2x.png 2x" alt="Сергей Омельниченко">
               </div>
               <a href="#person-modal-3" data-modal class="lawyer__name stretched-link arrow-link">
                 Сергей Омельниченко
@@ -609,84 +427,105 @@
       </div>
     </section>
 
-    <section id="price" class="s-price" aria-label="Цены" role="region">
-      <div class="s-price__banner">
-        <div class="s-price__overlay">
-          <!--          <div class="video-rub">-->
-          <!--            <img id="video-rub" class="next-particle"-->
-          <!--                 src="images/rub.png"-->
-          <!--                 data-height="100%"-->
-          <!--                 data-width="100%"-->
-          <!--                 data-color="#fffff"-->
-          <!--                 data-particle-gap="3"-->
-          <!--                 data-layer-count="1"-->
-          <!--                 data-gravity="0.2"-->
-          <!--                 data-noise="100"-->
-          <!--                 data-mouse-force="30">-->
-          <!--          </div>-->
-          <!--          <canvas id="video-rub" class="video-rub"></canvas>-->
-          <video id="video-rub" class="video-rub video-rub_mob" preload="metadata" muted loop src="video/rub.mp4"></video>
-        </div>
-        <div class="s-price__inner" data-aos="fade-up" data-aos-anchor-placement="top-center">
-          <h2 class="s-price__title">Честные цены без выдуманных часов</h2>
-          <p class="s-price__description">У нас фиксированные тарифы. Не выдумываем ненужные
-            судебные часы, повышая
-            гонорар
-            юриста. Защищаем ваши интересы с прозрачной оплатой услуг.</p>
+    <section class="cv-price" aria-label="Цены" role="region">
+      <div class="cv-price__block">
+        <div class="cv-price__inner">
+          <h2 class="cv-price__title">Честные цены без выдуманных часов</h2>
         </div>
       </div>
-      <div class="s-price__inner">
-        <ul class="s-price__list" data-aos="fade-up" data-aos-anchor-placement="top-center">
-          <li class="s-price__item">
-            <div class="price-per-step">
-              <div class="price-per-step__num">01</div>
-              <h3 class="price-per-step__title">Консультация</h3>
-              <p class="price-per-step__description">
-                Разбираемся в деле, оцениваем
-                возможность подачи в суд <br>
-                или мирного решения.
-              </p>
-              <div class="price-per-step__value blue">— Бесплатно</div>
+      <div class="cv-price__block">
+        <div class="cv-price__inner">
+          <div class="cv-price-step">
+            <div class="cv-price-step__content">
+              <div class="cv-price-step__num">01</div>
+              <h3 class="cv-price-step__title">Консультация</h3>
+              <p class="cv-price-step__text">Разбираемся в деле, оцениваем объем работы и делаем
+                предложение по выходу из ситуации. </p>
             </div>
-            <button class="s-price__button circle-button" data-modal data-src="#feedback-modal">
-              <span>Оставить заявку</span>
-            </button>
-          </li>
-          <li class="s-price__item">
-            <div class="price-per-step">
-              <div class="price-per-step__num">02</div>
-              <h3 class="price-per-step__title">Сбор документов</h3>
-              <p class="price-per-step__description">Составляем исковое заявление, готовим
-                необходимые документы, подаём
-                досудебную претензию и иск.</p>
-              <div class="price-per-step__value">— 15 000 ₽</div>
+            <div class="cv-price-step__value selected">— Бесплатно</div>
+          </div>
+        </div>
+      </div>
+      <div class="cv-price__block">
+        <div class="cv-price__inner">
+          <div class="cv-price-step">
+            <div class="cv-price-step__content">
+              <div class="cv-price-step__num">02</div>
+              <h3 class="cv-price-step__title">Решение</h3>
+              <p class="cv-price-step__text">Письменное заключение, как законно добиться результата.
+                Готовом чёткий план действи, обговариваем все аспекты по телефону, скайпу или личной
+                встречей.</p>
             </div>
-          </li>
-          <li class="s-price__item">
-            <div class="price-per-step">
-              <div class="price-per-step__num">03</div>
-              <h3 class="price-per-step__title">Суд</h3>
-              <p class="price-per-step__description">Представляем интересы вашей компании в суде.
-                94% дел заканчиваются
-                победой наших клиентов.</p>
-              <div class="price-per-step__value">— 15 000 ₽
-                <span class="price-per-step__note">день</span></div>
+            <div class="cv-price-step__value">— 5 000 ₽/час</div>
+          </div>
+
+          <div class="cv-get-plan">
+            <h2 class="cv-get-plan__title">
+              Получите <span class="selected">готовый план действий</span> конкретно <br>в вашей
+              ситуации
+            </h2>
+            <div class="cv-get-plan__block">
+              <h3 class="cv-get-plan__subtitle">Что вы получите?</h3>
+              <p class="cv-get-plan__text">Заключение, как выйти из ситуации: на что имеет право ваш
+                бизнес, какие ограничения наложены и законны ли они, как заставить подрядчика
+                соблюдать договор или как самому отказаться от исполнения договора.</p>
             </div>
-          </li>
-          <li class="s-price__item">
-            <div class="price-per-step">
-              <div class="price-per-step__num">%</div>
-              <h3 class="price-per-step__title">Гонорар успеха</h3>
-              <p class="price-per-step__description">Возможен в некоторых категориях дел. Вы
-                получите конечную стоимость
-                на бесплатной консультации.</p>
+            <div class="cv-get-plan__block">
+              <h3 class="cv-get-plan__subtitle">В какой форме?</h3>
+              <p class="cv-get-plan__text">Зависит от задач. Чаще требуется письменный план
+                действий,
+                шаблон письма контрагентам, доп. соглашение или претензия + обсуждение плана по
+                телефону, через Skype-сессию или лично.</p>
             </div>
-          </li>
-        </ul>
-        <div class="s-price__slogan" data-aos="fade-up" data-aos-anchor-placement="top-center">
-          <div class="slogan">
-            <div class="slogan__text gray">Сложные дела —</div>
-            <div class="slogan__text">простая оплата</div>
+            <div class="cv-get-plan__block">
+              <h3 class="cv-get-plan__subtitle">Сроки</h3>
+              <p class="cv-get-plan__text">От 1 до 3 дней. Работаем даже в выходные.</p>
+            </div>
+
+            <div class="cv-form">
+
+              <form action="/" method="post" class="feedback-form">
+                <p class="feedback-form__description">
+                  Перезвоним в течение 15 минут.<br> Консультация ни к чему не обязывает
+                </p>
+                <div class="feedback-form__field">
+                  <div class="input-field">
+                    <label for="modal-feedback-name" class="input-field__label">Ваше имя</label>
+                    <input id="modal-feedback-name" type="text" name="text" class="input-field__input input-text" required>
+                  </div>
+                  <!--        <div class="invalid-tooltip">Заполните это поле</div>-->
+                </div>
+                <div class="feedback-form__field">
+                  <div class="input-field">
+                    <label for="modal-feedback-tel" class="input-field__label">Номер телефона
+                    </label>
+                    <input id="modal-feedback-tel" type="text" name="tel" class="input-field__input input-text" required>
+                  </div>
+                  <div class="invalid-tooltip">Заполните это поле</div>
+                </div>
+                <div class="feedback-form__file">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file__input" id="modal-feedback-file">
+                    <label class="custom-file__label" for="modal-feedback-file">
+                      <svg class="custom-file__icon" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.06 18C3.53865 17.9966 3.02332 17.8917 2.54453 17.6916C2.06574 17.4915 1.63323 17.2002 1.27262 16.835C0.522943 16.0911 0.102226 15.0928 0.100034 14.0526C0.0945407 13.0811 0.479657 12.1458 1.17362 11.4452L1.33862 11.2809L11.2385 1.40612C11.6839 0.960198 12.2173 0.605867 12.807 0.364281C13.3966 0.122694 14.0304 -0.00119461 14.6705 8.68191e-06C15.3599 0.00276543 16.0417 0.139792 16.6755 0.402958C17.3092 0.666125 17.882 1.05007 18.3599 1.53201C19.3468 2.51737 19.8992 3.83681 19.8999 5.21053C19.909 6.48838 19.4039 7.71928 18.4919 8.64154L10.1825 16.9395L9.55995 17.5562L8.32796 16.3229L17.2599 7.41466C17.8387 6.82218 18.1547 6.03303 18.1399 5.21693C18.1373 4.30328 17.7671 3.42668 17.1081 2.77383C16.7933 2.45304 16.4154 2.19674 15.9967 2.02009C15.578 1.84344 15.1271 1.75003 14.6705 1.74538C14.2606 1.74275 13.8543 1.8206 13.4763 1.97424C13.0982 2.12789 12.7561 2.35415 12.4705 2.63941L2.57061 12.5164L2.40561 12.6807C2.04634 13.0515 1.85057 13.5438 1.86002 14.0526C1.86392 14.6326 2.10067 15.1883 2.52001 15.6017C2.71909 15.8043 2.95781 15.9664 3.22223 16.0785C3.48665 16.1906 3.77145 16.2505 4.06 16.2546C4.31661 16.2567 4.57098 16.2082 4.8077 16.1121C5.04442 16.016 5.25857 15.8743 5.43719 15.6956L12.4353 8.70982L13.0227 8.12518C13.0935 8.0558 13.1494 7.9735 13.1871 7.88303C13.2249 7.79257 13.2438 7.69575 13.2427 7.59816C13.2416 7.36404 13.146 7.13965 12.9765 6.97298C12.8954 6.88989 12.7979 6.82346 12.6898 6.77764C12.5818 6.73182 12.4653 6.70755 12.3473 6.70626C12.2494 6.70559 12.1523 6.72414 12.0619 6.76081C11.9716 6.79748 11.8898 6.85151 11.8215 6.91964L5.35799 13.357L4.1216 12.1238L10.5741 5.68422C10.8025 5.45554 11.0761 5.27383 11.3785 5.14992C11.6808 5.02601 12.0059 4.96245 12.3341 4.96302C12.6829 4.96476 13.0277 5.03441 13.3481 5.16782C13.6686 5.30123 13.9582 5.4957 14.1997 5.73969C14.6985 6.23831 14.9778 6.90555 14.9785 7.60029C14.9815 8.25626 14.7211 8.88762 14.2525 9.3606L13.6673 9.94524L6.66917 16.931C6.33026 17.2689 5.92492 17.5374 5.47713 17.7206C5.02935 17.9039 4.54821 17.9981 4.0622 17.9979L4.06 18Z" fill="currentColor" />
+                      </svg>
+                      <svg class="custom-file__border" preserveAspectRatio="none" viewBox="0 0 382 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M174 1H11C5.47715 1 1 5.47715 1 11V76C1 81.5228 5.47716 86 11 86H371C376.523 86 381 81.5228 381 76V11C381 5.47715 376.523 1 371 1H209" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5" />
+                      </svg>
+                      <span class="custom-file__title">Прикрепить документы дела</span>
+                      <span class="custom-file__subtitle">так мы быстрее оценим перспективы</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="feedback-form__button">
+                  <button class="btn btn-blue btn-block" type="submit">Оставить заявку</button>
+                </div>
+                <small class="feedback-form__note">
+                  Отправляя свои контакты, вы соглашаетесь с политикой конфиденциальности.
+                </small>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -696,7 +535,11 @@
       <div class="s-friendship__inner">
         <div class="s-friendship__row">
           <div class="s-friendship__col">
-            <h2 class="s-friendship__title">Отношения на первом месте</h2>
+            <h2 class="s-friendship__title">
+              Помогаем бизнесу<br>
+              <span class="selected">7 дней<br>
+              в неделю</span>
+            </h2>
             <div class="s-friendship__block" data-aos="fade-up" data-aos-anchor-placement="top-center">
               <h3 class="s-friendship__subtitle">Фокус на отношениях</h3>
               <p class="s-friendship__text">Если у дела плохие перспективы, мы скажем честно — не
@@ -743,87 +586,89 @@
       <img class="s-group-photo__img" loading="lazy" src="images/group-photo.jpg" srcset="images/group-photo@2x.jpg 2x" alt="">
     </figure>
 
-    <section id="clients" class="s-clients" aria-label="Наши клиенты" role="region">
-      <div class="s-clients__inner">
-        <h2 class="s-clients__title" data-aos="fade-up" data-aos-anchor-placement="top-center">
-          Защищаем<br> интересы
-          бизнеса<br> по всей стране
+    <section id="clients" class="cv-public" aria-label="Наши клиенты" role="region">
+      <div class="cv-public__inner">
+        <h2 class="cv-public__title" data-aos="fade-up" data-aos-anchor-placement="top-center">
+          Пишем и обучаем,<br>
+          как бизнесу пройти непростой период
         </h2>
-        <div class="s-clients__row">
-          <ul class="s-clients__list" data-aos="fade-up" data-aos-anchor-placement="top-center">
-            <li class="s-clients__item">
-              <a href="#" class="s-clients__link">
-                <img loading="lazy" class="client-mkm" src="images/mkm-logo.png" alt="">
-              </a>
-            </li>
-            <li class="s-clients__item">
-              <a href="#" class="s-clients__link">
-                <img loading="lazy" class="client-strauss" src="images/strauss-logo.png" alt="">
-              </a>
-            </li>
-            <li class="s-clients__item">
-              <a href="#" class="s-clients__link">
-                <img loading="lazy" class="client-tochka" src="images/tochka-logo.png" alt="">
-              </a>
-            </li>
-            <li class="s-clients__item">
-              <a href="#" class="s-clients__link">
-                <img loading="lazy" class="client-appnet" src="images/appnet-logo.png" alt="">
-              </a>
-            </li>
-            <li class="s-clients__item">
-              <a href="#" class="s-clients__link">
-                <img loading="lazy" class="client-borscth" src="images/borscth-logo.png" alt="">
-              </a>
-            </li>
-            <li class="s-clients__item">
-              <a href="#" class="s-clients__link">
-                <img loading="lazy" class="client-elof-hansson" src="images/elof-hansson-logo.png" alt="">
-              </a>
-            </li>
-          </ul>
-
-          <div class="s-clients__stats">
-            <div class="clients-stats" data-aos="fade-up" data-aos-anchor-placement="top-center">
-              <div class="clients-stats__title">Клиенты</div>
-              <div class="clients-stats__value blue">100+</div>
-              <div class="clients-stats__description">компаний защищают свои активы с нашей
-                помощью
-              </div>
-            </div>
-          </div>
-        </div>
+        <ul class="cv-public__list" data-aos="fade-up" data-aos-anchor-placement="top-center">
+          <li class="cv-public__item">
+            <a href="#" class="cv-public__link">
+              <img class="logo-yandex-zen" src="images/yandex-zen-logo.png" alt="Яндекс Дзен">
+            </a>
+          </li>
+          <li class="cv-public__item">
+            <a href="#" class="cv-public__link">
+              <img class="logo-vc" src="images/vc-ru-logo.png" alt="vc.ru">
+            </a>
+          </li>
+          <li class="cv-public__item">
+            <a href="#" class="cv-public__link">
+              <img class="logo-secret" src="images/secret-logo.png" alt="Секрет Фирмы">
+            </a>
+          </li>
+          <li class="cv-public__item">
+            <a href="#" class="cv-public__link">
+              <img class="logo-wayxar" src="images/wayxar-logo.png" alt="">
+            </a>
+          </li>
+          <li class="cv-public__item">
+            <a href="#" class="cv-public__link">
+              <img class="logo-promdevelop" src="images/promdevelop-logo.svg" alt="Promdevelop">
+            </a>
+          </li>
+          <li class="cv-public__item">
+            <a href="#" class="cv-public__link">
+              <img class="logo-rusbankrot" src="images/rusbankrot-logo.png" alt="">
+            </a>
+          </li>
+        </ul>
       </div>
+    </section>
 
-      <div class="gallery">
-        <div class="gallery__control">
-          <div class="gallery__counter">1/5</div>
-          <div class="gallery__arrow">
-            <svg width="38" height="18" viewBox="0 0 38 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M29.2374 0.762695L37.4749 9.00013L29.2374 17.2376L26.7626 14.7627L30.7751 10.7501H0V7.25013H30.7751L26.7626 3.23757L29.2374 0.762695Z" fill="white" />
-            </svg>
-          </div>
-        </div>
-        <div class="gallery__wrapper">
-          <img class="gallery__img" src="images/gallery-photo.jpg" srcset="images/gallery-photo@2x.jpg 2x" alt="">
-          <img class="gallery__img" src="images/gallery-photo-3.jpg" srcset="images/gallery-photo@2x-3.jpg 2x" alt="">
-          <img class="gallery__img" src="images/gallery-photo-0.jpg" srcset="images/gallery-photo@2x-0.jpg 2x" alt="">
-          <img class="gallery__img" src="images/gallery-photo-5.jpg" srcset="images/gallery-photo@2x-5.jpg 2x" alt="">
-          <img class="gallery__img" src="images/gallery-photo-2.jpg" srcset="images/gallery-photo@2x-2.jpg 2x" alt="">
-          <img class="gallery__img" src="images/gallery-photo-4.jpg" srcset="images/gallery-photo@2x-4.jpg 2x" alt="">
-          <img class="gallery__img" src="images/gallery-photo-1.jpg" srcset="images/gallery-photo@2x-1.jpg 2x" alt="">
-          <img class="gallery__img" src="images/gallery-photo-6.jpg" srcset="images/gallery-photo@2x-6.jpg 2x" alt="">
-        </div>
+    <section class="cv-stats">
+      <div class="cv-stats__inner">
+        <h2 class="cv-stats__title">За время карантина помогли нашим клиентам:</h2>
+        <ul class="cv-stats__list">
+          <li class="cv-stats__col">
+            <div class="cv-stats-block">
+              <h3 class="cv-stats-block__title">Подать 54<br> дела в суд</h3>
+              <p class="cv-stats-block__text">В связи с невыплатами по<br> договорам без оснований
+              </p>
+            </div>
+          </li>
+          <li class="cv-stats__col">
+            <div class="cv-stats-block">
+              <h3 class="cv-stats-block__title">Начать 19 дел по банкротству</h3>
+              <p class="cv-stats-block__text">Для получения официального статуса банкрота из-за мер,
+                вызваных карантином </p>
+            </div>
+          </li>
+          <li class="cv-stats__col">
+            <div class="cv-stats-block">
+              <h3 class="cv-stats-block__title">Составить 254 письма</h3>
+              <p class="cv-stats-block__text">Контрагентам с законным требованием выполнить
+                обязательства по договорам</p>
+            </div>
+          </li>
+          <li class="cv-stats__col">
+            <div class="cv-stats-block">
+              <h3 class="cv-stats-block__title">Оформить<br> 856 рабочих пропусков</h3>
+              <p class="cv-stats-block__text">Для продолжения работы производственных
+                и торговых компаний</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
     <section id="contacts" class="s-contacts" aria-label="Контактная информация" role="region">
       <div class="s-contacts__inner">
         <h2 class="s-contacts__title">
-          Какая бы проблема не беспокоила вашу компанию, мы готовы её
-          <span class="selected">решить</span>
-          или найти
-          обходные пути
+          <span class="selected">Мы на связи с 9 до 22:00.</span><br>
+          Решим любую проблему
+          или найдём обходные пути
         </h2>
       </div>
       <div class="s-contacts__container">
@@ -1492,7 +1337,7 @@ $(document).ready(function() {
     showMaskOnHover: false,
     inputmode: 'tel',
   });
-})
+});
 </script>
-<script type="text/javascript" src="assets/js/app.js"></script></body>
+</body>
 </html>

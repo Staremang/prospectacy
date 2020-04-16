@@ -128,6 +128,7 @@ $spinner-width: 24px;
 $spinner-height: 24px;
 $spinner-border-width: 2px;
 
+$custom-select-indicator-padding: 16px;
 
 @import "fonts";
 @import "bootstrap";
@@ -136,6 +137,7 @@ $spinner-border-width: 2px;
 @import "header";
 @import "footer";
 @import "sections";
+@import "coronavirus";
 
 //%main-text-color {
 //  color: var(--theme-color);

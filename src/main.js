@@ -51,6 +51,10 @@ function Y(t, e, i) {
 class Gallery {
   constructor() {
     this.$el = $('.gallery');
+    if (!this.$el.length) {
+      return;
+    }
+
     this.$cursor = $('.gallery__control');
     this.$carousel = $('.gallery__wrapper');
     this.$counter = $('.gallery__counter');
@@ -153,9 +157,13 @@ class Gallery {
       // this.$cursor.css('opacity', '0');
       this.$el.css('cursor', '');
     });
+
+
+    window.addEventListener('resize', this.compute);
+    document.addEventListener('scroll', this.compute);
   }
 
-  compute() {
+  compute = () => {
     // this.hasSmoothScroll = 0;
 
     // y.hasClass('has-smooth-scroll') && (this.hasSmoothScroll = !0);
@@ -722,8 +730,8 @@ class Prospectacy {
     this.onResize();
 
     window.addEventListener('resize', this.onResize);
-    document.addEventListener('mousemove', this.onMove);
     document.addEventListener('scroll', this.onScroll);
+    document.addEventListener('mousemove', this.onMove);
 
     // new Particles(document.getElementById('bird'), {
     //   img: 'images/bird.png',
@@ -1021,9 +1029,9 @@ class Prospectacy {
   }
 
   onResize = () => {
-    if (this.Gallery) {
-      this.Gallery.compute();
-    }
+    // if (this.Gallery) {
+    //   this.Gallery.compute();
+    // }
 
 
     const newBreakpoint = Prospectacy.breakpoint;
@@ -1090,9 +1098,9 @@ class Prospectacy {
     }
 
 
-    if (this.Gallery) {
-      this.Gallery.compute();
-    }
+    // if (this.Gallery) {
+    //   this.Gallery.compute();
+    // }
     if (window.pageYOffset > this.headerBreakpoint) {
       this.$header.classList.add('header_has-bg');
     } else {

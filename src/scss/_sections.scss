@@ -1647,6 +1647,9 @@
   position: relative;
   flex-direction: column;
 
+  &_no-hover {
+
+  }
 
   @include media-breakpoint-up(md) {
     width: 193px;
@@ -1801,12 +1804,13 @@
   }
 
   &:hover {
+    &:not(.lawyer_no-hover) {
+      .lawyer__img {
+        opacity: 0;
 
-    .lawyer__img {
-      opacity: 0;
-
-      &_hover {
-        opacity: 1;
+        &_hover {
+          opacity: 1;
+        }
       }
     }
   }
