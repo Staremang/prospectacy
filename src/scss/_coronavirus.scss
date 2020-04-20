@@ -1,4 +1,10 @@
+//.cv-wrapper {
+//  background: #ffa4a4;
+//  z-index: 2;
+//}
+
 .cv-hero {
+  //position: sticky;
   position: relative;
   overflow: hidden;
   background: #fff;
@@ -70,7 +76,14 @@
     //height: 782px;
     //max-height: 100vh;
     height: 100vh;
+    //margin-bottom: -100vh;
 
+    //clip-path: inset(0px 0px);
+    //clip: rect(auto, auto, auto, auto);
+
+    //@supports not (clip-path: inset(0px 0px)) {
+    //  clip: rect(auto, auto, auto, auto);
+    //}
   }
   //@include media-breakpoint-up(xl) {
   //  height: 980px;
@@ -79,17 +92,20 @@
 
   &__mask {
     @include media-breakpoint-up(lg) {
+      //transition: transform .3s ease;
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      clip-path: inset(0px 0px);
-      //clip: rect(auto, auto, auto, auto);
-
-      @supports not (clip-path: inset(0px 0px)) {
-        clip: rect(auto, auto, auto, auto);
-      }
+      height: 100vh;
+      overflow: hidden;
+      will-change: transform;
+      //clip-path: inset(0px 0px);
+      ////clip: rect(auto, auto, auto, auto);
+      //
+      //@supports not (clip-path: inset(0px 0px)) {
+      //  clip: rect(auto, auto, auto, auto);
+      //}
     }
   }
 
@@ -99,7 +115,7 @@
     z-index: 2;
     flex-direction: column;
     @include media-breakpoint-up(lg) {
-      position: fixed;
+      //position: fixed;
       top: 0;
       right: 0;
       left: 0;
@@ -128,7 +144,7 @@
       height: 100%;
     }
     @include media-breakpoint-up(lg) {
-      position: fixed;
+      //position: fixed;
       //z-index: -1;
       //background: #181818;
       //opacity: 0;
@@ -174,7 +190,7 @@
   }
 
   &__benefits {
-    background: #FAFAFA;
+    background: #fafafa;
     pointer-events: all;
     @include make-container();
     @include media-breakpoint-up(lg) {
@@ -245,8 +261,8 @@
       font-size: 52px;
     }
     @include media-breakpoint-up(xl) {
-      font-size: 62px;
       max-width: 770px;
+      font-size: 62px;
     }
   }
 
@@ -522,16 +538,19 @@
 
   &__item {
     margin-bottom: 30px;
+
     &.active {
       .cv-who-list__title {
         color: $blue;
         -webkit-text-fill-color: $blue;
         -webkit-text-stroke-width: 0;
       }
+
       .cv-who-list__qq {
         display: flex;
       }
     }
+
     @include media-breakpoint-up(md) {
       margin-bottom: 66px;
     }
@@ -540,6 +559,7 @@
   }
 
   &__title {
+    margin-bottom: 20px;
     font-family: $font-family-halvar;
     font-size: 24px;
     font-weight: 800;
@@ -549,12 +569,11 @@
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-color: $blue;
     -webkit-text-stroke-width: 1px;
-    margin-bottom: 20px;
 
 
     @include media-breakpoint-up(md) {
-      font-size: 28px;
       margin-bottom: 0;
+      font-size: 28px;
     }
 
     @include media-breakpoint-up(xl) {
@@ -568,10 +587,10 @@
 
     @include media-breakpoint-up(md) {
       position: absolute;
-      flex-direction: column;
-      justify-content: center;
       top: 0;
       right: 0;
+      flex-direction: column;
+      justify-content: center;
       width: 295px;
       height: 100%;
       overflow: visible;
@@ -705,6 +724,12 @@
 .cv-price {
   //max-width: 1200px;
   //margin: 0 auto;
+  & + * {
+    border-top: 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+  }
 
   &__block {
     padding-top: 26px;
@@ -723,8 +748,12 @@
     }
 
     @include media-breakpoint-up(lg) {
+      margin-left: calc(50% - 520px);
       padding-top: 60px;
       padding-bottom: 60px;
+    }
+    @include media-breakpoint-up(xl) {
+      margin-left: calc(50% - 660px);
     }
   }
 
@@ -835,9 +864,10 @@
   @include media-breakpoint-up(md) {
     margin-top: 90px;
   }
-  @include media-breakpoint-up(xl) {
+  @include media-breakpoint-up(lg) {
     margin-top: 170px;
     padding-left: 273px;
+    padding-bottom: 114px;
   }
 
   &__title {
@@ -1204,6 +1234,137 @@
     @include media-breakpoint-up(xl) {
       max-width: 100%;
       font-size: 26px;
+    }
+  }
+}
+
+
+.cv-form {
+  @include media-breakpoint-up(md) {
+    max-width: 710px;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    @include media-breakpoint-up(md) {
+      margin-bottom: 13px;
+      font-size: 20px;
+    }
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 11px;
+      font-size: 28px;
+    }
+  }
+
+  &__tel {
+    display: inline-block;
+    margin-bottom: 13px;
+    font-family: $font-family-halvar;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    text-decoration: none !important;
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: 25px;
+      font-size: 42px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: 64px;
+    }
+  }
+
+  &__msg {
+    margin-bottom: 46px;
+    @include media-breakpoint-up(md) {
+      margin-bottom: 60px;
+    }
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 70px;
+    }
+  }
+
+  &__msg-item {
+    display: inline-block;
+    align-items: center;
+    margin-right: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    text-decoration: none !important;
+
+    svg {
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-right: 33px;
+      font-size: 20px;
+      svg {
+        width: 50px;
+        height: 50px;
+        margin-right: 13px;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-right: 41px;
+      font-size: 28px;
+      svg {
+        width: 60px;
+        height: 60px;
+        margin-right: 16px;
+      }
+    }
+  }
+
+  &__row {
+    @include make-row(30px);
+    @include media-breakpoint-up(md) {
+      margin-bottom: 41px;
+    }
+  }
+
+  &__col {
+    @include make-col-ready(30px);
+    @include media-breakpoint-up(md) {
+      @include make-col(6);
+    }
+  }
+
+  &__file {
+    @include media-breakpoint-up(md) {
+      margin-bottom: 51px;
+    }
+  }
+
+  &__button {
+    margin-top: 30px;
+    @include media-breakpoint-up(lg) {
+      margin-top: 45px;
+    }
+  }
+
+  &__note {
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 0;
+    opacity: 0.5;
+    font-size: 14px;
+
+    @include media-breakpoint-up(md) {
+      margin-top: 25px;
+      font-size: 15px;
+      text-align: center;
     }
   }
 }

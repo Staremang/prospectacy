@@ -175,7 +175,7 @@ class Gallery {
 
     this.offsetTop = this.$el.offset().top;
     this.offsetLeft = this.$el.offset().left;
-  }
+  };
 
   animate() {
     this.realMouse = {
@@ -1191,6 +1191,40 @@ class Prospectacy {
 }
 
 
+class Hero {
+  constructor() {
+    this.hero = document.querySelector('.s-hero') || document.querySelector('.cv-hero');
+    this.heroChild = document.querySelector('.s-hero__mask') || document.querySelector('.cv-hero__mask');
+    if (!this.hero || !this.heroChild) {
+      return;
+    }
+
+    if (document.documentElement.clientWidth >= 1170) {
+      this.raf = requestAnimationFrame(this.animate);
+    }
+
+    // window.addEventListener('resize', this.onResize);
+  }
+
+  // onResize = () => {
+  //   if (document.documentElement.clientWidth >= 1170) {
+  //     this.raf = requestAnimationFrame(this.animate);
+  //   } else {
+  //     cancelAnimationFrame(this.raf);
+  //   }
+  // };
+
+  animate = () => {
+    this.rect = this.hero.getBoundingClientRect();
+
+    if (this.rect.top <= 0) {
+      this.heroChild.style.transform = `matrix(1, 0, 0, 1, 0, ${-this.rect.top})`;
+    }
+
+    this.raf = requestAnimationFrame(this.animate);
+  };
+}
+
 const App = new Prospectacy();
 
 // Наговнокодил тут, короче
@@ -1233,6 +1267,8 @@ document.addEventListener('readystatechange', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  new Hero();
   App.init();
 
   Prospectacy.setLoadPercentage(per = 30);
@@ -1244,3 +1280,4 @@ window.addEventListener('load', () => {
     Prospectacy.setLoadPercentage(per = 100);
   }
 });
+
