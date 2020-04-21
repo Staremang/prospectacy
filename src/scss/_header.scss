@@ -529,3 +529,18 @@ $nav-main-height-sm: 50px;
 
   color: #FFFFFF;
 }
+
+.navbar-brand-info {
+  display: none;
+  font-size: 12px;
+  line-height: 140%;
+  opacity: 0.5;
+
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+  @include media-breakpoint-up(xl) {
+    font-size: 16px;
+    line-height: 150%;
+  }
+}
