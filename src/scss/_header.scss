@@ -564,7 +564,21 @@ $nav-main-height-sm: 50px;
 
   @include media-breakpoint-up(md) {
     padding: 16px 0;
+
+    span {
+      margin: 0 12px;
+    }
   }
+
+  @include media-breakpoint-up(lg) {
+    padding: 27px 0;
+    font-size: 22px;
+
+    span {
+      margin: 0 15px;
+    }
+  }
+
   @include media-breakpoint-up(xl) {
     padding: 41px 0;
     font-size: 32px;

@@ -247,18 +247,18 @@
   }
 
   &__text {
+    max-width: 340px;
     opacity: 0.7;
     font-size: 12px;
     letter-spacing: -0.01em;
     line-height: 150%;
     text-align: right;
-    max-width: 340px;
     @include media-breakpoint-up(lg) {
       position: absolute;
       top: 60%;
       right: -100px;
-      font-size: 20px;
       max-width: 380px;
+      font-size: 20px;
     }
   }
 
@@ -316,12 +316,13 @@
     }
   }
 }
+
 .video-stones {
   position: absolute;
-  left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  left: 50%;
   width: 100%;
+  transform: translate(-50%, -50%);
   //height: 100%;
 }
 
@@ -747,6 +748,7 @@
  * -----------------------------------------------
  */
 .cv-price {
+
   //max-width: 1200px;
   //margin: 0 auto;
   & + * {
@@ -766,16 +768,42 @@
     }
 
     &:nth-of-type(3) {
+      position: relative;
+      overflow: hidden;
       background-color: #fff;
       box-shadow: 0 64px 130px rgba(0, 0, 0, 0.04);
 
       //background: #fff url("../img/rm/cv-price-2-1920.png") left top no-repeat;
     }
 
+    @include media-breakpoint-up(md) {
+      &:nth-of-type(3) {
+        &::before {
+          content: '';
+          position: absolute;
+          z-index: 0;
+          width: 743px;
+          height: 493px;
+          left: 50%;
+          bottom: 570px;
+          transform: rotate(-37.6deg);
+          background: url("../img/stones-0.jpg") no-repeat;
+          background-size: contain;
+        }
+      }
+    }
     @include media-breakpoint-up(lg) {
       margin-left: calc(50% - 520px);
       padding-top: 60px;
       padding-bottom: 60px;
+      &:nth-of-type(3) {
+        &::before {
+          bottom: 640px;
+          left: 1020px;
+          width: 946px;
+          height: 628px;
+        }
+      }
     }
     @include media-breakpoint-up(xl) {
       margin-left: calc(50% - 660px);
@@ -783,6 +811,8 @@
   }
 
   &__inner {
+    position: relative;
+    z-index: 1;
     @include make-container();
     @include make-container-max-widths();
   }
@@ -939,7 +969,16 @@
   }
 
   &__text {
-
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    opacity: 0.8;
+    @include media-breakpoint-up(md) {
+      font-size: 15px;
+    }
+    @include media-breakpoint-up(xl) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -1118,12 +1157,15 @@
   background-color: #fff;
 
   &::before {
-    content: url("../img/stones-1.jpg");
+    content: '';
     position: absolute;
     z-index: 0;
     bottom: -33px;
     left: -12px;
-    width: 350px;
+    width: 745px*.5;
+    height: 274px*.5;
+    background: url("../img/stones-1.jpg") no-repeat;
+    background-size: contain;
     pointer-events: none;
   }
 
@@ -1134,17 +1176,20 @@
     &::before {
       bottom: -35px;
       left: -37px;
-      width: 400px;
+      width: 745px*.6;
+      height: 274px*.6;
     }
 
     &::after {
-      content: url("../img/stones-2.jpg");
+      content: '';
       position: absolute;
       z-index: 0;
       right: -24px;
       bottom: -20px;
       width: 200px;
       transform: rotate(10deg);
+      background: url("../img/stones-2.jpg") no-repeat;
+      background-size: contain;
       pointer-events: none;
     }
   }
@@ -1156,7 +1201,8 @@
     &::before {
       bottom: -102px;
       left: calc(50% - 915px);
-      width: 744.57px;
+      width: 745px;
+      height: 274px;
     }
 
     &::after {
@@ -1169,11 +1215,16 @@
   &__inner {
     @include make-container();
     @include make-container-max-widths();
+    position: relative;
     z-index: 1;
   }
 
   &__title {
-
+    margin-bottom: 57px;
+    @include media-breakpoint-up(md) {
+      max-width: 500px;
+      margin-bottom: 38px;
+    }
     @include media-breakpoint-up(xl) {
       max-width: 900px;
       margin-bottom: 78px;
@@ -1181,6 +1232,7 @@
   }
 
   &__list {
+    margin-bottom: -54px;
     padding-left: 0;
     list-style: none;
 
@@ -1197,6 +1249,7 @@
 
   &__col {
     margin-bottom: 54px;
+
     @include media-breakpoint-up(md) {
       @include make-col(6);
       margin-bottom: 12px;
@@ -1331,6 +1384,10 @@
       margin-right: 8px;
     }
 
+    &:last-child {
+      margin-right: 0;
+    }
+
     @include media-breakpoint-up(md) {
       margin-right: 33px;
       font-size: 20px;
@@ -1353,9 +1410,11 @@
   }
 
   &__row {
+    //margin-bottom: 28px;
     @include make-row(30px);
+
     @include media-breakpoint-up(md) {
-      margin-bottom: 41px;
+      //margin-bottom: 41px;
     }
   }
 
@@ -1367,15 +1426,17 @@
   }
 
   &__file {
+    margin-top: 28px;
     @include media-breakpoint-up(md) {
-      margin-bottom: 51px;
+      margin-top: 41px;
+      //margin-bottom: 51px;
     }
   }
 
   &__button {
     margin-top: 30px;
-    @include media-breakpoint-up(lg) {
-      margin-top: 45px;
+    @include media-breakpoint-up(md) {
+      margin-top: 51px;
     }
   }
 
