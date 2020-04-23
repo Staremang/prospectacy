@@ -1225,6 +1225,16 @@ class Hero {
   };
 }
 
+
+$(() => {
+  $('.cv-who-list__item').on('mouseenter click', (event) => {
+    const $this = $(event.currentTarget);
+
+    $('.cv-who-list__item').removeClass('active');
+    $this.addClass('active');
+  });
+});
+
 const App = new Prospectacy();
 
 // Наговнокодил тут, короче

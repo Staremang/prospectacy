@@ -122,7 +122,7 @@
       width: 100%;
       height: 100%;
 
-      pointer-events: none;
+      //pointer-events: none;
       //height: 782px;
       //max-height: 100vh;
     }
@@ -140,6 +140,7 @@
     left: 0;
     width: 100%;
     height: 490px;
+    pointer-events: none;
     @include media-breakpoint-up(md) {
       height: 100%;
     }
@@ -184,7 +185,7 @@
     position: relative;
 
     @include media-breakpoint-up(lg) {
-      position: static;
+      //position: static;
       flex: 1 0;
     }
   }
@@ -215,12 +216,12 @@
     padding-bottom: 25px;
     @include media-breakpoint-up(md) {
       height: 369px;
-      padding-top: 129px;
-      padding-bottom: 34px;
+      padding-top: 109px;
+      justify-content: start;
     }
     @include media-breakpoint-up(lg) {
       justify-content: center;
-      //position: static;
+      position: static;
       height: 100%;
       //height: 552px;
       padding-top: 33px;
@@ -233,35 +234,6 @@
     }
   }
 
-  &__contacts {
-    text-align: right;
-    pointer-events: all;
-    //@include media-breakpoint-up(md) {
-    //  position: absolute;
-    //  bottom: 35px;
-    //  right: 0;
-    //}
-    @include media-breakpoint-up(lg) {
-      display: none;
-    }
-  }
-
-  &__text {
-    max-width: 340px;
-    opacity: 0.7;
-    font-size: 12px;
-    letter-spacing: -0.01em;
-    line-height: 150%;
-    text-align: right;
-    @include media-breakpoint-up(lg) {
-      position: absolute;
-      top: 60%;
-      right: -100px;
-      max-width: 380px;
-      font-size: 20px;
-    }
-  }
-
   &__title {
     margin-bottom: 0;
     font-family: $font-family-graphik;
@@ -270,9 +242,13 @@
     font-weight: normal;
     letter-spacing: -0.02em;
     line-height: 120%;
+    span {
+      font-style: italic;
+    }
     @include media-breakpoint-up(md) {
       max-width: 400px;
       font-size: 30px;
+      margin-bottom: 20px;
     }
     @include media-breakpoint-up(lg) {
       max-width: 680px;
@@ -284,18 +260,51 @@
     }
   }
 
-  //&__subtitle {
-  //  margin-bottom: 0;
-  //  //margin-bottom: 40px;
-  //  font-size: 16px;
-  //  @include media-breakpoint-up(md) {
-  //    //margin-bottom: 55px;
-  //    font-size: 18px;
-  //  }
-  //  //@include media-breakpoint-up(xl) {
-  //  //  margin-bottom: 65px;
-  //  //}
-  //}
+  &__text {
+    display: none;
+    @include media-breakpoint-up(md) {
+      display: flex;
+      max-width: 340px;
+      opacity: 0.7;
+      font-size: 12px;
+      letter-spacing: -0.01em;
+      line-height: 150%;
+    }
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      bottom: 28%;
+      right: 70px;
+      max-width: 380px;
+      font-size: 20px;
+      text-align: right;
+    }
+    @include media-breakpoint-up(xl) {
+      right: 100px;
+    }
+  }
+
+  &__contacts {
+    text-align: left;
+    pointer-events: all;
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+  }
+
+  &__tel {
+    margin-bottom: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 140%;
+  }
+
+  &__time {
+    opacity: 0.6;
+    font-size: 12px;
+    letter-spacing: -0.01em;
+    line-height: 140%;
+  }
 
   &__button {
     position: absolute;
@@ -304,27 +313,40 @@
     pointer-events: all;
     @include media-breakpoint-up(md) {
       bottom: -35px;
-      left: 150px;
+      left: 110px;
     }
     @include media-breakpoint-up(lg) {
       bottom: -60px;
-      left: 197px;
+      left: calc(50% - 300px);
     }
     @include media-breakpoint-up(xl) {
-      bottom: -80px;
-      left: 280px;
+      bottom: -40px;
+      left: calc(50% - 340px);
+    }
+  }
+
+  &__video {
+    position: absolute;
+    top: 95px;
+
+    left: 50%;
+    width: 815px;
+    height: 458px;
+    transform: translate(-50%, 0);
+    //height: 100%;
+    @include media-breakpoint-up(md) {
+      top: 8px;
+      left: 60%;
+    }
+    @include media-breakpoint-up(xl) {
+      top: 50%;
+      width: 1870px;
+      height: 1052px;
+      transform: translate(-50%, -50%);
     }
   }
 }
 
-.video-stones {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  transform: translate(-50%, -50%);
-  //height: 100%;
-}
 
 /**
  * Когда к нам обращаются
@@ -562,6 +584,18 @@
 .cv-who-list {
   position: relative;
 
+
+  @include media-breakpoint-up(md) {
+    margin: 0 auto;
+    max-width: map_get($container-max-widths, md);
+  }
+  @include media-breakpoint-up(lg) {
+    max-width: map_get($container-max-widths, lg);
+  }
+  @include media-breakpoint-up(xl) {
+    max-width: map_get($container-max-widths, xl);
+  }
+
   &__item {
     margin-bottom: 30px;
 
@@ -578,14 +612,21 @@
     }
 
     @include media-breakpoint-up(md) {
-      margin-bottom: 66px;
+      margin-bottom: 44px;
     }
     @include media-breakpoint-up(lg) {
+      margin-bottom: 55px;
+    }
+    @include media-breakpoint-up(xl) {
+      margin-bottom: 66px;
     }
   }
 
   &__title {
-    margin-bottom: 20px;
+    max-width: map_get($container-max-widths, xs);
+    margin: 0 auto 20px;
+    cursor: pointer;
+
     font-family: $font-family-halvar;
     font-size: 24px;
     font-weight: 800;
@@ -595,11 +636,17 @@
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-color: $blue;
     -webkit-text-stroke-width: 1px;
+    transition: all .3s ease;
 
 
     @include media-breakpoint-up(md) {
-      margin-bottom: 0;
+      margin: 0;
+      max-width: 100%;
       font-size: 28px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: 42px;
     }
 
     @include media-breakpoint-up(xl) {
@@ -608,8 +655,14 @@
   }
 
   &__qq {
-    display: flex;
+    display: none;
     overflow-x: auto;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 0 0 calc(50vw - #{0.5 * map_get($container-max-widths, xs)});
+    }
 
     @include media-breakpoint-up(md) {
       position: absolute;
@@ -621,12 +674,17 @@
       height: 100%;
       overflow: visible;
       background-color: #cfcfcf;
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 360px;
     }
     @include media-breakpoint-up(xl) {
-      top: 0;
-      right: 0;
       width: 430px;
-      height: 100%;
     }
   }
 
@@ -643,8 +701,20 @@
     line-height: 130%;
     @include media-breakpoint-up(md) {
       margin-bottom: 28px;
+      &:nth-of-type(1) {
+        transform: translateX(15px);
+      }
+      &:nth-of-type(2) {
+        transform: translateX(117px);
+      }
+      &:nth-of-type(3) {
+        transform: translateX(-27px);
+      }
+      &:nth-of-type(4) {
+        transform: translateX(111px);
+      }
     }
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(xl) {
       width: 332px;
       margin-bottom: 40px;
       padding: 15px 24px;
@@ -782,10 +852,10 @@
           content: '';
           position: absolute;
           z-index: 0;
+          bottom: 570px;
+          left: 50%;
           width: 743px;
           height: 493px;
-          left: 50%;
-          bottom: 570px;
           transform: rotate(-37.6deg);
           background: url("../img/stones-0.jpg") no-repeat;
           background-size: contain;
@@ -969,10 +1039,10 @@
   }
 
   &__text {
-    font-size: 14px;
-    line-height: 150%;
-    letter-spacing: -0.02em;
     opacity: 0.8;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
     @include media-breakpoint-up(md) {
       font-size: 15px;
     }
