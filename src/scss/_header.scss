@@ -49,15 +49,15 @@ $nav-main-height-sm: 50px;
     //transform: translateY(-30px);
     //opacity: 0;
 
-    transform: translateY(-30px);
-    opacity: 0;
     height: 135px;
     margin-bottom: -135px;
+    transform: translateY(-30px);
+    opacity: 0;
 
     &.animate {
       //transition: transform 1s ease-out, opacity 1s ease;
-      transition: all 1s ease;
       transform: none;
+      transition: all 1s ease;
       opacity: 1;
     }
 
@@ -177,7 +177,7 @@ $nav-main-height-sm: 50px;
       transform: none;
       background: none;
       > .navbar-brand {
-        display: inline-block;
+        display: flex;
       }
     }
   }
@@ -442,6 +442,29 @@ $nav-main-height-sm: 50px;
   }
 }
 
+.navbar-brand {
+  display: flex;
+  color: $gold;
+
+  &__info {
+    display: none;
+    opacity: 0.5;
+    color: #111;
+    font-size: 12px;
+    line-height: 140%;
+
+    @include media-breakpoint-up(md) {
+      display: block;
+      margin-left: 29px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      margin-left: 32px;
+      font-size: 16px;
+      line-height: 150%;
+    }
+  }
+}
 
 .menu-button {
   display: inline-flex;
@@ -513,34 +536,42 @@ $nav-main-height-sm: 50px;
 
 .alert-top {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 120px;
-  left: 0px;
   top: 0px;
   right: 0;
+  left: 0px;
+  align-items: center;
+  justify-content: center;
+  //height: 120px;
+  padding: 12px 0;
+  background: #005eec;
+
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 120%;
+
   text-align: center;
 
-  background: #005EEC;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 120%;
-  letter-spacing: -0.02em;
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
 
-  color: #FFFFFF;
-}
-
-.navbar-brand-info {
-  display: none;
-  font-size: 12px;
-  line-height: 140%;
-  opacity: 0.5;
+  span {
+    margin: 0 10px;
+  }
 
   @include media-breakpoint-up(md) {
-    display: block;
+    padding: 16px 0;
   }
   @include media-breakpoint-up(xl) {
-    font-size: 16px;
-    line-height: 150%;
+    padding: 41px 0;
+    font-size: 32px;
+
+    span {
+      margin: 0 20px;
+    }
   }
 }
+
