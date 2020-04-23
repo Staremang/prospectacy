@@ -220,6 +220,7 @@ html.noscroll {
 
 .input-field {
   //display: inline-flex;
+  display: block;
   position: relative;
   //height: $input-height;
   height: 50px;
@@ -325,6 +326,7 @@ html.noscroll {
 
 
 .custom-file {
+  display: block;
   text-align: center;
 
   &__input {
