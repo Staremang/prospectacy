@@ -93,11 +93,16 @@
     //@supports not (clip-path: inset(0px 0px)) {
     //  clip: rect(auto, auto, auto, auto);
     //}
+
+    .hero-benefits {
+      padding-bottom: 40px;
+    }
   }
-  //@include media-breakpoint-up(xl) {
-  //  height: 980px;
-  //  //height: 760px;
-  //}
+  @include media-breakpoint-up(xl) {
+    .hero-benefits {
+      padding-bottom: 58px;
+    }
+  }
 
   &__mask {
     @include media-breakpoint-up(lg) {
