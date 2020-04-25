@@ -357,9 +357,9 @@
     }
     @include media-breakpoint-up(xl) {
       top: 50%;
+      left: 50%;
       width: 1870px;
       height: 1052px;
-      left: 50%;
       transform: translate(-50%, -50%);
     }
   }
@@ -682,6 +682,10 @@
       flex: 0 0 calc(50vw - #{0.5 * map_get($container-max-widths, xs)});
     }
 
+    @include media-breakpoint-down(xs) {
+      background: none !important;
+    }
+
     @include media-breakpoint-up(md) {
       position: absolute;
       top: 0;
@@ -692,6 +696,10 @@
       height: 100%;
       overflow: visible;
       background-color: #cfcfcf;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
       &::before,
       &::after {
         display: none;

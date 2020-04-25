@@ -107,7 +107,7 @@
           </div>
         </div>
         <div class="navbar-mobile__button">
-          <button class="menu-button" type="button" aria-label="Показать или скрыть меню навигации" aria-controls="navigation">
+          <button class="menu-button" type="button" aria-expanded="false" aria-label="Навигация" aria-controls="navigation">
             <span></span>
           </button>
         </div>
@@ -134,7 +134,7 @@
             <a href="#services" data-anchor class="navbar__link">Услуги</a>
           </li>
           <li class="navbar__item">
-            <a href="#portfolio" data-anchor class="navbar__link">Портфолио</a>
+            <a href="#portfolio" data-anchor class="navbar__link">Бизнес</a>
           </li>
           <li class="navbar__item">
             <a href="#lawyers" data-anchor class="navbar__link">Юристы</a>
@@ -250,7 +250,7 @@
       </div>
     </section>
 
-    <section class="cv-when" aria-label="Когда к нам обращаются" role="region">
+    <section id="services" class="cv-when" aria-label="Когда к нам обращаются" role="region">
       <div class="cv-when__inner">
         <h2 class="cv-when__title">Когда к нам обращаются</h2>
         <p class="cv-when__text">Начиная с февраля 2020 мы ежедневно работаем с бизнесом, попавшим в
@@ -341,7 +341,7 @@
       </div>
     </section>
 
-    <section class="cv-who" aria-label="С каким бизнесом работаем" role="region">
+    <section id="portfolio" class="cv-who" aria-label="С каким бизнесом работаем" role="region">
       <div class="cv-who__inner">
         <h2 class="cv-who__title">С каким бизнесом работаем</h2>
         <p class="cv-who__text">Нельзя быть экспертами во всём. Мы накопили большую экспертизу для
@@ -350,7 +350,7 @@
       <div class="cv-who-list">
         <div class="cv-who-list__item active">
           <div class="cv-who-list__title">Кафе и рестораны</div>
-          <div class="cv-who-list__qq">
+          <div class="cv-who-list__qq" style="background-image: url('images/who-1.jpg')">
             <div class="cv-who-list__qq-item">
               Надо ли платить за аренду, если мы перешли на доставку?
             </div>
@@ -360,7 +360,7 @@
         </div>
         <div class="cv-who-list__item">
           <div class="cv-who-list__title">Производство</div>
-          <div class="cv-who-list__qq">
+          <div class="cv-who-list__qq" style="background-image: url('images/who-1.jpg')">
             <div class="cv-who-list__qq-item">Как обеспечить помещение для работников?</div>
             <div class="cv-who-list__qq-item">Как персоналу оформить разрешение на работу?</div>
             <div class="cv-who-list__qq-item">Как нужно переоборудовать рабочие места?</div>
@@ -368,14 +368,14 @@
         </div>
         <div class="cv-who-list__item">
           <div class="cv-who-list__title">Предприятия,<br> работающие<br> с населением</div>
-          <div class="cv-who-list__qq">
+          <div class="cv-who-list__qq" style="background-image: url('images/who-1.jpg')">
             <div class="cv-who-list__qq-item">Имеет ли исполнитель право отсрочить платежи?</div>
             <div class="cv-who-list__qq-item">Просрочки поставок, что делать?</div>
           </div>
         </div>
         <div class="cv-who-list__item">
           <div class="cv-who-list__title">Торговые компании</div>
-          <div class="cv-who-list__qq">
+          <div class="cv-who-list__qq" style="background-image: url('images/who-1.jpg')">
             <div class="cv-who-list__qq-item">Законно ли клиенты требуют отсрочек платежей?</div>
           </div>
         </div>
@@ -390,7 +390,7 @@
       </div>
     </section>
 
-    <section class="cv-lawyers" aria-label="Юристы" role="region">
+    <section id="lawyers" class="cv-lawyers" aria-label="Юристы" role="region">
       <div class="cv-lawyers__inner">
         <h2 class="cv-lawyers__title">
           Доверьте своё дело <span class="selected">профессиональным юристам</span>
@@ -459,7 +459,7 @@
       </div>
     </section>
 
-    <section class="cv-price" aria-label="Цены" role="region">
+    <section id="price" class="cv-price" aria-label="Цены" role="region">
       <div class="cv-price__block">
         <div class="cv-price__inner">
           <h2 class="cv-price__title">Честные цены без выдуманных часов</h2>
@@ -641,7 +641,7 @@
       <img class="s-group-photo__img" loading="lazy" src="images/group-photo.jpg" srcset="images/group-photo@2x.jpg 2x" alt="">
     </figure>
 
-    <section id="clients" class="cv-public" aria-label="Наши клиенты" role="region">
+    <section id="public" class="cv-public" aria-label="Публикации" role="region">
       <div class="cv-public__inner">
         <h2 class="cv-public__title" data-aos="fade-up" data-aos-anchor-placement="top-center">
           Пишем и обучаем,<br>
@@ -682,41 +682,41 @@
       </div>
     </section>
 
-    <section class="cv-stats">
-      <div class="cv-stats__inner">
-        <h2 class="cv-stats__title">За время карантина помогли нашим клиентам:</h2>
-        <ul class="cv-stats__list">
-          <li class="cv-stats__col">
-            <div class="cv-stats-block">
-              <h3 class="cv-stats-block__title">Подать 54<br> дела в суд</h3>
-              <p class="cv-stats-block__text">В связи с невыплатами по<br> договорам без оснований
-              </p>
-            </div>
-          </li>
-          <li class="cv-stats__col">
-            <div class="cv-stats-block">
-              <h3 class="cv-stats-block__title">Начать 19 дел по банкротству</h3>
-              <p class="cv-stats-block__text">Для получения официального статуса банкрота из-за мер,
-                вызваных карантином </p>
-            </div>
-          </li>
-          <li class="cv-stats__col">
-            <div class="cv-stats-block">
-              <h3 class="cv-stats-block__title">Составить 254 письма</h3>
-              <p class="cv-stats-block__text">Контрагентам с законным требованием выполнить
-                обязательства по договорам</p>
-            </div>
-          </li>
-          <li class="cv-stats__col">
-            <div class="cv-stats-block">
-              <h3 class="cv-stats-block__title">Оформить<br> 856 рабочих пропусков</h3>
-              <p class="cv-stats-block__text">Для продолжения работы производственных
-                и торговых компаний</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
+    <!--<section class="cv-stats">-->
+    <!--  <div class="cv-stats__inner">-->
+    <!--    <h2 class="cv-stats__title">За время карантина помогли нашим клиентам:</h2>-->
+    <!--    <ul class="cv-stats__list">-->
+    <!--      <li class="cv-stats__col">-->
+    <!--        <div class="cv-stats-block">-->
+    <!--          <h3 class="cv-stats-block__title">Подать 54<br> дела в суд</h3>-->
+    <!--          <p class="cv-stats-block__text">В связи с невыплатами по<br> договорам без оснований-->
+    <!--          </p>-->
+    <!--        </div>-->
+    <!--      </li>-->
+    <!--      <li class="cv-stats__col">-->
+    <!--        <div class="cv-stats-block">-->
+    <!--          <h3 class="cv-stats-block__title">Начать 19 дел по банкротству</h3>-->
+    <!--          <p class="cv-stats-block__text">Для получения официального статуса банкрота из-за мер,-->
+    <!--            вызваных карантином </p>-->
+    <!--        </div>-->
+    <!--      </li>-->
+    <!--      <li class="cv-stats__col">-->
+    <!--        <div class="cv-stats-block">-->
+    <!--          <h3 class="cv-stats-block__title">Составить 254 письма</h3>-->
+    <!--          <p class="cv-stats-block__text">Контрагентам с законным требованием выполнить-->
+    <!--            обязательства по договорам</p>-->
+    <!--        </div>-->
+    <!--      </li>-->
+    <!--      <li class="cv-stats__col">-->
+    <!--        <div class="cv-stats-block">-->
+    <!--          <h3 class="cv-stats-block__title">Оформить<br> 856 рабочих пропусков</h3>-->
+    <!--          <p class="cv-stats-block__text">Для продолжения работы производственных-->
+    <!--            и торговых компаний</p>-->
+    <!--        </div>-->
+    <!--      </li>-->
+    <!--    </ul>-->
+    <!--  </div>-->
+    <!--</section>-->
 
     <section id="contacts" class="s-contacts" aria-label="Контактная информация" role="region">
       <div class="s-contacts__inner">
