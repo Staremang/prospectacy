@@ -82,9 +82,8 @@
     //top: 0;
     //right: 0;
     //z-index: 0;
-    //height: 782px;
+    height: 782px;
     //max-height: 100vh;
-    height: 100vh;
     //margin-bottom: -100vh;
 
     //clip-path: inset(0px 0px);
@@ -99,6 +98,8 @@
     }
   }
   @include media-breakpoint-up(xl) {
+    height: 980px;
+
     .hero-benefits {
       padding-bottom: 58px;
     }
@@ -111,7 +112,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100vh;
+      height: 100%;
       overflow: hidden;
       will-change: transform;
       //clip-path: inset(0px 0px);
@@ -129,16 +130,7 @@
     z-index: 2;
     flex-direction: column;
     @include media-breakpoint-up(lg) {
-      //position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-      width: 100%;
       height: 100%;
-
-      //pointer-events: none;
-      //height: 782px;
-      //max-height: 100vh;
     }
     //@include media-breakpoint-up(xl) {
     //  height: 980px;
@@ -257,10 +249,6 @@
     font-weight: normal;
     letter-spacing: -0.02em;
     line-height: 120%;
-
-    span {
-      font-style: italic;
-    }
 
     @include media-breakpoint-up(md) {
       max-width: 400px;
@@ -627,6 +615,10 @@
       .cv-who-list__qq {
         display: flex;
       }
+
+      .cv-who-list__qq-item {
+        animation-name: fadeIn;
+      }
     }
 
     @include media-breakpoint-up(md) {
@@ -727,17 +719,25 @@
     line-height: 130%;
     @include media-breakpoint-up(md) {
       margin-bottom: 28px;
+      animation-duration: .3s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: both;
+
       &:nth-of-type(1) {
         transform: translateX(15px);
+        animation-delay: .2s;
       }
       &:nth-of-type(2) {
         transform: translateX(117px);
+        animation-delay: .4s;
       }
       &:nth-of-type(3) {
         transform: translateX(-27px);
+        animation-delay: .6s;
       }
       &:nth-of-type(4) {
         transform: translateX(111px);
+        animation-delay: .8s;
       }
     }
     @include media-breakpoint-up(xl) {
@@ -758,6 +758,15 @@
         transform: translateX(130px);
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -1523,6 +1532,32 @@
 
   &__file {
     margin-top: 28px;
+
+    .custom-file {
+      opacity: .5;
+      &:hover {
+        opacity: 1;
+      }
+
+      &__label {
+        border: 2px dashed currentColor;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 50%;
+          width: 40px;
+          height: 10px;
+          transform: translate(-50%, -50%);
+          background: #fff;
+        }
+      }
+
+      &__border {
+        display: none;
+      }
+    }
     @include media-breakpoint-up(md) {
       margin-top: 41px;
       //margin-bottom: 51px;

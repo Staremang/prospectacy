@@ -1,3 +1,4 @@
+import 'intersection-observer';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import Scrollbar from 'smooth-scrollbar';
 import enableInlineVideo from 'iphone-inline-video';
@@ -10,7 +11,7 @@ import 'owl.carousel';
 
 import Platform from './js/Platform';
 // import Particles from './js/Particles';
-import './js/Particles2';
+// import './js/Particles2';
 import './js/Input';
 // import './js/Modal';
 
@@ -300,20 +301,16 @@ class Map {
 
     if (typeof window.ymaps !== 'undefined') {
       window.ymaps.ready((payload) => {
-        if (typeof window.IntersectionObserver !== 'undefined') {
-          const observer = new window.IntersectionObserver((entries) => {
-            entries.forEach(({ isIntersecting, target }) => {
-              if (isIntersecting) {
-                observer.unobserve(target);
-                this.initMap(payload);
-              }
-            });
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(({ isIntersecting, target }) => {
+            if (isIntersecting) {
+              observer.unobserve(target);
+              this.initMap(payload);
+            }
           });
+        });
 
-          observer.observe(this.mapEl);
-        } else {
-          this.initMap(payload);
-        }
+        observer.observe(this.mapEl);
       });
     }
   }
@@ -824,17 +821,15 @@ class Prospectacy {
   }
 
   initVideo() {
-    this.videoObserver = new IntersectionObserver(((entries, observer) => {
-      // console.log(entries);
-      entries.forEach((entry) => {
-        const video = entry.target;
-        if (entry.isIntersecting) {
+    this.videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(({ isIntersecting, target: video }) => {
+        if (isIntersecting) {
           video.play();
         } else {
           video.pause();
         }
       });
-    }));
+    });
 
 
     this.$videoBird = document.getElementById('video-bird');
@@ -873,17 +868,6 @@ class Prospectacy {
         //   // this.$videoBird.play();
         // }, 1800);
       }
-
-      // setTimeout(() => {
-      //   this.$videoBird.play();
-      // }, 1000);
-      // this.$videoBird.addEventListener('canplaythrough', () => {
-      //   this.$videoBird.play();
-      //   this.$videoBird.classList.add('animated');
-      //   this.$videoBird.classList.add('fadeIn');
-      // });
-      //
-      // this.$videoBird.load();
     }
 
     this.$videoScales = document.getElementById('video-scales');
@@ -1011,25 +995,6 @@ class Prospectacy {
   };
 
   onScroll = () => {
-    // this.groupPhotoAnimOffset = Math.abs(this.$groupPhoto.offsetTop - window.pageYOffset + document.documentElement.clientHeight / 2);
-    // this.groupPhotoTop = Math.round(100 * (this.$groupPhoto.getBoundingClientRect().top - document.documentElement.clientHeight / 2 * -1)) / 100;
-    // console.log(this.groupPhotoTop);
-
-    // if (this.$groupPhoto) {
-    //   if ((this.$groupPhoto.offsetTop - document.documentElement.clientHeight / 2) <= window.pageYOffset) {
-    //     const p = (this.$groupPhoto.offsetTop - window.pageYOffset) / (document.documentElement.clientHeight);
-    //
-    //     this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - p, 0.5), 1)})`;
-    //     // this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - this.groupPhotoAnimOffset / document.documentElement.clientHeight, 0.5), 1)})`;
-    //   } else {
-    //     this.$groupPhoto.style.transform = `scale(0.5)`;
-    //   }
-    // }
-
-
-    // if (this.Gallery) {
-    //   this.Gallery.compute();
-    // }
     if (window.pageYOffset > this.headerBreakpoint) {
       this.$header.classList.add('header_has-bg');
     } else {
@@ -1087,36 +1052,6 @@ class Prospectacy {
     // setTimeout(() => {
     // }, 1000);
   }
-
-
-  // static initApi() {
-  //   this.initDOMLoadedElements = this.initDOMLoadedElements.bind(this);
-  //
-  //   // Taken from jQuery `ready` function
-  //   // Instantiate elements already present on the page
-  //   if (
-  //     document.readyState === 'complete'
-  //     || (document.readyState !== 'loading' && !document.documentElement.doScroll)
-  //   ) {
-  //     // Handle it asynchronously to allow scripts the opportunity to delay init
-  //     window.setTimeout(this.initDOMLoadedElements);
-  //   } else {
-  //     document.addEventListener('DOMContentLoaded', this.initDOMLoadedElements);
-  //     window.addEventListener('load', this.initDOMLoadedElements);
-  //   }
-  // }
-  //
-  // static initDOMLoadedElements() {
-  //   document.removeEventListener('DOMContentLoaded', this.initDOMLoadedElements);
-  //   window.removeEventListener('load', this.initDOMLoadedElements);
-  //
-  //   Array.prototype.forEach.call(
-  //     document.querySelectorAll('.input-field'),
-  //     (el) => {
-  //       if (!el.Input) new Input(el);
-  //     },
-  //   );
-  // }
 }
 
 
@@ -1127,6 +1062,21 @@ class Hero {
     if (!this.hero || !this.heroChild) {
       return;
     }
+
+    // this.isIntersecting = false;
+    //
+    //
+    // const observer = new IntersectionObserver((entries) => {
+    //   entries.forEach(({ isIntersecting }) => {
+    //     if (isIntersecting) {
+    //       this.start();
+    //     } else {
+    //       this.stop();
+    //     }
+    //   });
+    // });
+    //
+    // observer.observe(this.hero);
 
     this.update();
     window.addEventListener('resize', this.update);
@@ -1141,7 +1091,7 @@ class Hero {
   };
 
   animate = () => {
-    this.heroChild.style.transform = `matrix(1, 0, 0, 1, 0, ${Math.max(-this.hero.getBoundingClientRect().top, 0)})`;
+    this.heroChild.style.transform = `matrix(1, 0, 0, 1, 0, ${Math.max(document.documentElement.clientHeight - this.hero.getBoundingClientRect().bottom, 0)})`;
 
     this.raf = requestAnimationFrame(this.animate);
   };

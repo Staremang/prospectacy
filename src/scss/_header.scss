@@ -593,6 +593,11 @@ $nav-main-height-sm: 50px;
     span {
       margin: 0 15px;
     }
+
+    //~ .cv-hero,
+    //~ .s-hero {
+    //  height: calc(100vh - 80px);
+    //}
   }
 
   @include media-breakpoint-up(xl) {
@@ -602,6 +607,11 @@ $nav-main-height-sm: 50px;
     span {
       margin: 0 20px;
     }
+
+    //+ .cv-hero,
+    //+ .s-hero {
+    //  height: calc(100vh - 120px);
+    //}
   }
 }
 
