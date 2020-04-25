@@ -363,10 +363,13 @@ $nav-main-height-sm: 50px;
     }
   }
   &__note {
-
     @include media-breakpoint-up(lg) {
       position: absolute;
       text-align: right;
+      white-space: nowrap;
+      font-weight: normal;
+      right: 0;
+      margin-top: 11px;
     }
   }
 }

@@ -298,21 +298,22 @@ class Map {
     this.$buttonLeft.on('click', this.prev);
 
 
-    if (window.ymaps) {
-      // window.ymaps.ready(this.initMap);
+    if (typeof window.ymaps !== 'undefined') {
       window.ymaps.ready((payload) => {
-        const observer = new IntersectionObserver(((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const map = entry.target;
-              observer.unobserve(map);
-
-              this.initMap(payload);
-            }
+        if (typeof window.IntersectionObserver !== 'undefined') {
+          const observer = new window.IntersectionObserver((entries) => {
+            entries.forEach(({ isIntersecting, target }) => {
+              if (isIntersecting) {
+                observer.unobserve(target);
+                this.initMap(payload);
+              }
+            });
           });
-        }));
 
-        observer.observe(this.mapEl);
+          observer.observe(this.mapEl);
+        } else {
+          this.initMap(payload);
+        }
       });
     }
   }
@@ -362,16 +363,16 @@ class Map {
       const myPlacemark = new ymaps.Placemark(item.coords, {
         hintContent: '',
       }, {
-        // // Опции.
-        // // Необходимо указать данный тип макета.
-        // iconLayout: 'default#image',
-        // // Своё изображение иконки метки.
-        // iconImageHref: 'images/myIcon.gif',
-        // // Размеры метки.
-        // iconImageSize: [30, 42],
-        // // Смещение левого верхнего угла иконки относительно
-        // // её "ножки" (точки привязки).
-        // iconImageOffset: [-5, -38],
+        // Опции.
+        // Необходимо указать данный тип макета.
+        iconLayout: 'default#image',
+        // Своё изображение иконки метки.
+        iconImageHref: require('./img/geo-marker.svg'),
+        // Размеры метки.
+        iconImageSize: [119, 98],
+        // Смещение левого верхнего угла иконки относительно
+        // её "ножки" (точки привязки).
+        iconImageOffset: [-69, -98],
       });
 
       this.Map.geoObjects.add(myPlacemark);
@@ -640,11 +641,14 @@ class Modal {
 }
 
 class Header {
-  constructor($header) {
-    this.$el = $header;
-    this.isActive = this.$el.classList.contains('header_active');
+  constructor(el) {
+    this.$header = $(el);
+    this.isActive = this.$header.hasClass('header_active');
 
-    $('.menu-button ').on('click', this.toggle);
+    this.$buttons = $('.menu-button');
+
+    this.$buttons.on('click', this.toggle);
+
     $('.navbar__overlay').on('click', this.open);
   }
 
@@ -657,16 +661,21 @@ class Header {
   };
 
   open = () => {
-    document.body.style.overflow = 'hidden';
-    this.$el.classList.add('header_active');
-    $('.menu-button').addClass('active');
+    $('html, body').animate({
+      scrollTop: this.$header.offset().top,
+    }, 400);
+
+
+    $('body').css('overflow', 'hidden');
+    this.$header.addClass('header_active');
+    this.$buttons.addClass('active');
     this.isActive = true;
   };
 
   close = () => {
-    document.body.style.overflow = '';
-    this.$el.classList.remove('header_active');
-    $('.menu-button').removeClass('active');
+    $('body').css('overflow', '');
+    this.$header.removeClass('header_active');
+    this.$buttons.removeClass('active');
     this.isActive = false;
   };
 }
@@ -709,7 +718,6 @@ class Prospectacy {
     this.$header = document.getElementById('header');
     this.$heroSection = document.getElementById('hero-section');
     this.$heroSectionBenefits = document.getElementById('hero-benefits');
-    this.$groupPhoto = document.getElementById('group-photo');
 
     this.initVideo();
     // this.animate();
@@ -733,97 +741,16 @@ class Prospectacy {
     document.addEventListener('scroll', this.onScroll);
     document.addEventListener('mousemove', this.onMove);
 
-    // new Particles(document.getElementById('bird'), {
-    //   img: 'images/bird.png',
-    //   color: ['#d3bc7b', '#d3bc7b', '#d3bc7b', '#d3bc7b','#005eec', '#d3bc7b'],
-    // });
-    //
-    // new Particles(document.getElementById('video-scales'), {
-    //   img: 'images/scales.png',
-    //   color: '#005eec',
-    // });
-    //
-    // new Particles(document.getElementById('video-rub'), {
-    //   img: 'images/rub.png',
-    //   color: '#ffffff',
-    // });
-
-    // const birdEl = document.querySelector('.video-bird');
-    //
-    // if (birdEl) {
-    //   const birdRect = birdEl.getBoundingClientRect();
-    //
-    //   new NextParticle({
-    //     image: document.getElementById('bird'),
-    //     addTimestamp: true,
-    //     width: birdRect.width,
-    //     height: birdRect.height,
-    //     initPosition: 'random',
-    //     initDirection: 'random',
-    //     particleGap: 5,
-    //     // particleSize: 1.8,
-    //     gravity: 0.2,
-    //     noise: 80,
-    //     mouseForce: 30,
-    //   });
-    // }
-
-
-    $('input[type="file"]').change((event) => {
-      const fileName = event.target.files[0].name;
-      const $container = $(event.currentTarget).parents('.custom-file');
-      const $title = $container.find('.custom-file__title');
-      const $subtitle = $container.find('.custom-file__subtitle');
-
-      $title.html(fileName);
-      $subtitle.html('Выбранный файл');
-    });
-
-    $('form').on('submit', (event) => {
-      event.preventDefault();
-
-
-      const form = event.currentTarget;
-      const formData = new FormData(form);
-
-      // console.log(form);
-      const button = form.querySelector('button[type="submit"]');
-      const file = form.querySelector('input[type="file"]');
-      if (file) {
-        formData.append('file', file.files[0]);
-      }
-
-      form.classList.add('loading');
-
-      $.ajax({
-        url: form.getAttribute('action'),
-        data: formData,
-        processData: false,
-        contentType: false,
-        type: form.getAttribute('method'),
-      }).done(() => {
-        button.classList.remove('btn-blue');
-        button.classList.add('btn-green');
-        button.innerHTML = `<svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0606 3.06077L9.99999 16.1214L0.939331 7.06077L3.06065 4.93945L9.99999 11.8788L20.9393 0.939453L23.0606 3.06077Z" fill="white"/>
-              </svg> Заявка отправлена`;
-
-        form.classList.add('success');
-      }).fail(() => {
-        alert('Ошибка');
-      });
-
-    });
-
 
     $('[data-anchor]').on('click', (event) => {
-      const targetEl = document.querySelector(event.currentTarget.getAttribute('href'));
-      if (targetEl) {
+      const target = document.querySelector(event.currentTarget.getAttribute('href'));
+      if (target) {
         event.preventDefault();
-        if (this.Header) {
+
+        if (this.Header.isActive) {
           this.Header.close();
         }
-        this.scrollTo(targetEl);
+        this.scrollTo(target);
       }
     });
 
@@ -1064,7 +991,7 @@ class Prospectacy {
       }
 
       this.lastBreakpoint = newBreakpoint;
-      console.log(this.lastBreakpoint);
+      // console.log(this.lastBreakpoint);
     }
 
     try {
@@ -1086,16 +1013,16 @@ class Prospectacy {
     // this.groupPhotoTop = Math.round(100 * (this.$groupPhoto.getBoundingClientRect().top - document.documentElement.clientHeight / 2 * -1)) / 100;
     // console.log(this.groupPhotoTop);
 
-    if (this.$groupPhoto) {
-      if ((this.$groupPhoto.offsetTop - document.documentElement.clientHeight / 2) <= window.pageYOffset) {
-        const p = (this.$groupPhoto.offsetTop - window.pageYOffset) / (document.documentElement.clientHeight);
-
-        this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - p, 0.5), 1)})`;
-        // this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - this.groupPhotoAnimOffset / document.documentElement.clientHeight, 0.5), 1)})`;
-      } else {
-        this.$groupPhoto.style.transform = `scale(0.5)`;
-      }
-    }
+    // if (this.$groupPhoto) {
+    //   if ((this.$groupPhoto.offsetTop - document.documentElement.clientHeight / 2) <= window.pageYOffset) {
+    //     const p = (this.$groupPhoto.offsetTop - window.pageYOffset) / (document.documentElement.clientHeight);
+    //
+    //     this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - p, 0.5), 1)})`;
+    //     // this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - this.groupPhotoAnimOffset / document.documentElement.clientHeight, 0.5), 1)})`;
+    //   } else {
+    //     this.$groupPhoto.style.transform = `scale(0.5)`;
+    //   }
+    // }
 
 
     // if (this.Gallery) {
@@ -1113,18 +1040,18 @@ class Prospectacy {
     this.cursor.y = event.clientY;
   };
 
-  animate = () => {
-    if (this.$groupPhoto) {
-      if ((this.$groupPhoto.offsetTop - document.documentElement.clientHeight / 2) <= window.pageYOffset) {
-
-        this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - this.groupPhotoAnimOffset / document.documentElement.clientHeight, 0.5), 1)})`;
-      } else {
-        this.$groupPhoto.style.transform = `scale(0.5)`;
-      }
-    }
-
-    this.raf = requestAnimationFrame(this.animate);
-  };
+  // animate = () => {
+  //   if (this.$groupPhoto) {
+  //     if ((this.$groupPhoto.offsetTop - document.documentElement.clientHeight / 2) <= window.pageYOffset) {
+  //
+  //       this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - this.groupPhotoAnimOffset / document.documentElement.clientHeight, 0.5), 1)})`;
+  //     } else {
+  //       this.$groupPhoto.style.transform = `scale(0.5)`;
+  //     }
+  //   }
+  //
+  //   this.raf = requestAnimationFrame(this.animate);
+  // };
 
   static setLoadPercentage(num) {
     console.log(num);
@@ -1199,26 +1126,61 @@ class Hero {
       return;
     }
 
-    if (document.documentElement.clientWidth >= 1170) {
-      this.raf = requestAnimationFrame(this.animate);
-    }
-
-    // window.addEventListener('resize', this.onResize);
+    this.update();
+    window.addEventListener('resize', this.update);
   }
 
-  // onResize = () => {
-  //   if (document.documentElement.clientWidth >= 1170) {
-  //     this.raf = requestAnimationFrame(this.animate);
-  //   } else {
-  //     cancelAnimationFrame(this.raf);
-  //   }
-  // };
+  update = () => {
+    if (document.documentElement.clientWidth >= 1170) {
+      this.start();
+    } else {
+      this.stop();
+    }
+  };
 
   animate = () => {
-    this.rect = this.hero.getBoundingClientRect();
+    this.heroChild.style.transform = `matrix(1, 0, 0, 1, 0, ${Math.max(-this.hero.getBoundingClientRect().top, 0)})`;
 
-    if (this.rect.top <= 0) {
-      this.heroChild.style.transform = `matrix(1, 0, 0, 1, 0, ${-this.rect.top})`;
+    this.raf = requestAnimationFrame(this.animate);
+  };
+
+  start() {
+    if (!this.raf) {
+      this.raf = requestAnimationFrame(this.animate);
+    }
+  }
+
+  stop() {
+    if (this.raf) {
+      cancelAnimationFrame(this.raf);
+      this.heroChild.style.transform = '';
+      this.raf = null;
+    }
+  }
+}
+
+class GroupPhoto {
+  constructor() {
+    this.groupPhoto = document.getElementById('group-photo');
+
+    if (!this.groupPhoto) {
+      return;
+    }
+
+
+    this.raf = requestAnimationFrame(this.animate);
+  }
+
+
+  animate = () => {
+    if (this.groupPhoto) {
+      let param = 0.5;
+
+      if ((this.groupPhoto.offsetTop - document.documentElement.clientHeight / 2) <= window.pageYOffset) {
+        param = Math.min(Math.max(1 - (this.groupPhoto.offsetTop - window.pageYOffset) / (document.documentElement.clientHeight), 0.5), 1);
+      }
+
+      this.groupPhoto.style.transform = `scale(${param})`;
     }
 
     this.raf = requestAnimationFrame(this.animate);
@@ -1227,6 +1189,56 @@ class Hero {
 
 
 $(() => {
+  new Hero();
+  new GroupPhoto();
+
+
+  $('input[type="file"]').on('change', (event) => {
+    const fileName = event.target.files[0].name;
+    const $container = $(event.currentTarget).parents('.custom-file');
+
+    $container.find('.custom-file__title').html(fileName);
+    $container.find('.custom-file__subtitle').html('Выбранный файл');
+  });
+
+  $('form').on('submit', (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const button = form.querySelector('button[type="submit"]');
+    const file = form.querySelector('input[type="file"]');
+    if (file) {
+      formData.append('file', file.files[0]);
+    }
+
+    form.classList.add('loading');
+
+    const param = {
+      url: form.getAttribute('action'),
+      data: formData,
+      processData: false,
+      contentType: false,
+      type: form.getAttribute('method'),
+    };
+
+    $.ajax(param)
+      .done(() => {
+        button.classList.remove('btn-blue');
+        button.classList.add('btn-green');
+        button.innerHTML = `<svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0606 3.06077L9.99999 16.1214L0.939331 7.06077L3.06065 4.93945L9.99999 11.8788L20.9393 0.939453L23.0606 3.06077Z" fill="white"/>
+           </svg> Заявка отправлена`;
+
+        form.classList.add('success');
+      })
+      .fail(() => {
+        alert('Ошибка');
+      });
+  });
+
+
   $('.cv-who-list__item').on('mouseenter click', (event) => {
     const $this = $(event.currentTarget);
 
@@ -1277,8 +1289,6 @@ document.addEventListener('readystatechange', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  new Hero();
   App.init();
 
   Prospectacy.setLoadPercentage(per = 30);

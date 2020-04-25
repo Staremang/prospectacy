@@ -3,6 +3,15 @@
 //  z-index: 2;
 //}
 
+
+.cv-header {
+  @include media-breakpoint-up(lg) {
+  }
+
+  @include media-breakpoint-up(xl) {
+  }
+}
+
 .cv-hero {
   //position: sticky;
   position: relative;
@@ -160,6 +169,7 @@
     height: 37px;
     transform: translate(-50%, -50%) rotate(90deg);
     opacity: .05;
+    color: $blue;
     pointer-events: none;
 
     @include media-breakpoint-up(md) {
@@ -344,6 +354,7 @@
       top: 50%;
       width: 1870px;
       height: 1052px;
+      left: 50%;
       transform: translate(-50%, -50%);
     }
   }
