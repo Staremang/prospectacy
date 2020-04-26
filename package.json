@@ -19,6 +19,7 @@
     "simplebar": "^4.2.0",
     "smooth-scrollbar": "^8.4.1",
     "sticky-js": "^1.2.0",
+    "typeit": "^7.0.3",
     "ymaps": "^0.2.0"
   },
   "devDependencies": {

@@ -6,6 +6,7 @@ import enableInlineVideo from 'iphone-inline-video';
 import AOS from 'aos';
 import $ from 'jquery';
 import Simplebar from 'simplebar';
+import TypeIt from 'typeit';
 import 'owl.carousel';
 // import ymaps from 'ymaps';
 
@@ -1144,6 +1145,50 @@ $(() => {
   new Hero();
   new GroupPhoto();
 
+  $('[data-start-transition]').on('click', (event) => {
+    if (localStorage.getItem('coronavirus-page') === 'visited') {
+      return;
+    }
+
+    event.preventDefault();
+
+
+    const text = document.createElement('div');
+    text.classList.add('cv-start-transition__text');
+
+    const instance = new TypeIt(text, {
+      speed: 30,
+      startDelay: 300,
+      afterComplete: () => {
+        localStorage.setItem('coronavirus-page', 'visited');
+
+        setTimeout(() => {
+          window.location = event.currentTarget.href;
+        }, 400);
+      },
+    })
+      .type('“  “', { delay: 100 })
+      .move(-2, { delay: 300 })
+      .type('В связи с эпидемией коронавируса, который признается форс-мажором, прошу согласовать ', { delay: 200 })
+      .type('<span>отсрочку платежей</span>', { delay: 600 })
+      .delete(17)
+      .type('<span>налоговые льготы</span>', { delay: 600 })
+      .delete(16)
+      .type('<span>сделку с дьяволом</span>');
+
+    const container = document.createElement('div');
+    container.classList.add('cv-start-transition');
+    container.style.opacity = '0';
+    container.appendChild(text);
+
+    document.body.appendChild(container);
+
+    requestAnimationFrame(() => {
+      container.style.opacity = '1';
+    });
+
+    instance.go();
+  });
 
   $('input[type="file"]').on('change', (event) => {
     const fileName = event.target.files[0].name;
