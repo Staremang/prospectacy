@@ -183,7 +183,7 @@ $nav-main-height-sm: 50px;
         display: flex;
       }
     }
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(xl) {
       padding: 0 100px;
     }
   }

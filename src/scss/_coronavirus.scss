@@ -138,14 +138,14 @@
     //}
 
     .hero-benefits {
-      padding-bottom: 40px;
+      padding-bottom: 60px;
     }
   }
   @include media-breakpoint-up(xl) {
     height: 980px;
 
     .hero-benefits {
-      padding-bottom: 58px;
+      padding-bottom: 80px;
     }
   }
 
@@ -989,7 +989,7 @@
     @include media-breakpoint-up(md) {
       max-width: 315px;
     }
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-up(lg) {
       max-width: 360px;
 
       margin-right: 147px;
@@ -1005,7 +1005,7 @@
     @include media-breakpoint-up(md) {
       font-size: 20px;
     }
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-up(lg) {
       margin-bottom: 19px;
       font-size: 34px;
     }
@@ -1019,7 +1019,7 @@
     @include media-breakpoint-up(md) {
       font-size: 14px;
     }
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-up(lg) {
       font-size: 20px;
       line-height: 145%;
     }
@@ -1038,7 +1038,7 @@
       right: calc(100% + 10px);
       font-size: 16px;
     }
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-up(lg) {
       top: 6px;
       right: calc(100% + 20px);
       font-size: 24px;
@@ -1057,7 +1057,7 @@
       font-size: 36px;
     }
 
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-up(lg) {
       font-size: 64px;
     }
   }
@@ -1080,7 +1080,7 @@
       max-width: 410px;
       margin-bottom: 56px;
     }
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-up(lg) {
       max-width: 812px;
       margin-bottom: 90px;
     }
@@ -1092,7 +1092,7 @@
     @include media-breakpoint-up(md) {
       margin-bottom: 50px;
     }
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-up(lg) {
       margin-bottom: 112px;
     }
   }
@@ -1111,7 +1111,7 @@
       font-size: 18px;
     }
 
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-up(lg) {
       margin-bottom: 18px;
       font-size: 24px;
     }
@@ -1125,7 +1125,7 @@
     @include media-breakpoint-up(md) {
       font-size: 15px;
     }
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-up(lg) {
       font-size: 20px;
     }
   }
@@ -1495,7 +1495,7 @@
     font-weight: bold;
     letter-spacing: -0.02em;
     line-height: 120%;
-    text-decoration: none !important;
+    text-decoration: none;
 
     @include media-breakpoint-up(md) {
       margin-bottom: 25px;
@@ -1525,7 +1525,7 @@
     font-weight: 500;
     letter-spacing: -0.02em;
     line-height: 120%;
-    text-decoration: none !important;
+    text-decoration: none;
 
     svg {
       width: 32px;
