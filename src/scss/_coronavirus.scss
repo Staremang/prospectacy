@@ -1675,7 +1675,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 30px;
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(md) {
       margin-right: -20px;
       margin-bottom: 60px;
       margin-left: -20px;
@@ -1684,7 +1684,7 @@
 
   &__step {
     margin-bottom: 10px;
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(md) {
       flex: 0 0 50%;
       max-width: 50%;
       margin-bottom: 40px;
@@ -1703,7 +1703,7 @@
     }
 
     @include media-breakpoint-up(lg) {
-      max-width: 630px;
+      max-width: 1000px;
       font-size: 28px;
     }
   }
