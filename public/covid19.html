@@ -54,7 +54,7 @@
   <title>Prospectacy</title>
   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 </head>
-<body>
+<body class="cv-page">
 
 <div id="loader" class="loader">
   <div class="loader__logo" id="logo">
@@ -350,7 +350,7 @@
       <div class="cv-who-list">
         <div class="cv-who-list__item active">
           <div class="cv-who-list__title">Кафе и рестораны</div>
-          <div class="cv-who-list__qq" style="background-image: url('images/who-1.jpg')">
+          <div class="cv-who-list__qq lazyload" data-bg="images/who-1.jpg">
             <div class="cv-who-list__qq-item">
               Надо ли платить за аренду, если мы перешли на доставку?
             </div>
@@ -360,7 +360,7 @@
         </div>
         <div class="cv-who-list__item">
           <div class="cv-who-list__title">Производство</div>
-          <div class="cv-who-list__qq" style="background-image: url('images/who-2.jpg')">
+          <div class="cv-who-list__qq lazyload" data-bg="images/who-2.jpg">
             <div class="cv-who-list__qq-item">Как обеспечить помещение для работников?</div>
             <div class="cv-who-list__qq-item">Как персоналу оформить разрешение на работу?</div>
             <div class="cv-who-list__qq-item">Как нужно переоборудовать рабочие места?</div>
@@ -368,20 +368,20 @@
         </div>
         <div class="cv-who-list__item">
           <div class="cv-who-list__title">Предприятия,<br> работающие<br> с населением</div>
-          <div class="cv-who-list__qq" style="background-image: url('images/who-3.jpg')">
+          <div class="cv-who-list__qq lazyload" data-bg="images/who-3.jpg">
             <div class="cv-who-list__qq-item">Имеет ли исполнитель право отсрочить платежи?</div>
             <div class="cv-who-list__qq-item">Просрочки поставок, что делать?</div>
           </div>
         </div>
         <div class="cv-who-list__item">
           <div class="cv-who-list__title">Торговые компании</div>
-          <div class="cv-who-list__qq" style="background-image: url('images/who-4.jpg')">
+          <div class="cv-who-list__qq lazyload" data-bg="images/who-4.jpg">
             <div class="cv-who-list__qq-item">Законно ли клиенты требуют отсрочек платежей?</div>
           </div>
         </div>
         <div class="cv-who-list__item">
           <div class="cv-who-list__title">Арендный бизнес</div>
-          <div class="cv-who-list__qq" style="background-image: url('images/who-5.jpg')">
+          <div class="cv-who-list__qq lazyload" data-bg="images/who-5.jpg">
             <!--<div class="cv-who-list__qq-item"></div>-->
             <!--<div class="cv-who-list__qq-item"></div>-->
             <!--<div class="cv-who-list__qq-item"></div>-->
@@ -400,7 +400,7 @@
           <li class="cv-lawyers__item">
             <div class="lawyer lawyer_no-hover lawyer_konstantin">
               <div class="lawyer__photo">
-                <img class="lawyer__img" src="images/konstantin.png" srcset="images/konstantin@2x.png 2x" alt="Константин Заутренников">
+                <img class="lawyer__img lazyload" src="images/konstantin@lqip.png" data-src="images/konstantin.png" data-srcset="images/konstantin@2x.png 2x" alt="Константин Заутренников">
               </div>
               <a href="#person-modal-1" data-modal class="lawyer__name stretched-link arrow-link">
                 Константин Заутренников
@@ -420,7 +420,7 @@
           <li class="cv-lawyers__item">
             <div class="lawyer lawyer_no-hover lawyer_maria">
               <div class="lawyer__photo">
-                <img class="lawyer__img" src="images/maria.png" srcset="images/maria@2x.png 2x" alt="Мария Лайнер">
+                <img class="lawyer__img lazyload" src="images/maria@lqip.png" data-src="images/maria.png" data-srcset="images/maria@2x.png 2x" alt="Мария Лайнер">
               </div>
               <a href="#person-modal-2" data-modal class="lawyer__name stretched-link arrow-link">
                 Мария Лайнер
@@ -440,7 +440,7 @@
           <li class="cv-lawyers__item">
             <div class="lawyer lawyer_no-hover lawyer_sergey">
               <div class="lawyer__photo">
-                <img class="lawyer__img" src="images/sergey.png" srcset="images/sergey@2x.png 2x" alt="Сергей Омельниченко">
+                <img class="lawyer__img lazyload" src="images/sergey@lqip.png" data-src="images/sergey.png" data-srcset="images/sergey@2x.png 2x" alt="Сергей Омельниченко">
               </div>
               <a href="#person-modal-3" data-modal class="lawyer__name stretched-link arrow-link">
                 Сергей Омельниченко
@@ -625,7 +625,7 @@
     </section>
 
     <figure id="group-photo" class="s-group-photo">
-      <img class="s-group-photo__img" loading="lazy" src="images/group-photo.jpg" srcset="images/group-photo@2x.jpg 2x" alt="">
+      <img class="s-group-photo__img lazyload" src="images/group-photo@lqip.jpg" data-src="images/group-photo.jpg" data-srcset="images/group-photo@2x.jpg 2x" alt="">
     </figure>
 
     <section id="public" class="cv-public" aria-label="Публикации" role="region">
@@ -1110,7 +1110,7 @@
 
         <div class="lawyer-card" data-anim-name="fadeInUp" data-anim-delay="400">
           <div class="lawyer-card__photo">
-            <img class="lawyer-card__img" src="images/konstantin.jpg" srcset="images/konstantin@2x.jpg 2x" alt="Константин Заутренников">
+            <img class="lawyer-card__img lazyload" data-src="images/konstantin.jpg" data-srcset="images/konstantin@2x.jpg 2x" alt="Константин Заутренников">
           </div>
           <div class="lawyer-card__title">Юрист этого дела</div>
           <div class="lawyer-card__info">
@@ -1184,7 +1184,7 @@
 
         <div class="lawyer-card" data-anim-name="fadeInUp" data-anim-delay="400">
           <div class="lawyer-card__photo">
-            <img class="lawyer-card__img" src="images/maria.jpg" srcset="images/maria@2x.jpg 2x" alt="Мария">
+            <img class="lawyer-card__img lazyload" data-src="images/maria.jpg" data-srcset="images/maria@2x.jpg 2x" alt="Мария">
           </div>
           <div class="lawyer-card__title">Юрист этого дела</div>
           <div class="lawyer-card__info">
@@ -1255,7 +1255,7 @@
 
         <div class="lawyer-card" data-anim-name="fadeInUp" data-anim-delay="400">
           <div class="lawyer-card__photo">
-            <img class="lawyer-card__img" src="images/sergey.jpg" srcset="images/sergey@2x.jpg 2x" alt="Сергей Омельниченко">
+            <img class="lawyer-card__img lazyload" data-src="images/sergey.jpg" data-srcset="images/sergey@2x.jpg 2x" alt="Сергей Омельниченко">
           </div>
           <div class="lawyer-card__title">Юрист этого дела</div>
           <div class="lawyer-card__info">

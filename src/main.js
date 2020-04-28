@@ -1,6 +1,7 @@
+import 'lazysizes';
 import 'intersection-observer';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import Scrollbar from 'smooth-scrollbar';
+// import Scrollbar from 'smooth-scrollbar';
 import enableInlineVideo from 'iphone-inline-video';
 // import Sticky from 'sticky-js';
 import AOS from 'aos';
@@ -21,6 +22,12 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'simplebar/dist/simplebar.css';
 import './scss/style.scss';
 
+document.addEventListener('lazybeforeunveil', (e) => {
+  if (e.target.dataset.bg) {
+    e.target.style.backgroundImage = `url(${e.target.dataset.bg})`;
+  }
+});
+
 AOS.init({
   disable: 'mobile',
   duration: 500,
@@ -32,11 +39,10 @@ AOS.init({
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
-  } else {
-    var error = new Error(response.statusText);
-    error.response = response;
-    throw error;
   }
+  const error = new Error(response.statusText);
+  error.response = response;
+  throw error;
 }
 
 function parseJSON(response) {
@@ -492,9 +498,9 @@ class Modal {
     const button = document.createElement('button');
     button.classList.add('modal-page__btn-back');
     button.classList.add('back-button');
-    button.innerHTML = '<svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<path fill-rule="evenodd" clip-rule="evenodd" d="M4.10383 7.68628L0.625017 3.99994L4.10383 0.313603L5.55839 1.68628L4.31869 2.99994L16 2.99994L16 4.99994L4.31869 4.99994L5.55839 6.3136L4.10383 7.68628Z" fill="currentColor"/>' +
-      '</svg>';
+    button.innerHTML = '<svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">'
+      + '<path fill-rule="evenodd" clip-rule="evenodd" d="M4.10383 7.68628L0.625017 3.99994L4.10383 0.313603L5.55839 1.68628L4.31869 2.99994L16 2.99994L16 4.99994L4.31869 4.99994L5.55839 6.3136L4.10383 7.68628Z" fill="currentColor"/>'
+      + '</svg>';
     button.addEventListener('click', (event) => {
       event.preventDefault();
 
@@ -677,6 +683,72 @@ class Header {
     this.$buttons.removeClass('active');
     this.$buttons.setAttribute('aria-expanded', 'false');
     this.isActive = false;
+  };
+}
+
+
+class CoronavirusPreloader {
+  constructor(param) {
+    if (localStorage.getItem('coronavirus-page') === 'visited') {
+      return;
+    }
+
+    this.param = param;
+
+    this.text = document.createElement('div');
+    this.text.classList.add('cv-start-transition__text');
+
+    this.container = document.createElement('div');
+    this.container.classList.add('cv-start-transition');
+    this.container.style.opacity = '0';
+
+    this.typeIt = new TypeIt(this.text, {
+      speed: 30,
+      startDelay: 300,
+      afterComplete: this.end,
+    })
+      .type('“  “', { delay: 100 })
+      .move(-2, { delay: 300 })
+      .type('В связи с эпидемией коронавируса, который признается форс-мажором, прошу согласовать ', { delay: 200 })
+      .type('<span>отсрочку платежей</span>', { delay: 600 })
+      .delete(17)
+      .type('<span>налоговые льготы</span>', { delay: 600 })
+      .delete(16)
+      .type('<span>сделку с дьяволом</span>')
+      .pause(400);
+
+    this.container.appendChild(this.text);
+
+    document.body.appendChild(this.container);
+    document.body.style.overflow = 'hidden';
+
+    requestAnimationFrame(this.start);
+  }
+
+  start = () => {
+    localStorage.setItem('coronavirus-page', 'visited');
+
+    this.container.style.opacity = '1';
+    this.typeIt.go();
+  };
+
+  end = () => {
+    if (typeof this.param.beforeDestroy === 'function') {
+      this.param.beforeDestroy();
+    }
+
+    this.container.addEventListener('transitionend', this.destroy);
+    this.container.style.opacity = '0';
+  };
+
+  destroy = () => {
+    if (typeof this.param.afterDestroy === 'function') {
+      this.param.afterDestroy();
+    }
+
+    this.container.removeEventListener('transitionend', this.destroy);
+    this.container.remove();
+    document.body.style.overflow = '';
   };
 }
 
@@ -1041,17 +1113,38 @@ class Prospectacy {
     // document.body.style.overflow = 'hidden';
     // document.body.style.overflow = '';
     document.getElementById('loader').classList.add('animate');
-    document.getElementById('header').classList.add('animate');
-    document.getElementById('hero-section').classList.add('animate');
-    document.getElementById('hero-benefits').classList.add('animate');
-    // document.getElementById('hero-video').play();
 
-    // setTimeout(() => {
-    //   document.getElementById('video-bird').play();
-    // }, 800);
-    //
-    // setTimeout(() => {
-    // }, 1000);
+    if (document.body.classList.contains('cv-page')) {
+      if (localStorage.getItem('coronavirus-page') !== 'visited') {
+        new CoronavirusPreloader({
+          afterDestroy: () => {
+            document.getElementById('header').classList.add('animate');
+            document.getElementById('hero-section').classList.add('animate');
+            document.getElementById('hero-benefits').classList.add('animate');
+          },
+        });
+      } else {
+        document.getElementById('header').classList.add('animate');
+        document.getElementById('hero-section').classList.add('animate');
+        document.getElementById('hero-benefits').classList.add('animate');
+      }
+    } else {
+      document.getElementById('header').classList.add('animate');
+      document.getElementById('hero-section').classList.add('animate');
+      document.getElementById('hero-benefits').classList.add('animate');
+
+      if (localStorage.getItem('coronavirus-page') !== 'visited') {
+        $('[data-start-transition]').on('click', (event) => {
+          event.preventDefault();
+
+          new CoronavirusPreloader({
+            beforeDestroy: () => {
+              window.location = event.currentTarget.href;
+            },
+          });
+        });
+      }
+    }
   }
 }
 
@@ -1145,50 +1238,6 @@ $(() => {
   new Hero();
   new GroupPhoto();
 
-  $('[data-start-transition]').on('click', (event) => {
-    if (localStorage.getItem('coronavirus-page') === 'visited') {
-      return;
-    }
-
-    event.preventDefault();
-
-
-    const text = document.createElement('div');
-    text.classList.add('cv-start-transition__text');
-
-    const instance = new TypeIt(text, {
-      speed: 30,
-      startDelay: 300,
-      afterComplete: () => {
-        localStorage.setItem('coronavirus-page', 'visited');
-
-        setTimeout(() => {
-          window.location = event.currentTarget.href;
-        }, 400);
-      },
-    })
-      .type('“  “', { delay: 100 })
-      .move(-2, { delay: 300 })
-      .type('В связи с эпидемией коронавируса, который признается форс-мажором, прошу согласовать ', { delay: 200 })
-      .type('<span>отсрочку платежей</span>', { delay: 600 })
-      .delete(17)
-      .type('<span>налоговые льготы</span>', { delay: 600 })
-      .delete(16)
-      .type('<span>сделку с дьяволом</span>');
-
-    const container = document.createElement('div');
-    container.classList.add('cv-start-transition');
-    container.style.opacity = '0';
-    container.appendChild(text);
-
-    document.body.appendChild(container);
-
-    requestAnimationFrame(() => {
-      container.style.opacity = '1';
-    });
-
-    instance.go();
-  });
 
   $('input[type="file"]').on('change', (event) => {
     const fileName = event.target.files[0].name;
@@ -1302,4 +1351,3 @@ window.addEventListener('load', () => {
     Prospectacy.setLoadPercentage(per = 100);
   }
 });
-
