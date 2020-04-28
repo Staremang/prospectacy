@@ -14,6 +14,10 @@
   //opacity: 0;
   background: rgba(24, 24, 24, 0.8);
 
+  &_solid {
+    background: rgba(24, 24, 24, 1);
+  }
+
   //&.animate {
   //  opacity: 1;
   //}

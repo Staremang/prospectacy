@@ -686,21 +686,31 @@ class Header {
   };
 }
 
-
 class CoronavirusPreloader {
   constructor(param) {
-    if (localStorage.getItem('coronavirus-page') === 'visited') {
-      return;
-    }
+    // if (localStorage.getItem('coronavirus-page') === 'visited') {
+    //   return;
+    // }
 
     this.param = param;
 
-    this.text = document.createElement('div');
-    this.text.classList.add('cv-start-transition__text');
+    this.container = document.querySelector('.cv-start-transition');
+    this.text = document.querySelector('.cv-start-transition__text');
 
-    this.container = document.createElement('div');
-    this.container.classList.add('cv-start-transition');
-    this.container.style.opacity = '0';
+    if (!this.container) {
+      this.container = document.createElement('div');
+      this.container.classList.add('cv-start-transition');
+      this.container.style.opacity = '0';
+
+      document.body.appendChild(this.container);
+    }
+
+    if (!this.text) {
+      this.text = document.createElement('div');
+      this.text.classList.add('cv-start-transition__text');
+
+      this.container.appendChild(this.text);
+    }
 
     this.typeIt = new TypeIt(this.text, {
       speed: 30,
@@ -717,19 +727,17 @@ class CoronavirusPreloader {
       .type('<span>сделку с дьяволом</span>')
       .pause(400);
 
-    this.container.appendChild(this.text);
-
-    document.body.appendChild(this.container);
-    document.body.style.overflow = 'hidden';
-
-    requestAnimationFrame(this.start);
+    // requestAnimationFrame(this.start);
   }
 
   start = () => {
     localStorage.setItem('coronavirus-page', 'visited');
+    document.body.style.overflow = 'hidden';
 
-    this.container.style.opacity = '1';
-    this.typeIt.go();
+    requestAnimationFrame(() => {
+      this.container.style.opacity = '1';
+      this.typeIt.go();
+    });
   };
 
   end = () => {
@@ -771,6 +779,8 @@ class Prospectacy {
 
 
     this.isInit = false;
+
+    this.init();
   }
 
   init() {
@@ -791,12 +801,12 @@ class Prospectacy {
     this.$heroSection = document.getElementById('hero-section');
     this.$heroSectionBenefits = document.getElementById('hero-benefits');
 
-    this.initVideo();
+    // this.initVideo();
     // this.animate();
 
-    this.Gallery = new Gallery();
+    // this.Gallery = new Gallery();
     this.Map = new Map();
-    this.Modal = new Modal();
+    // this.Modal = new Modal();
 
     if (this.$header) {
       this.Header = new Header(this.$header);
@@ -893,93 +903,6 @@ class Prospectacy {
     }, duration);
   }
 
-  initVideo() {
-    this.videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(({ isIntersecting, target: video }) => {
-        if (isIntersecting) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      });
-    });
-
-
-    this.$videoBird = document.getElementById('video-bird');
-    if (this.$videoBird) {
-      // enableInlineVideo(this.$videoBird);
-
-
-      this.$videoBird.load();
-
-      // if (typeof this.onCanPlay === 'function') {
-      //   this.$videoBird.removeEventListener('canplay', this.onCanPlay);
-      // }
-
-      if (this.$videoBird.readyState < 3) {
-        this.onCanPlay = () => {
-          this.$videoBird.removeEventListener('canplay', this.onCanPlay);
-
-
-          this.videoObserver.observe(this.$videoBird);
-          Prospectacy.startAnimation();
-
-          // setTimeout(() => {
-          //   console.log('start');
-          //   this.videoObserver.observe(this.$videoBird);
-          //   // this.$videoBird.play();
-          // }, 1800);
-        };
-
-        this.$videoBird.addEventListener('canplay', this.onCanPlay);
-      } else {
-        this.videoObserver.observe(this.$videoBird);
-        Prospectacy.startAnimation();
-        // setTimeout(() => {
-        //   console.log('start');
-        //   this.videoObserver.observe(this.$videoBird);
-        //   // this.$videoBird.play();
-        // }, 1800);
-      }
-    }
-
-    this.$videoScales = document.getElementById('video-scales');
-    if (this.$videoScales) {
-      // enableInlineVideo(this.$videoScales);
-
-      this.videoObserver.observe(this.$videoScales);
-      // setTimeout(() => {
-      //   this.$videoScales.play();
-      // }, 1000);
-
-      // this.$videoScales.addEventListener('canplaythrough', () => {
-      //   this.$videoScales.play();
-      //   this.$videoScales.classList.add('animated');
-      //   this.$videoScales.classList.add('fadeIn');
-      // });
-      //
-      // this.$videoScales.load();
-    }
-
-    this.$videoRub = document.getElementById('video-rub');
-    if (this.$videoRub) {
-      // enableInlineVideo(this.$videoRub);
-
-      this.videoObserver.observe(this.$videoRub);
-      // setTimeout(() => {
-      //   this.$videoRub.play();
-      // }, 1000);
-
-      // this.$videoRub.addEventListener('canplaythrough', () => {
-      //   this.$videoRub.play();
-      //   this.$videoRub.classList.add('animated');
-      //   this.$videoRub.classList.add('fadeIn');
-      // });
-      //
-      // this.$videoRub.load();
-    }
-  }
-
   initAboutBg() {
     const $aboutBg = $('.s-about__bg-image');
     const $about = $('.s-about');
@@ -1015,11 +938,6 @@ class Prospectacy {
   }
 
   onResize = () => {
-    // if (this.Gallery) {
-    //   this.Gallery.compute();
-    // }
-
-
     const newBreakpoint = Prospectacy.breakpoint;
 
     if (this.lastBreakpoint !== newBreakpoint) {
@@ -1080,74 +998,14 @@ class Prospectacy {
     this.cursor.y = event.clientY;
   };
 
-  // animate = () => {
-  //   if (this.$groupPhoto) {
-  //     if ((this.$groupPhoto.offsetTop - document.documentElement.clientHeight / 2) <= window.pageYOffset) {
-  //
-  //       this.$groupPhoto.style.transform = `scale(${Math.min(Math.max(1 - this.groupPhotoAnimOffset / document.documentElement.clientHeight, 0.5), 1)})`;
-  //     } else {
-  //       this.$groupPhoto.style.transform = `scale(0.5)`;
-  //     }
-  //   }
-  //
-  //   this.raf = requestAnimationFrame(this.animate);
-  // };
-
-  static setLoadPercentage(num) {
-    console.log(num);
-
-    if (document.getElementById('logo-mask')) {
-      document.getElementById('logo-mask').style.width = `${num}%`;
-      // setTimeout(() => {
-      // }, 200);
-    }
-
-    if (num >= 100) {
-      setTimeout(() => {
-        Prospectacy.startAnimation();
-      }, 500);
-    }
-  }
-
   static startAnimation() {
     // document.body.style.overflow = 'hidden';
     // document.body.style.overflow = '';
-    document.getElementById('loader').classList.add('animate');
-
-    if (document.body.classList.contains('cv-page')) {
-      if (localStorage.getItem('coronavirus-page') !== 'visited') {
-        new CoronavirusPreloader({
-          afterDestroy: () => {
-            document.getElementById('header').classList.add('animate');
-            document.getElementById('hero-section').classList.add('animate');
-            document.getElementById('hero-benefits').classList.add('animate');
-          },
-        });
-      } else {
-        document.getElementById('header').classList.add('animate');
-        document.getElementById('hero-section').classList.add('animate');
-        document.getElementById('hero-benefits').classList.add('animate');
-      }
-    } else {
-      document.getElementById('header').classList.add('animate');
-      document.getElementById('hero-section').classList.add('animate');
-      document.getElementById('hero-benefits').classList.add('animate');
-
-      if (localStorage.getItem('coronavirus-page') !== 'visited') {
-        $('[data-start-transition]').on('click', (event) => {
-          event.preventDefault();
-
-          new CoronavirusPreloader({
-            beforeDestroy: () => {
-              window.location = event.currentTarget.href;
-            },
-          });
-        });
-      }
-    }
+    document.getElementById('header').classList.add('animate');
+    document.getElementById('hero-section').classList.add('animate');
+    document.getElementById('hero-benefits').classList.add('animate');
   }
 }
-
 
 class Hero {
   constructor() {
@@ -1233,10 +1091,183 @@ class GroupPhoto {
   };
 }
 
+class Loader {
+  constructor(param = {}) {
+    this.per = 0;
+    this.param = param;
+
+    this.setLoadPercentage(10);
+
+    this.update();
+    document.addEventListener('readystatechange', this.update);
+  }
+
+  update = () => {
+    if (document.readyState === 'interactive') {
+      this.setLoadPercentage(35);
+    }
+
+    if (document.readyState === 'complete') {
+      this.setLoadPercentage(100);
+    }
+  };
+
+  setLoadPercentage(num) {
+    this.per = num;
+
+    if (document.getElementById('logo-mask')) {
+      document.getElementById('logo-mask').style.width = `${num}%`;
+    }
+
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+
+    if (this.per < 100) {
+      this.timer = setTimeout(() => {
+        this.setLoadPercentage(this.per + 8);
+      }, 500);
+    } else {
+      this.beforeLeave();
+    }
+  }
+
+  beforeLeave() {
+    document.removeEventListener('readystatechange', this.update);
+
+    if (typeof this.param.beforeLeave === 'function') {
+      this.param.beforeLeave();
+    }
+
+    setTimeout(() => {
+      if (document.getElementById('loader')) {
+        document.getElementById('loader').classList.add('animate');
+      }
+
+      this.afterLeave();
+    }, 500);
+  }
+
+  afterLeave() {
+    if (typeof this.param.afterLeave === 'function') {
+      this.param.afterLeave();
+    }
+  }
+}
+
+
+
+function initVideo() {
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(({ isIntersecting, target: video }) => {
+      if (isIntersecting) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  });
+
+  [].forEach.call(document.querySelectorAll('video'), (video) => {
+    enableInlineVideo(video);
+    videoObserver.observe(video);
+  });
+
+  //
+  // const $videoBird = document.getElementById('video-bird');
+  // if ($videoBird) {
+  //   enableInlineVideo($videoBird);
+  //   videoObserver.observe($videoBird);
+  //
+  //
+  //   // $videoBird.load();
+  //
+  //   // if (typeof this.onCanPlay === 'function') {
+  //   //   this.$videoBird.removeEventListener('canplay', this.onCanPlay);
+  //   // }
+  //
+  //   // if ($videoBird.readyState < 3) {
+  //   //   const onCanPlay = () => {
+  //   //     $videoBird.removeEventListener('canplay', onCanPlay);
+  //   //
+  //   //
+  //   //     videoObserver.observe($videoBird);
+  //   //     // Prospectacy.startAnimation();
+  //   //
+  //   //     // setTimeout(() => {
+  //   //     //   console.log('start');
+  //   //     //   this.videoObserver.observe(this.$videoBird);
+  //   //     //   // this.$videoBird.play();
+  //   //     // }, 1800);
+  //   //   };
+  //   //
+  //   //   $videoBird.addEventListener('canplay', onCanPlay);
+  //   // } else {
+  //   //   videoObserver.observe($videoBird);
+  //   //   // Prospectacy.startAnimation();
+  //   //   // setTimeout(() => {
+  //   //   //   console.log('start');
+  //   //   //   this.videoObserver.observe(this.$videoBird);
+  //   //   //   // this.$videoBird.play();
+  //   //   // }, 1800);
+  //   // }
+  // }
+  //
+  // const $videoScales = document.getElementById('video-scales');
+  // if ($videoScales) {
+  //   enableInlineVideo($videoScales);
+  //   videoObserver.observe($videoScales);
+  // }
+  //
+  // const $videoRub = document.getElementById('video-rub');
+  // if ($videoRub) {
+  //   enableInlineVideo($videoRub);
+  //   videoObserver.observe($videoRub);
+  // }
+}
+
+new Loader({
+  afterLeave: () => {
+    Prospectacy.startAnimation();
+  },
+});
 
 $(() => {
+  initVideo();
+
+  new Gallery();
+  new Modal();
+  new Prospectacy();
   new Hero();
   new GroupPhoto();
+
+  if (document.body.classList.contains('cv-page')) {
+    const loader = new CoronavirusPreloader({
+      afterDestroy: () => {
+        Prospectacy.startAnimation();
+      },
+    });
+
+    if (localStorage.getItem('coronavirus-page') !== 'visited') {
+      loader.start();
+    } else {
+      loader.end();
+    }
+  } else {
+    $('[data-start-transition]').on('click', (event) => {
+      if (localStorage.getItem('coronavirus-page') === 'visited') {
+        return;
+      }
+
+      event.preventDefault();
+
+      new CoronavirusPreloader({
+        beforeDestroy: () => {
+          window.location = event.currentTarget.href;
+        },
+      }).start();
+    });
+  }
 
 
   $('input[type="file"]').on('change', (event) => {
@@ -1296,58 +1327,4 @@ $(() => {
 
     $this.addClass('active');
   });
-});
-
-const App = new Prospectacy();
-
-// Наговнокодил тут, короче
-
-let per = 0;
-
-const timer = setInterval(() => {
-  if (per < 100) {
-    Prospectacy.setLoadPercentage(per += 15);
-  } else {
-    clearInterval(timer);
-    Prospectacy.setLoadPercentage(100);
-  }
-}, 1000);
-
-
-if (document.readyState === 'interactive') {
-  App.init();
-  Prospectacy.setLoadPercentage(per = 35);
-}
-
-if (document.readyState === 'complete') {
-  if (per < 100) {
-    clearInterval(timer);
-    Prospectacy.setLoadPercentage(per = 100);
-  }
-}
-
-document.addEventListener('readystatechange', () => {
-  if (document.readyState === 'interactive') {
-    App.init();
-    Prospectacy.setLoadPercentage(per = 35);
-  }
-  if (document.readyState === 'complete') {
-    if (per < 100) {
-      clearInterval(timer);
-      Prospectacy.setLoadPercentage(per = 100);
-    }
-  }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  App.init();
-
-  Prospectacy.setLoadPercentage(per = 30);
-});
-
-window.addEventListener('load', () => {
-  if (per < 100) {
-    clearInterval(timer);
-    Prospectacy.setLoadPercentage(per = 100);
-  }
 });
