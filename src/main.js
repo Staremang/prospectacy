@@ -713,18 +713,24 @@ class CoronavirusPreloader {
     }
 
     this.typeIt = new TypeIt(this.text, {
-      speed: 30,
+      speed: 20,
       startDelay: 300,
       afterComplete: this.end,
     })
       .type('“  “', { delay: 100 })
       .move(-2, { delay: 300 })
       .type('В связи с эпидемией коронавируса, который признается форс-мажором, прошу согласовать ', { delay: 200 })
-      .type('<span>отсрочку платежей</span>', { delay: 600 })
-      .delete(17)
-      .type('<span>налоговые льготы</span>', { delay: 600 })
+      .type('<span>отсрочку платежа</span>', { speed: 10, delay: 500 })
       .delete(16)
-      .type('<span>сделку с дьяволом</span>')
+      .type('<span>арендные каникулы</span>', { speed: 10, delay: 500 })
+      .delete(17)
+      .type('<span>приостановку исполнения договора</span>', { speed: 10, delay: 500 })
+      .delete(32)
+      .type('<span>отсрочку поставки товаров</span>', { speed: 10, delay: 500 })
+      .delete(25)
+      .type('<span>обращение к мерам государтсвенной поддержки</span>', { speed: 10, delay: 500 })
+      .delete(43)
+      .type('<span>подготовку к процедуре банкротств</span>', { speed: 10 })
       .pause(400);
 
     // requestAnimationFrame(this.start);
@@ -1235,11 +1241,13 @@ new Loader({
 $(() => {
   initVideo();
 
-  new Gallery();
-  new Modal();
   new Prospectacy();
+
+  new Modal();
   new Hero();
   new GroupPhoto();
+
+  new Gallery();
 
   if (document.body.classList.contains('cv-page')) {
     const loader = new CoronavirusPreloader({
