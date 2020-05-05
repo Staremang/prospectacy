@@ -724,13 +724,13 @@ class CoronavirusPreloader {
       .delete(16)
       .type('<span>арендные каникулы</span>', { speed: 10, delay: 500 })
       .delete(17)
-      .type('<span>приостановку исполнения договора</span>', { speed: 10, delay: 500 })
+      .type('<span>приостановку договора</span>', { speed: 10, delay: 500 })
       .delete(32)
-      .type('<span>отсрочку поставки товаров</span>', { speed: 10, delay: 500 })
+      .type('<span>отсрочку поставки</span>', { speed: 10, delay: 500 })
       .delete(25)
-      .type('<span>обращение к мерам государтсвенной поддержки</span>', { speed: 10, delay: 500 })
+      .type('<span>обращение к господдержке</span>', { speed: 10, delay: 500 })
       .delete(43)
-      .type('<span>подготовку к процедуре банкротств</span>', { speed: 10 })
+      .type('<span>подготовку к банкротству</span>', { speed: 10 })
       .pause(400);
 
     // requestAnimationFrame(this.start);
