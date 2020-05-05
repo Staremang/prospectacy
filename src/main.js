@@ -725,11 +725,11 @@ class CoronavirusPreloader {
       .type('<span>арендные каникулы</span>', { speed: 10, delay: 500 })
       .delete(17)
       .type('<span>приостановку договора</span>', { speed: 10, delay: 500 })
-      .delete(32)
+      .delete(21)
       .type('<span>отсрочку поставки</span>', { speed: 10, delay: 500 })
-      .delete(25)
+      .delete(17)
       .type('<span>обращение к господдержке</span>', { speed: 10, delay: 500 })
-      .delete(43)
+      .delete(24)
       .type('<span>подготовку к банкротству</span>', { speed: 10 })
       .pause(400);
 
