@@ -673,7 +673,7 @@ class Header {
     $('body').css('overflow', 'hidden');
     this.$header.addClass('header_active');
     this.$buttons.addClass('active');
-    this.$buttons.setAttribute('aria-expanded', 'true');
+    this.$buttons.attr('aria-expanded', 'true');
     this.isActive = true;
   };
 
@@ -681,7 +681,7 @@ class Header {
     $('body').css('overflow', '');
     this.$header.removeClass('header_active');
     this.$buttons.removeClass('active');
-    this.$buttons.setAttribute('aria-expanded', 'false');
+    this.$buttons.attr('aria-expanded', 'false');
     this.isActive = false;
   };
 }
